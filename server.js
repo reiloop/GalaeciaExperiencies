@@ -23,14 +23,16 @@ const { resetPassword } = require("./controllers/users/resetPassword");
 const { editPassword } = require("./controllers/users/editPassword");
 
 // Controladores de diario
-const { newEntry } = require("./controllers/diary/newEntry");
-const { editEntry } = require("./controllers/diary/editEntry");
-const { getEntry } = require("./controllers/diary/getEntry");
-const { deleteEntry } = require("./controllers/diary/deleteEntry");
-const { listEntries } = require("./controllers/diary/listEntries");
-const { addEntryPhoto } = require("./controllers/diary/addEntryPhoto");
-const { deleteEntryPhoto } = require("./controllers/diary/deleteEntryPhoto");
-const { voteEntry } = require("./controllers/diary/voteEntry");
+const { newEntry } = require("./controllers/experiences/newEntry");
+const { editEntry } = require("./controllers/experiences/editEntry");
+const { getEntry } = require("./controllers/experiences/getEntry");
+const { deleteEntry } = require("./controllers/experiences/deleteEntry");
+const { listEntries } = require("./controllers/experiences/listEntries");
+const { addEntryPhoto } = require("./controllers/experiences/addEntryPhoto");
+const {
+  deleteEntryPhoto,
+} = require("./controllers/experiences/deleteEntryPhoto");
+const { voteEntry } = require("./controllers/experiences/voteEntry");
 
 //OBTENEMOS MIDDLEWARES PARA LA PREVIA DE LOS
 // DISTINTOS MÉTODOS Y FUNCIONALIDADES
