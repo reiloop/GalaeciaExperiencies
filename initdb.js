@@ -111,9 +111,10 @@ async function main() {
     const password = await bcrypt.hash("123456789", 10);
 
     await connection.query(`
-        INSERT INTO users(
+        INSERT INTO usuarios(
             registrationDate,
             email,
+            nombre,
             contrasena, 
             rol,
             activado,
@@ -123,6 +124,7 @@ async function main() {
         VALUES(
             UTC_TIMESTAMP,
             "jose.reimondez@hotmail.com",
+            "administrador",
             "${password}",
             "admin",
             true,
