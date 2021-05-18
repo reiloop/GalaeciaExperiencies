@@ -12,18 +12,18 @@
 
 ​
 
-- **POST** - [/experience] - Insertar una nueva experiencia. **CON TOKEN**//SOLO ADMIN
+- **POST** - [/experience] - Insertar una nueva experiencia. **CON TOKEN**//SOLO ADMIN --->[JOSE]
 - **POST** - [/experience/:idExperience/comments] - Comentar una experiencia. **CON TOKEN**
 - **POST** - [/experience/:idExperience/votes] - Valorar una experiencia. **CON TOKEN**
 
 ​
 
-- **PUT** - [/experience/:idExperience] - Editar una experiencia. **CON TOKEN**//SOLO ADMIN
+- **PUT** - [/experience/:idExperience] - Editar una experiencia. **CON TOKEN**//SOLO ADMIN ---->[JOSE]
 - **PUT** - [/experience/:idExperience/comments/:idComment] - Editar un comentario. **CON TOKEN**
 - **PUT** - [/experience/:idExperience/votes/:idRating] - Editar una valoración. **CON TOKEN**
   ​
-- **DELETE** - [/experience/:idExperience] - Eliminar una experiencia. **CON TOKEN** //SOLO ADMIN
-- **DELETE** - [/experience/:idExperience/photos/:idPhoto] - Eliminar una foto asignada a una experiencia. **CON TOKEN**//SOLO ADMIN
+- **DELETE** - [/experience/:idExperience] - Eliminar una experiencia. **CON TOKEN** //SOLO ADMIN --->[JOSE]
+- **DELETE** - [/experience/:idExperience/photos/:idPhoto] - Eliminar una foto asignada a una experiencia. **CON TOKEN**//SOLO ADMIN ---->[JOSE]
 - **DELETE** - [/experience/:idExperience/comments/:idComment] - Eliminar un comentario. **CON TOKEN**
 
 ​
@@ -32,10 +32,10 @@
 
 ​
 
-- **GET** - [/users/validate/:regCode] - Valida un usuario. X
+- **GET** - [/users/validate/:regCode] - Valida un usuario. -->[JOSE]
 - **GET** - [/users/:idUser] - Obtener info de usuario. **CON TOKEN**X
-- **POST** - [/users] - Crea un usuario pendiente de activar.X
-- **POST** - [/users/:idEvent] - Login de usuario.X
+- **POST** - [/users] - Crea un usuario pendiente de activar. -->[JOSE]
+- **POST** - [/users/:idEvent] - Login de usuario.--->[JOSE]
 - **POST** - [/users/recovery] - Recuperar contraseña de usuario.X
 - **POST** - [/users/reset] - Insertar nueva contraseña de usuario tras recuperación. X
 - **PUT** - [/users/:idUser] - Editar datos de usuario. **CON TOKEN**X
