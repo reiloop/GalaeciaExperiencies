@@ -54,7 +54,7 @@ async function createUser(req, res, next) {
                 registrationDate,
                 email,
                 password,
-                name,
+                nombre,
                 registrationCode,
                 lastUpdate,
                 lastAuthUpdate
@@ -78,9 +78,9 @@ async function createUser(req, res, next) {
 
     await sendMail({
       to: email,
-      subject: "Te acabas de registrar en diario de viajes",
+      subject: "Te acabas de registrar en Experiencias Gallaecia",
       message: `
-            Muchas gracias por registrarte en diario de viajes,
+            Muchas gracias por registrarte en Experiencias Gallaecia,
             pulsa el siguiente link para activar tu usuario:
 
             ${validationLink}

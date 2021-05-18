@@ -13,7 +13,7 @@ async function canEdit(req, res, next) {
     const [result] = await connection.query(
       `
       SELECT id_user
-      FROM diary
+      FROM experiencias
       WHERE id=?
     `,
       [id]

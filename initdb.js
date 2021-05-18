@@ -16,7 +16,7 @@ async function main() {
     await connection.query(`SET FOREIGN_KEY_CHECKS = 1`);
 
     await connection.query(`
-    CREATE TABLE usuarios (
+    CREATE TABLE users(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         registrationDate DATETIME NOT NULL,
         nombre VARCHAR(20) NOT NULL,
@@ -111,7 +111,7 @@ async function main() {
     const password = await bcrypt.hash("123456789", 10);
 
     await connection.query(`
-        INSERT INTO usuarios(
+        INSERT INTO users(
             registrationDate,
             email,
             nombre,

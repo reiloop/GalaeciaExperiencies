@@ -14,7 +14,7 @@ async function activateUser(req, res, next) {
       [user] = await connection.query(
         `
             SELECT *
-            FROM users
+            FROM usuarios
             WHERE registrationCode = ?
             `,
         [registrationCode]
@@ -33,7 +33,7 @@ async function activateUser(req, res, next) {
     try {
       await connection.query(
         `
-            UPDATE users
+            UPDATE usuarios
             SET active=true, registrationCode = NULL
             WHERE registrationCode = ?
             `,
