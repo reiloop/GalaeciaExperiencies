@@ -54,7 +54,7 @@ app.post("/users", createUser);
 app.get("/activate/:registrationCode", activateUser);
 
 // //LOGIN
-// app.post("/login", login);
+app.post("/login", login);
 
 // //GET PERFIL USUARIO
 // app.get("/user/:id", validAuth, getUser);
@@ -75,23 +75,23 @@ app.get("/activate/:registrationCode", activateUser);
 // app.put("/reset/:code", resetPassword);
 
 // /*
-//   CONTROLADORES DE DIARIO
+//   CONTROLADORES
 // */
 
-// //CREAR ENTRADA EN EL DIARIO
-// app.post("/diary", validAuth, newEntry);
+// //CREAR UNA NUEVA ACTIVIDAD
+app.post("/experience", validAuth, isAdmin, newEntry);
 
-// //EDITAR LA ENTRADA DEL DIARIO
+// //EDITAR UNA ACTIVIDAD
 // app.put("/diary/:id", validAuth, canEdit, editEntry);
 
-// //VER UNA DETERMINADA ENTRADA DEL DIARIO
+// //VER UNA DETERMINADA ACTIVIDAD
 // app.get("/diary/:id", getEntry);
 
-// //BORRAR UNA ENTRADA DEL DIARIO
+// //BORRAR UNA ACTIVIDAD
 // app.delete("/diary/:id", validAuth, canEdit, deleteEntry);
 
-// //LISTAR ENTRADAS DEL DIARIO
-// app.get("/diary", listEntries);
+// //LISTAR ACTIVIDADES
+// app.get("/experiences", listEntries);
 
 // // ADJUNTAR FOTOS A UNA ENTRADA
 // app.post("/diary/:id/photos", validAuth, canEdit, addEntryPhoto);

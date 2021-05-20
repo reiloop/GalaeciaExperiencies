@@ -37,7 +37,7 @@ async function login(req, res, next) {
     const passwordDb = user[0].password;
 
     //COMPROBAR QUE EL USUARIO ESTÁ ACTIVADO
-    if (user[0].active !== 1) {
+    if (user[0].activado !== 1) {
       throw new Error(
         "El usuario no está activado, revisa la bandeja de entrada de tu email para activar tu usuario"
       );
@@ -54,7 +54,7 @@ async function login(req, res, next) {
     //PARA REGULAR ACCESOS EN LA APLICACIÓN
     const tokenInfo = {
       id: user[0].id,
-      role: user[0].role,
+      rol: user[0].rol,
     };
 
     const token = jsonwebtoken.sign(tokenInfo, process.env.SECRET, {

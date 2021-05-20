@@ -29,7 +29,7 @@ async function canEdit(req, res, next) {
 
     const entry = result[0];
 
-    if (req.auth.id !== entry.id_user && req.auth.role !== "admin") {
+    if (req.auth.id !== entry.id_user && req.auth.rol !== "admin") {
       throw new Error("No realizar esta acción sobre esta entrada de diario");
     }
 

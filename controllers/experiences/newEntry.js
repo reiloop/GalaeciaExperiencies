@@ -7,7 +7,15 @@ async function newEntry(req, res, next) {
     connection = await getConnection();
 
     // compruebo que recibo los datos necesarios (place)
-    const { place, description } = req.body;
+    const {
+      place,
+      description,
+      name,
+      availableDate,
+      price,
+      plazasLibres,
+      plazasTotales,
+    } = req.body;
 
     if (!place) {
       throw new Error('Por lo menos debes incluír el campo "place"');
@@ -16,10 +24,19 @@ async function newEntry(req, res, next) {
     // Meto la entrada en la base de datos
     const [result] = await connection.query(
       `
-      INSERT INTO diary(date, description, place, lastUpdate, id_user)
+      INSERT INTO actividades(fecha_disponible, descripcion, nombre, localidad, precio, plazas_disponibles, plazas_totales ,id_user)
       VALUES(?,?,?,?,?)
     `,
-      [new Date(), description, place, new Date(), req.auth.id]
+      [
+        availableDate,
+        description,
+        name,
+        place,
+        price,
+        plazasLibres,
+        plazasTotales,
+        req.auth.id,
+      ]
     );
 
     // Devuelvo información
