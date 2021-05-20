@@ -48,7 +48,7 @@ app.use(fileUpload());
 
 //APLICAMOS MIDDLEWARES ENDPOINTS
 //CREAR USUARIO
-app.post("/user", createUser);
+app.post("/users", createUser);
 
 //ACTIVACIÓN DE USUARIO
 app.get("/activate/:registrationCode", activateUser);

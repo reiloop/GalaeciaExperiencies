@@ -10,7 +10,7 @@ async function createUser(req, res, next) {
     connection = await getConnection();
 
     //OBTENER LOS DATOS DE LA REQUEST
-    const { email, password, name } = req.body;
+    const { email, password, name, bio, avatar } = req.body;
 
     //COMPROBAR QUE LOS DATOS EXISTAN
     if (!email || !password) {
@@ -55,6 +55,8 @@ async function createUser(req, res, next) {
                 email,
                 password,
                 nombre,
+                foto,
+                biografia,
                 registrationCode,
                 lastUpdate,
                 lastAuthUpdate
@@ -64,6 +66,8 @@ async function createUser(req, res, next) {
                 "${email}",
                 "${passwordDb}",
                 "${name}",
+                "${avatar}",
+                "${bio}",
                 "${registrationCode}",
                 UTC_TIMESTAMP,
                 UTC_TIMESTAMP

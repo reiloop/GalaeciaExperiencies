@@ -123,7 +123,7 @@ async function main() {
         )
         VALUES(
             UTC_TIMESTAMP,
-            "jose.reimondez@hotmail.com",
+            "jose.reimondez@yomismo.com",
             "administrador",
             "${password}",
             "admin",
