@@ -8,10 +8,10 @@ async function newEntry(req, res, next) {
 
     // compruebo que recibo los datos necesarios (place)
     const {
-      place,
+      availableDate,
       description,
       name,
-      availableDate,
+      place,
       price,
       plazasLibres,
       plazasTotales,
@@ -20,15 +20,15 @@ async function newEntry(req, res, next) {
     if (!place) {
       throw new Error('Por lo menos debes incluír el campo "place"');
     }
-
+    fecha = new Date(availableDate);
     // Meto la entrada en la base de datos
     const [result] = await connection.query(
       `
       INSERT INTO actividades(fecha_disponible, descripcion, nombre, localidad, precio, plazas_disponibles, plazas_totales ,id_user)
-      VALUES(?,?,?,?,?)
+      VALUES(?,?,?,?,?,?,?,?)
     `,
       [
-        availableDate,
+        fecha,
         description,
         name,
         place,
