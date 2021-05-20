@@ -32,7 +32,7 @@
 
 ​
 
-- **GET** - [/users/validate/:regCode] - Valida un usuario. -->[JOSE]
+- **GET** - [/users/activate/:regCode] - activar un usuario. -->[JOSE]
 - **GET** - [/users/:idUser] - Obtener info de usuario. **CON TOKEN**X
 - **POST** - [/users] - Crea un usuario pendiente de activar. -->[JOSE]
 - **POST** - [/users/:idEvent] - Login de usuario.--->[JOSE]

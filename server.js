@@ -50,57 +50,57 @@ app.use(fileUpload());
 //CREAR USUARIO
 app.post("/users", createUser);
 
-//ACTIVACIÓN DE USUARIO
+// //ACTIVACIÓN DE USUARIO
 app.get("/activate/:registrationCode", activateUser);
 
-//LOGIN
-app.post("/login", login);
+// //LOGIN
+// app.post("/login", login);
 
-//GET PERFIL USUARIO
-app.get("/user/:id", validAuth, getUser);
+// //GET PERFIL USUARIO
+// app.get("/user/:id", validAuth, getUser);
 
-//EDITAR PERFIL USUARIO
-app.put("/user/:id", validAuth, isSameUser, editUser);
+// //EDITAR PERFIL USUARIO
+// app.put("/user/:id", validAuth, isSameUser, editUser);
 
-//EDITAR PASSWORD
-app.put("/user/password/:id", validAuth, isSameUser, editPassword);
+// //EDITAR PASSWORD
+// app.put("/user/password/:id", validAuth, isSameUser, editPassword);
 
-//BORRAR PERFIL USUARIO
-app.delete("/user/:id", validAuth, isAdmin, deleteUser);
+// //BORRAR PERFIL USUARIO
+// app.delete("/user/:id", validAuth, isAdmin, deleteUser);
 
-//RECORDAR CONTRASEÑA
-app.put("/recoverPassword", recover);
+// //RECORDAR CONTRASEÑA
+// app.put("/recoverPassword", recover);
 
-//RESETEAR CONTRASEÑA
-app.put("/reset/:code", resetPassword);
+// //RESETEAR CONTRASEÑA
+// app.put("/reset/:code", resetPassword);
 
-/* 
-  CONTROLADORES DE DIARIO
-*/
+// /*
+//   CONTROLADORES DE DIARIO
+// */
 
-//CREAR ENTRADA EN EL DIARIO
-app.post("/diary", validAuth, newEntry);
+// //CREAR ENTRADA EN EL DIARIO
+// app.post("/diary", validAuth, newEntry);
 
-//EDITAR LA ENTRADA DEL DIARIO
-app.put("/diary/:id", validAuth, canEdit, editEntry);
+// //EDITAR LA ENTRADA DEL DIARIO
+// app.put("/diary/:id", validAuth, canEdit, editEntry);
 
-//VER UNA DETERMINADA ENTRADA DEL DIARIO
-app.get("/diary/:id", getEntry);
+// //VER UNA DETERMINADA ENTRADA DEL DIARIO
+// app.get("/diary/:id", getEntry);
 
-//BORRAR UNA ENTRADA DEL DIARIO
-app.delete("/diary/:id", validAuth, canEdit, deleteEntry);
+// //BORRAR UNA ENTRADA DEL DIARIO
+// app.delete("/diary/:id", validAuth, canEdit, deleteEntry);
 
-//LISTAR ENTRADAS DEL DIARIO
-app.get("/diary", listEntries);
+// //LISTAR ENTRADAS DEL DIARIO
+// app.get("/diary", listEntries);
 
-// ADJUNTAR FOTOS A UNA ENTRADA
-app.post("/diary/:id/photos", validAuth, canEdit, addEntryPhoto);
+// // ADJUNTAR FOTOS A UNA ENTRADA
+// app.post("/diary/:id/photos", validAuth, canEdit, addEntryPhoto);
 
-// BORRAR FOTOS DE UNA ENTRADA
-app.delete("/diary/:id/photos/:photoID", validAuth, canEdit, deleteEntryPhoto);
+// // BORRAR FOTOS DE UNA ENTRADA
+// app.delete("/diary/:id/photos/:photoID", validAuth, canEdit, deleteEntryPhoto);
 
-// VOTAR UNA ENTRADA DEL DIARIO
-app.post("/diary/:id/votes", validAuth, voteEntry);
+// // VOTAR UNA ENTRADA DEL DIARIO
+// app.post("/diary/:id/votes", validAuth, voteEntry);
 
 //MIDDLEWARE DE GESTION DE ERRORES
 app.use(function (error, req, res, next) {
