@@ -7,7 +7,7 @@ async function main() {
     connection = await getConnection();
 
     await connection.query(`SET FOREIGN_KEY_CHECKS = 0`);
-    await connection.query(`DROP TABLE IF EXISTS usuarios`);
+    await connection.query(`DROP TABLE IF EXISTS users`);
     await connection.query(`DROP TABLE IF EXISTS actividades`);
     await connection.query(`DROP TABLE IF EXISTS reservas`);
     await connection.query(`DROP TABLE IF EXISTS usuarios_reservas`);
@@ -60,8 +60,8 @@ async function main() {
         plazas_disponibles INT,
         plazas_totales INT,
         fecha_creacion_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        id_usuario INT UNSIGNED,
-        FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+        id_user INT UNSIGNED,
+        FOREIGN KEY (id_user) REFERENCES users(id),
         id_reserva INT UNSIGNED,
         FOREIGN KEY (id_reserva) REFERENCES reservas(id)
         )`);
@@ -70,11 +70,11 @@ async function main() {
 
     await connection.query(`
     CREATE TABLE usuarios_reservas(
-        id_usuario INT UNSIGNED,
-        FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+        id_user INT UNSIGNED,
+        FOREIGN KEY (id_user) REFERENCES users(id),
         id_reserva INT UNSIGNED,
         FOREIGN KEY (id_reserva) REFERENCES reservas(id),
-        PRIMARY KEY (id_usuario, id_reserva)
+        PRIMARY KEY (id_user, id_reserva)
         )   
         `);
 
@@ -87,8 +87,8 @@ async function main() {
         voto TINYINT NOT NULL,
         comentario TINYTEXT,
         imagen TINYTEXT,
-        id_usuario INT UNSIGNED,
-        FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
+        id_user INT UNSIGNED,
+        FOREIGN KEY (id_user) REFERENCES users(id),
         id_actividad INT UNSIGNED,
         FOREIGN KEY (id_actividad) REFERENCES actividades(id)
 )  
