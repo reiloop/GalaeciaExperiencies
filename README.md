@@ -6,8 +6,8 @@
 
 ​
 
-- **GET** - [/experience] - Obtener la lista de experiencias.
-- **GET** - [/experience/:idExperience] - Obtener la info de una experiencia.
+- **GET** - [/experience] - Obtener la lista de experiencias.--->[John]
+- **GET** - [/experience/:idExperience] - Obtener la info de una experiencia.--->[John]
 - **GET** - [/experience/:idExperience/comments] - Obtener los comentarios de una experiencia.
 
 ​
@@ -36,8 +36,8 @@
 - **GET** - [/users/:idUser] - Obtener info de usuario. **CON TOKEN**X
 - **POST** - [/users] - Crea un usuario pendiente de activar. -->[JOSE]
 - **POST** - [/users/:idEvent] - Login de usuario.--->[JOSE]
-- **POST** - [/users/recovery] - Recuperar contraseña de usuario.X
+- **POST** - [/users/recovery] - Recuperar contraseña de usuario.X--->[John]
 - **POST** - [/users/reset] - Insertar nueva contraseña de usuario tras recuperación. X
-- **PUT** - [/users/:idUser] - Editar datos de usuario. **CON TOKEN**X
-- **PUT** - [/users/:idUser/password] - Editar contraseña. **CON TOKEN**X
-- **DELETE** - [/users/:idUser] - Desactivar/Borrar usuario. **CON TOKEN**X
+- **PUT** - [/users/:idUser] - Editar datos de usuario. **CON TOKEN**X--->[John]
+- **PUT** - [/users/:idUser/password] - Editar contraseña. **CON TOKEN**X--->[John]
+- **DELETE** - [/users/:idUser] - Desactivar/Borrar usuario. **CON TOKEN**X--->[John]
