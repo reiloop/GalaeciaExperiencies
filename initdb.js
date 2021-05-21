@@ -61,6 +61,7 @@ async function main() {
         plazas_totales INT,
         fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         fecha_creacion_reserva DATETIME,
+        lastUpdate DATETIME NOT NULL,
         id_user INT UNSIGNED,
         FOREIGN KEY (id_user) REFERENCES users(id),
         id_reserva INT UNSIGNED,

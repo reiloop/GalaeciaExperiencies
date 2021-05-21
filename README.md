@@ -18,7 +18,7 @@
 
 ​
 
-- **PUT** - [/experience/:idExperience] - Editar una experiencia. **CON TOKEN**//SOLO ADMIN ---->[JOSE]
+- **PUT** - [/experience/:idExperience] - Editar una experiencia. **CON TOKEN**//SOLO ADMIN ---->[JOSE]V
 - **PUT** - [/experience/:idExperience/comments/:idComment] - Editar un comentario. **CON TOKEN**
 - **PUT** - [/experience/:idExperience/votes/:idRating] - Editar una valoración. **CON TOKEN**
   ​
@@ -29,8 +29,6 @@
 ​
 
 ## Users
-
-​
 
 - **GET** - [/users/activate/:regCode] - activar un usuario. -->[JOSE]V
 - **GET** - [/users/:idUser] - Obtener info de usuario. **CON TOKEN**X
