@@ -98,10 +98,15 @@ app.delete("/experience/:id", validAuth, isAdmin, deleteEntry);
 // app.get("/experiences", listEntries);
 
 // // ADJUNTAR FOTOS A UNA ENTRADA
-// app.post("/diary/:id/photos", validAuth, canEdit, addEntryPhoto);
+app.post("/experience/:id/photo", validAuth, isAdmin, addEntryPhoto);
 
 // // BORRAR FOTOS DE UNA ENTRADA
-// app.delete("/diary/:id/photos/:photoID", validAuth, canEdit, deleteEntryPhoto);
+app.delete(
+  "/experience/:id/photo/:photoID",
+  validAuth,
+  isAdmin,
+  deleteEntryPhoto
+);
 
 // // VOTAR UNA ENTRADA DEL DIARIO
 // app.post("/diary/:id/votes", validAuth, voteEntry);

@@ -16,8 +16,8 @@ async function addEntryPhoto(req, res, next) {
     const [currentPhotos] = await connection.query(
       `
       SELECT *
-      FROM diary_images
-      WHERE id_diary=?
+      FROM imagenes
+      WHERE id_actividad=?
     `,
       [id]
     );
@@ -34,7 +34,7 @@ async function addEntryPhoto(req, res, next) {
     if (req.files && req.files.photo) {
       savedPhotoName = await uploadImage({
         file: req.files.photo,
-        directory: "photos",
+        directory: "imagenes",
       });
     } else {
       throw new Error("No subiste ninguna foto");
@@ -43,7 +43,7 @@ async function addEntryPhoto(req, res, next) {
     // Actualizamos la base de datos
     await connection.query(
       `
-      INSERT INTO diary_images(uploadedDate, image, id_diary)
+      INSERT INTO imagenes(uploadedDate, imagen, id_actividad)
       VALUES(?,?,?)
     `,
       [new Date(), savedPhotoName, id]
