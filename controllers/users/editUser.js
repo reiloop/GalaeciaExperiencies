@@ -6,10 +6,10 @@ async function editUser(req, res, next) {
   try {
     connection = await getConnection();
 
-    const { name, email } = req.body;
+    const { nombre, email } = req.body;
 
     if (!email) {
-      throw new Error("El campo email es obligatorio");
+      throw new Error("Obligatorio introducir el mail");
     }
 
     if (req.files) {
@@ -30,32 +30,32 @@ async function editUser(req, res, next) {
         await connection.query(
           `
                 UPDATE users
-                SET name=?,
+                SET nombre=?,
                 email=?,
-                image=?
+                foto=?
                 WHERE id=?
                 `,
-          [name, email, nameFile, req.auth.id]
+          [nombre, email, nameFile, req.auth.id]
         );
       } catch (error) {
-        throw new Error("Ha habido un error al actualizar tu usuario");
+        throw new Error("Error al actualizar tu usuario");
       }
     } else {
       try {
         await connection.query(
           `
                 UPDATE users
-                SET name=?,
+                SET nombre=?,
                 email=?
                 WHERE id=?
                 `,
-          [name, email, req.auth.id]
+          [nombre, email, req.auth.id]
         );
       } catch (error) {
-        throw new Error("Ha habido un error al actualizar tu usuario");
+        throw new Error("Error al actualizar tu usuario");
       }
     }
-    res.send("tu usuario ha sido actualizo satisfactoriamente");
+    res.send("Tu usuario ha sido actualizado satisfactoriamente");
   } catch (error) {
     next(error);
   } finally {

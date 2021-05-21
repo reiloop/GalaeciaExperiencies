@@ -20,12 +20,12 @@ async function recover(req, res, next) {
         [email]
       );
     } catch (error) {
-      throw new Error("No se ha podido buscar un usuario en la base de datos");
+      throw new Error("No se ha podido encontrar al usuario en la base de datos");
     }
 
     if (user.length < 1) {
       throw new Error(
-        "No existe un usuairo con la dirección de email indicada"
+        "No existe ningún usuario con la dirección de email indicada"
       );
     }
 
@@ -49,7 +49,7 @@ async function recover(req, res, next) {
       to: email,
       subject: "Recuperación de contraseña",
       message: `
-            Hola, se ha solicitado recuperar tu contraseña, puedes resetear tu contraseña en el siguiente enlace:
+            Hola, parece que has solicitado recuperar tu contraseña, para resetearla pulsa en el siguiente enlace:
 
             ${recoverLink}
           `,

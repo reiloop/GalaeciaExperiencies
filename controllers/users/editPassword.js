@@ -11,7 +11,7 @@ async function editPassword(req, res, next) {
     const { id } = req.params;
 
     if (newPassword !== newPassword2) {
-      throw new Error("La nueva contraseña no coincide");
+      throw new Error("La contraseña no coincide");
     }
 
     //OBTENGO USUARIO EN BASE AL ID DE LA RUTA
@@ -26,7 +26,7 @@ async function editPassword(req, res, next) {
         [id]
       );
     } catch (error) {
-      throw new Error("No se pudo buscar al usuario en la base de datos");
+      throw new Error("No se encontró al usuario en la base de datos");
     }
 
     //OBTENGO LA CONTRASEÑA CODIFICADA DEL USUARIO EN LA BASE DE DATOS
@@ -37,11 +37,11 @@ async function editPassword(req, res, next) {
       const isValid = await bcrypt.compare(oldPassword, passwordCoded);
       if (isValid === false) {
         throw new Error(
-          "La contraseña introducida no coincide con la depositada en base de datos"
+          "La contraseña introducida no coincide con la almacenada en la base de datos"
         );
       }
     } catch (error) {
-      throw new Error("no se han podido comparar");
+      throw new Error("No se han podido comparar las contraseñas");
     }
 
     let passwordDb;
@@ -61,7 +61,7 @@ async function editPassword(req, res, next) {
         [passwordDb, id]
       );
     } catch (error) {
-      throw new Error("el usuario no se pudo actualizar");
+      throw new Error("No se ha podido actualizar el usuario");
     }
 
     res.send("contraseña actualizada");
