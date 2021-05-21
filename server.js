@@ -82,7 +82,7 @@ app.post("/login", login);
 app.post("/experience", validAuth, isAdmin, newEntry);
 
 // //EDITAR UNA ACTIVIDAD
-// app.put("/diary/:id", validAuth, canEdit, editEntry);
+app.put("/experience/:id", validAuth, canEdit, isAdmin, editEntry);
 
 // //VER UNA DETERMINADA ACTIVIDAD
 // app.get("/diary/:id", getEntry);
