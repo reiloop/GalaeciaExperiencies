@@ -7,7 +7,7 @@ async function deleteUser(req, res, next) {
     const { id } = req.params;
 
     if (Number(id) === 1) {
-      throw new Error("El usuario administrador no se puede borrrar");
+      throw new Error("No es posible eliminar al admin");
     }
 
     try {
