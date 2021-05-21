@@ -12,7 +12,7 @@ async function deleteEntry(req, res, next) {
     // borramos la entrada
     await connection.query(
       `
-      DELETE FROM diary
+      DELETE FROM actividades
       WHERE id=?
     `,
       [id]

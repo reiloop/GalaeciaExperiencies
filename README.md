@@ -12,13 +12,13 @@
 
 ​
 
-- **POST** - [/experience] - Insertar una nueva experiencia. **CON TOKEN**//SOLO ADMIN --->[JOSE]
+- **POST** - [/experience] - Insertar una nueva experiencia. **CON TOKEN**//SOLO ADMIN --->[JOSE]V
 - **POST** - [/experience/:idExperience/comments] - Comentar una experiencia. **CON TOKEN**
 - **POST** - [/experience/:idExperience/votes] - Valorar una experiencia. **CON TOKEN**
 
 ​
 
-- **PUT** - [/experience/:idExperience] - Editar una experiencia. **CON TOKEN**//SOLO ADMIN ---->[JOSE]
+- **PUT** - [/experience/:idExperience] - Editar una experiencia. **CON TOKEN**//SOLO ADMIN ---->[JOSE]V
 - **PUT** - [/experience/:idExperience/comments/:idComment] - Editar un comentario. **CON TOKEN**
 - **PUT** - [/experience/:idExperience/votes/:idRating] - Editar una valoración. **CON TOKEN**
   ​
@@ -30,12 +30,10 @@
 
 ## Users
 
-​
-
-- **GET** - [/users/activate/:regCode] - activar un usuario. -->[JOSE]
+- **GET** - [/users/activate/:regCode] - activar un usuario. -->[JOSE]V
 - **GET** - [/users/:idUser] - Obtener info de usuario. **CON TOKEN**X
-- **POST** - [/users] - Crea un usuario pendiente de activar. -->[JOSE]
-- **POST** - [/users/:idEvent] - Login de usuario.--->[JOSE]
+- **POST** - [/users] - Crea un usuario pendiente de activar. -->[JOSE]V
+- **POST** - [/users/:idEvent] - Login de usuario.--->[JOSE]V
 - **POST** - [/users/recovery] - Recuperar contraseña de usuario.X--->[John]
 - **POST** - [/users/reset] - Insertar nueva contraseña de usuario tras recuperación. X
 - **PUT** - [/users/:idUser] - Editar datos de usuario. **CON TOKEN**X--->[John]

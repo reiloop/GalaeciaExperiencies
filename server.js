@@ -82,13 +82,17 @@ app.post("/login", login);
 app.post("/experience", validAuth, isAdmin, newEntry);
 
 // //EDITAR UNA ACTIVIDAD
+<<<<<<< HEAD
 app.put("/experience/:id", validAuth, canEdit, isAdmin, editEntry);
+=======
+app.put("/experience/:id", validAuth, isAdmin, editEntry);
+>>>>>>> jose
 
 // //VER UNA DETERMINADA ACTIVIDAD
-// app.get("/diary/:id", getEntry);
+// app.get("/experience/:id", getEntry);
 
 // //BORRAR UNA ACTIVIDAD
-// app.delete("/diary/:id", validAuth, canEdit, deleteEntry);
+app.delete("/experience/:id", validAuth, isAdmin, deleteEntry);
 
 // //LISTAR ACTIVIDADES
 // app.get("/experiences", listEntries);
