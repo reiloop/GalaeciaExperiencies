@@ -13,9 +13,9 @@ async function deleteEntryPhoto(req, res, next) {
 
     const [photos] = await connection.query(
       `
-      SELECT image
-      FROM diary_images
-      WHERE id_diary=? AND id=?
+      SELECT imagen
+      FROM imagenes
+      WHERE id_actividad=? AND id=?
     `,
       [id, photoID]
     );
@@ -28,16 +28,16 @@ async function deleteEntryPhoto(req, res, next) {
 
     // Borramos la foto del disco
     await deleteImage({
-      file: photos[0].image,
-      directory: "photos",
+      file: photos[0].imagen,
+      directory: "imagenes",
     });
 
     // Actualizamos la base de datos
 
     await connection.query(
       `
-      DELETE FROM diary_images
-      WHERE id=? AND id_diary=?
+      DELETE FROM imagenes
+      WHERE id=? AND id_actividad=?
     `,
       [photoID, id]
     );

@@ -104,7 +104,7 @@ async function main() {
         uploadedDate DATETIME NOT NULL,
         imagen TINYTEXT,
         id_actividad INT UNSIGNED,
-        FOREIGN KEY (id_actividad) REFERENCES actividades (id)
+        FOREIGN KEY (id_actividad) REFERENCES actividades(id)
         )
          `);
 

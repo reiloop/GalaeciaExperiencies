@@ -22,8 +22,9 @@
 - **PUT** - [/experience/:idExperience/comments/:idComment] - Editar un comentario. **CON TOKEN**
 - **PUT** - [/experience/:idExperience/votes/:idRating] - Editar una valoración. **CON TOKEN**
   ​
-- **DELETE** - [/experience/:idExperience] - Eliminar una experiencia. **CON TOKEN** //SOLO ADMIN --->[JOSE]
-- **DELETE** - [/experience/:idExperience/photos/:idPhoto] - Eliminar una foto asignada a una experiencia. **CON TOKEN**//SOLO ADMIN ---->[JOSE]
+- **DELETE** - [/experience/:idExperience] - Eliminar una experiencia. **CON TOKEN** //SOLO ADMIN --->[JOSE]V
+- **POST** - [/experience/:idExperience/photo] - Añadir una foto a una experiencia. **CON TOKEN**//SOLO ADMIN --->[JOSE]V
+- **DELETE** - [/experience/:idExperience/photos/:idPhoto] - Eliminar una foto asignada a una experiencia. **CON TOKEN**//SOLO ADMIN ---->[JOSE]V
 - **DELETE** - [/experience/:idExperience/comments/:idComment] - Eliminar un comentario. **CON TOKEN**
 
 ​
