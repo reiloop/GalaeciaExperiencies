@@ -57,19 +57,19 @@ app.get("/activate/:registrationCode", activateUser);
 app.post("/login", login);
 
 // //GET PERFIL USUARIO
-// app.get("/user/:id", validAuth, getUser);
+app.get("/user/:id", validAuth, getUser);
 
 // //EDITAR PERFIL USUARIO
-// app.put("/user/:id", validAuth, isSameUser, editUser);
+app.put("/user/:id", validAuth, isSameUser, editUser);
 
 // //EDITAR PASSWORD
-// app.put("/user/password/:id", validAuth, isSameUser, editPassword);
+app.put("/user/password/:id", validAuth, isSameUser, editPassword);
 
 // //BORRAR PERFIL USUARIO
-// app.delete("/user/:id", validAuth, isAdmin, deleteUser);
+app.delete("/user/:id", validAuth, isAdmin, deleteUser);
 
 // //RECORDAR CONTRASEÑA
-// app.put("/recoverPassword", recover);
+app.put("/recoverPassword", recover);
 
 // //RESETEAR CONTRASEÑA
 // app.put("/reset/:code", resetPassword);
@@ -82,20 +82,16 @@ app.post("/login", login);
 app.post("/experience", validAuth, isAdmin, newEntry);
 
 // //EDITAR UNA ACTIVIDAD
-<<<<<<< HEAD
 app.put("/experience/:id", validAuth, canEdit, isAdmin, editEntry);
-=======
-app.put("/experience/:id", validAuth, isAdmin, editEntry);
->>>>>>> jose
 
 // //VER UNA DETERMINADA ACTIVIDAD
-// app.get("/experience/:id", getEntry);
+app.get("/experience/:id", getEntry);
 
 // //BORRAR UNA ACTIVIDAD
 app.delete("/experience/:id", validAuth, isAdmin, deleteEntry);
 
 // //LISTAR ACTIVIDADES
-// app.get("/experiences", listEntries);
+app.get("/experiences", listEntries);
 
 // // ADJUNTAR FOTOS A UNA ENTRADA
 app.post("/experience/:id/photo", validAuth, isAdmin, addEntryPhoto);
