@@ -33,6 +33,7 @@ const {
   deleteEntryPhoto,
 } = require("./controllers/experiences/deleteEntryPhoto");
 const { voteEntry } = require("./controllers/experiences/voteEntry");
+const { getComments } = require("./controllers/experiences/getComments");
 
 //OBTENEMOS MIDDLEWARES PARA LA PREVIA DE LOS
 // DISTINTOS MÉTODOS Y FUNCIONALIDADES
@@ -57,7 +58,7 @@ app.get("/activate/:registrationCode", activateUser);
 app.post("/login", login);
 
 // //GET PERFIL USUARIO
-app.get("/user/:id", validAuth, getUser);
+// app.get("/user/:id", validAuth, getUser);
 
 // //EDITAR PERFIL USUARIO
 app.put("/user/:id", validAuth, isSameUser, editUser);
@@ -72,7 +73,7 @@ app.delete("/user/:id", validAuth, isAdmin, deleteUser);
 app.put("/recoverPassword", recover);
 
 // //RESETEAR CONTRASEÑA
-// app.put("/reset/:code", resetPassword);
+//app.put("/reset/:code", resetPassword);
 
 // /*
 //   CONTROLADORES
@@ -96,7 +97,7 @@ app.get("/experiences", listEntries);
 // // ADJUNTAR FOTOS A UNA ENTRADA
 app.post("/experience/:id/photo", validAuth, isAdmin, addEntryPhoto);
 
-// // BORRAR FOTOS DE UNA ENTRADA
+// // BORRAR FOTOS DE UNA EXPERIENCIA
 app.delete(
   "/experience/:id/photo/:photoID",
   validAuth,
@@ -104,8 +105,11 @@ app.delete(
   deleteEntryPhoto
 );
 
-// // VOTAR UNA ENTRADA DEL DIARIO
-app.post("/experience/:id/votes", validAuth, voteEntry);
+// // VOTAR UNA EXPERIENCIA
+app.post("/experience/:idExperience/comments", validAuth, voteEntry);
+
+//Obtener comentarios de una experiencia
+app.get("/experience/:id/comments", getComments);
 
 //MIDDLEWARE DE GESTION DE ERRORES
 app.use(function (error, req, res, next) {

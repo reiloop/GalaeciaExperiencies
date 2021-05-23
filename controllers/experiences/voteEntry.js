@@ -7,10 +7,10 @@ async function voteEntry(req, res, next) {
     connection = await getConnection();
 
     // Saco la id de la entrada del diario de req.params
-    const { id } = req.params;
+    const { idExperience } = req.params;
 
     // Saco los votos de req.body
-    const { vote } = req.body;
+    const { vote, comentario } = req.body;
 
     // Compruebo que los votos tienen un valor correcto
     const validVotes = [1, 2, 3, 4, 5];
@@ -27,7 +27,7 @@ async function voteEntry(req, res, next) {
       FROM actividades
       WHERE id=?
     `,
-      [id]
+      [idExperience]
     );
 
     if (result.length < 1) {
@@ -41,7 +41,7 @@ async function voteEntry(req, res, next) {
       FROM comentarios
       WHERE id_user=? AND id_actividad=?
     `,
-      [req.auth.id, id]
+      [req.auth.id, idExperience]
     );
 
     if (existingVote.length > 0) {
@@ -51,10 +51,10 @@ async function voteEntry(req, res, next) {
     // Añado el voto a la tabla
     await connection.query(
       `
-      INSERT INTO comentarios(voto, fecha, id_user, id_actividad)
-      VALUES(?,?,?,?)
+      INSERT INTO comentarios(comentario, voto, fecha, id_user, id_actividad)
+      VALUES(?,?,?,?,?)
     `,
-      [vote, new Date(), req.auth.id, id]
+      [comentario, vote, new Date(), req.auth.id, idExperience]
     );
 
     // Calculo la media de votos resultante
@@ -64,13 +64,13 @@ async function voteEntry(req, res, next) {
       FROM comentarios
       WHERE id_actividad=?
     `,
-      [id]
+      [idExperience]
     );
 
     // Doy una respuesta
     res.send({
       status: "ok",
-      message: `Votaste correctamente la entrada con id ${id} la media actual es de ${votes[0].average}`,
+      message: `Votaste correctamente la entrada con id ${idExperience} la media actual es de ${votes[0].average}`,
     });
   } catch (error) {
     next(error);
