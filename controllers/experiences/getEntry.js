@@ -12,11 +12,11 @@ async function getEntry(req, res, next) {
     // Ejecuto la consulta
     const [result] = await connection.query(
       `
-      SELECT diary.id, diary.date, diary.description, diary.place, users.name, users.id AS userid, AVG(diary_votes.vote) as votes
-      FROM diary
-      LEFT JOIN users ON diary.id_user = users.id
-      LEFT JOIN diary_votes ON diary.id = diary_votes.id_diary
-      WHERE diary.id=?
+      SELECT actividades.id, actividades.fecha_creacion, actividades.descripcion, actividades.localidad, users.nombre, users.id AS userid, AVG(comentarios.voto) as votes
+      FROM actividades
+      LEFT JOIN users ON actividades.id_user = users.id
+      LEFT JOIN comentarios ON actividades.id = comentarios.id_actividad
+      WHERE actividades.id=?
     `,
       [id]
     );
@@ -31,9 +31,9 @@ async function getEntry(req, res, next) {
 
     const [photos] = await connection.query(
       `
-      SELECT uploadedDate, image
-      FROM diary_images
-      WHERE id_diary=?
+      SELECT uploadedDate, imagen
+      FROM imagenes
+      WHERE id_actividad=?
     `,
       [id]
     );

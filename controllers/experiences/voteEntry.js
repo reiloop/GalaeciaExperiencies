@@ -24,22 +24,22 @@ async function voteEntry(req, res, next) {
     const [result] = await connection.query(
       `
       SELECT * 
-      FROM diary
+      FROM actividades
       WHERE id=?
     `,
       [id]
     );
 
     if (result.length < 1) {
-      throw new Error("La entrada que quieres votar no existe");
+      throw new Error("La experiencia que quieres votar no existe");
     }
 
     // Compruebo que el usuario del token no voto previamente la entrada
     const [existingVote] = await connection.query(
       `
       SELECT *
-      FROM diary_votes
-      WHERE id_user=? AND id_diary=?
+      FROM comentarios
+      WHERE id_user=? AND id_actividad=?
     `,
       [req.auth.id, id]
     );
@@ -51,7 +51,7 @@ async function voteEntry(req, res, next) {
     // Añado el voto a la tabla
     await connection.query(
       `
-      INSERT INTO diary_votes(vote, date, id_user, id_diary)
+      INSERT INTO comentarios(voto, fecha, id_user, id_actividad)
       VALUES(?,?,?,?)
     `,
       [vote, new Date(), req.auth.id, id]
@@ -60,9 +60,9 @@ async function voteEntry(req, res, next) {
     // Calculo la media de votos resultante
     const [votes] = await connection.query(
       `
-      SELECT AVG(vote) AS average
-      FROM diary_votes 
-      WHERE id_diary=?
+      SELECT AVG(voto) AS average
+      FROM comentarios
+      WHERE id_actividad=?
     `,
       [id]
     );

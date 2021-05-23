@@ -105,7 +105,7 @@ app.delete(
 );
 
 // // VOTAR UNA ENTRADA DEL DIARIO
-// app.post("/diary/:id/votes", validAuth, voteEntry);
+app.post("/experience/:id/votes", validAuth, voteEntry);
 
 //MIDDLEWARE DE GESTION DE ERRORES
 app.use(function (error, req, res, next) {
