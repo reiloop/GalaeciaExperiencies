@@ -82,7 +82,7 @@ app.put("/recoverPassword", recover);
 app.post("/experience", validAuth, isAdmin, newEntry);
 
 // //EDITAR UNA ACTIVIDAD
-app.put("/experience/:id", validAuth, canEdit, isAdmin, editEntry);
+app.put("/experience/:id", validAuth, isAdmin, editEntry);
 
 // //VER UNA DETERMINADA ACTIVIDAD
 app.get("/experience/:id", getEntry);
