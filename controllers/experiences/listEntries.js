@@ -14,22 +14,22 @@ async function listEntries(req, res, next) {
     if (search) {
       [result] = await connection.query(
         `
-      SELECT diary.*, AVG(diary_votes.vote) as votes
-      FROM diary
-      LEFT JOIN diary_votes ON diary.id = diary_votes.id_diary
-      WHERE diary.place LIKE CONCAT("%", ? , "%") OR diary.description LIKE CONCAT("%", ? , "%")
-      GROUP BY diary.id
-      ORDER BY date DESC
+      SELECT actividades.*, AVG(comentarios.voto) as votes
+      FROM actividades
+      LEFT JOIN comentarios ON actividades.id = comentarios.id_actividad
+      WHERE actividades.localidad LIKE CONCAT("%", ? , "%") OR actividades.descripcion LIKE CONCAT("%", ? , "%")
+      GROUP BY actividades.id
+      ORDER BY fecha_creacion DESC
     `,
         [search, search]
       );
     } else {
       [result] = await connection.query(`
-      SELECT diary.*, AVG(diary_votes.vote) as votes
-      FROM diary
-      LEFT JOIN diary_votes ON diary.id = diary_votes.id_diary
-      GROUP BY diary.id
-      ORDER BY date DESC
+      SELECT actividades.*, AVG(comentarios.voto) as votes
+      FROM actividades
+      LEFT JOIN comentarios ON actividades.id = comentarios.id_actividad
+      GROUP BY actividades.id
+      ORDER BY fecha_creacion DESC
     `);
     }
 
@@ -51,9 +51,9 @@ async function listEntries(req, res, next) {
       // Selecciono todas las fotos que estén asociadas a alguna de las entradas del diario
       // tengo seleccionadas previamente
       const [photos] = await connection.query(`
-        SELECT uploadedDate, image, id_diary
-        FROM diary_images
-        WHERE id_diary IN (${ids.join(",")})
+        SELECT uploadedDate, imagen, id_actividad
+        FROM imagenes
+        WHERE id_actividad IN (${ids.join(",")})
       `);
 
       // LLeno el array vacío resultWithPhotos con la union de los arrays result y photos
