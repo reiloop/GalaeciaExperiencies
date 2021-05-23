@@ -12,11 +12,9 @@ async function getComments(req, res, next) {
     // Ejecuto la consulta
     const [result] = await connection.query(
       `
-      SELECT comentarios.id, comentarios.fecha, comentarios.voto, comentarios.comentario, users.nombre, users.id AS userid, AVG(comentarios.voto) as votes
+      SELECT *
       FROM comentarios
-      LEFT JOIN users ON comentarios.id_user = users.id
-      LEFT JOIN comentarios ON actividades.id = comentarios.id_actividad
-      WHERE actividades.id=?
+      WHERE id_actividad=?
     `,
       [id]
     );
