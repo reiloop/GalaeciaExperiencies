@@ -14,7 +14,7 @@
 - **PUT** - [/experience/:idExperience/comments/:idComment] - Editar un comentario y valoracion. **CON TOKEN**x
 - **DELETE** - [/experience/:idExperience/comments/:idComment] - Eliminar un comentario. **CON TOKEN**x​
 
-​-**POST** - [/experience/id/reservation] - Reservar una experiencia **CON TOKEN**XX
+​- **POST** - [/experience/id/reservation] - Reservar una experiencia **CON TOKEN**XX
 
 - **POST** - [/experience] - Insertar una nueva experiencia. **CON TOKEN**//SOLO ADMIN --->[JOSE]V
 - **PUT** - [/experience/:idExperience] - Editar una experiencia. **CON TOKEN**//SOLO ADMIN ---->[JOSE]V
