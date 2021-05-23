@@ -41,7 +41,9 @@ async function main() {
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         fecha_uso DATETIME,
-        precio DECIMAL(5,2)
+        precio DECIMAL(5,2),
+        id_actividad INT UNSIGNED,
+        FOREIGN KEY (id_actividad) REFERENCES actividades(id)
         )
         `);
 

@@ -8,13 +8,12 @@
 
 - **GET** - [/experience] - Obtener la lista de experiencias.--->[John]V
 - **GET** - [/experience/:idExperience] - Obtener la info de una experiencia.--->[John]V
-- **GET** - [/experience/:idExperience/comments] - Obtener los comentarios de una experiencia.x
+- **GET** - [/experience/:idExperience/comments] - Obtener los comentarios de una experiencia.V
 
 ​
 
 - **POST** - [/experience] - Insertar una nueva experiencia. **CON TOKEN**//SOLO ADMIN --->[JOSE]V
-- **POST** - [/experience/:idExperience/comments] - Comentar una experiencia. **CON TOKEN**V
-- **POST** - [/experience/:idExperience/votes] - Valorar una experiencia. **CON TOKEN**V
+- **POST** - [/experience/:idExperience/comments] - Comentar y valorar una experiencia. **CON TOKEN**V
 
 ​
 
