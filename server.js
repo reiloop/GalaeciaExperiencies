@@ -73,7 +73,7 @@ app.delete("/user/:id", validAuth, isAdmin, deleteUser);
 app.put("/recoverPassword", recover);
 
 // //RESETEAR CONTRASEÑA
-//app.put("/reset/:code", resetPassword);
+app.put("/reset/:code", resetPassword);
 
 // /*
 //   CONTROLADORES
@@ -94,7 +94,7 @@ app.delete("/experience/:id", validAuth, isAdmin, deleteEntry);
 // //LISTAR ACTIVIDADES
 app.get("/experiences", listEntries);
 
-// // ADJUNTAR FOTOS A UNA ENTRADA
+// // ADJUNTAR FOTOS A UNA ACTIVIDAD
 app.post("/experience/:id/photo", validAuth, isAdmin, addEntryPhoto);
 
 // // BORRAR FOTOS DE UNA EXPERIENCIA
@@ -108,7 +108,7 @@ app.delete(
 // // VOTAR UNA EXPERIENCIA
 app.post("/experience/:idExperience/comments", validAuth, voteEntry);
 
-//Obtener comentarios de una experiencia
+//OBTENER LOS COMENTARIOS DE UNA DETERMINADA EXPERIENCIA
 app.get("/experience/:id/comments", getComments);
 
 //MIDDLEWARE DE GESTION DE ERRORES
@@ -123,6 +123,7 @@ app.use(function (req, res) {
   res.send("No se ha encontrado la ruta");
 });
 
+//Servidor
 app.listen(port, () => {
   console.log(`Servidor oficial funcionando en el puerto ${port}`);
 });
