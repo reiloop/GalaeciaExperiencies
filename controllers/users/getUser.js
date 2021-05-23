@@ -13,7 +13,7 @@ async function getUser(req, res, next) {
     try {
       [user] = await connection.query(
         `
-            SELECT *
+            SELECT nombre, apellidos, foto, biografia
             FROM users
             WHERE id=?
             `,

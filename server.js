@@ -58,7 +58,7 @@ app.get("/activate/:registrationCode", activateUser);
 app.post("/login", login);
 
 // //GET PERFIL USUARIO
-// app.get("/user/:id", validAuth, getUser);
+app.get("/user/:id", validAuth, getUser);
 
 // //EDITAR PERFIL USUARIO
 app.put("/user/:id", validAuth, isSameUser, editUser);
