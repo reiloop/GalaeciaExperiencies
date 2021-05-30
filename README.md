@@ -8,10 +8,10 @@
 
 - **GET** - [/experience] - Obtener la lista de experiencias.--->[John]V
 - **GET** - [/experience/:idExperience] - Obtener la info de una experiencia.--->[John]V
-- **GET** - [/experience/:idExperience/comments] - Obtener los comentarios de una experiencia.--->[ESTEBAN]V
+- **GET** - [/experience/:idExperience/comments] - Obtener los comentarios de una experiencia.V
 
-- **POST** - [/experience/:idExperience/comments] - Comentar y valorar una experiencia. **CON TOKEN**V--->[ESTEBAN]V
-- **PUT** - [/experience/:idExperience/comments/:idComment] - Editar un comentario y valoracion. **CON TOKEN**x--->[ESTEBAN]V
+- **POST** - [/experience/:idExperience/comments] - Comentar y valorar una experiencia. **CON TOKEN**V
+- **PUT** - [/experience/:idExperience/comments/:idComment] - Editar un comentario y valoracion. **CON TOKEN**x--->[ESTEBAN]x
 - **DELETE** - [/experience/:idExperience/comments/:idComment] - Eliminar un comentario. **CON TOKEN**​--->[ESTEBAN]x
 
 ​- **POST** - [/experience/id/reservation] - Reservar una experiencia **CON TOKEN**--->[ESTEBAN]XX
@@ -25,7 +25,7 @@
 ## Users
 
 - **GET** - [/users/activate/:regCode] - activar un usuario. -->[JOSE]V
-- **GET** - [/users/:idUser] - Obtener info de usuario. **CON TOKEN**--->[ESTEBAN]V
+- **GET** - [/users/:idUser] - Obtener info de usuario. **CON TOKEN**V
 - **POST** - [/users] - Crea un usuario pendiente de activar. -->[JOSE]V
 - **POST** - [/users/:idEvent] - Login de usuario.--->[JOSE]V
 - **POST** - [/users/recovery] - Recuperar contraseña de usuario.X--->[John]V
