@@ -66,7 +66,7 @@ async function main() {
         fecha_creacion_reserva DATETIME,
         lastUpdate DATETIME NOT NULL,
         id_user INT UNSIGNED,
-        FOREIGN KEY (id_user) REFERENCES users(id),
+        FOREIGN KEY (id_user) REFERENCES users(id)
         )`);
 
     console.log("tablas creadas actividades");
