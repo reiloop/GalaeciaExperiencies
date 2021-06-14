@@ -13,7 +13,6 @@ async function main() {
     await connection.query(`DROP TABLE IF EXISTS usuarios_reservas`);
     await connection.query(`DROP TABLE IF EXISTS comentarios`);
     await connection.query(`DROP TABLE IF EXISTS imagenes`);
-    await connection.query(`SET FOREIGN_KEY_CHECKS = 1`);
 
     await connection.query(`
     CREATE TABLE users(
@@ -42,6 +41,8 @@ async function main() {
         fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         fecha_uso DATETIME,
         precio DECIMAL(5,2),
+        id_user INT UNSIGNED,
+        FOREIGN KEY (id_user) REFERENCES users(id),
         id_actividad INT UNSIGNED,
         FOREIGN KEY (id_actividad) REFERENCES actividades(id)
         )
@@ -66,8 +67,6 @@ async function main() {
         lastUpdate DATETIME NOT NULL,
         id_user INT UNSIGNED,
         FOREIGN KEY (id_user) REFERENCES users(id),
-        id_reserva INT UNSIGNED,
-        FOREIGN KEY (id_reserva) REFERENCES reservas(id)
         )`);
 
     console.log("tablas creadas actividades");
@@ -112,7 +111,7 @@ async function main() {
 
     console.log("tablas creadas imagenes");
 
-    const password = await bcrypt.hash("123456789", 10);
+    const password = await bcrypt.hash("admin", 10);
 
     await connection.query(`
         INSERT INTO users(
@@ -127,7 +126,7 @@ async function main() {
         )
         VALUES(
             UTC_TIMESTAMP,
-            "jose.reimondez@yomismo.com",
+            "admin@yomismo.com",
             "administrador",
             "${password}",
             "admin",
@@ -136,7 +135,7 @@ async function main() {
             UTC_TIMESTAMP
         )
         `);
-
+    await connection.query(`SET FOREIGN_KEY_CHECKS = 1`);
     // const users = 50;
     // for (let i = 0; i < users; i++) {
     //   const email = faker.internet.email();
