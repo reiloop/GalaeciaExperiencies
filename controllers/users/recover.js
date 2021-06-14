@@ -1,5 +1,6 @@
 const { getConnection } = require("../../db");
 const { sendMail } = require("../../helpers");
+const crypto = require("crypto");
 
 async function recover(req, res, next) {
   let connection;

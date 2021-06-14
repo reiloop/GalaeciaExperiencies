@@ -40,11 +40,15 @@ async function main() {
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         fecha_uso DATETIME,
+<<<<<<< HEAD
         precio DECIMAL(5,2),
         id_user INT UNSIGNED,
         FOREIGN KEY (id_user) REFERENCES users(id),
         id_actividad INT UNSIGNED,
         FOREIGN KEY (id_actividad) REFERENCES actividades(id)
+=======
+        precio DECIMAL(5,2)
+>>>>>>> 31094ce5c11cb32d5f1596926f1a0af161b7cfab
         )
         `);
 
@@ -126,7 +130,11 @@ async function main() {
         )
         VALUES(
             UTC_TIMESTAMP,
+<<<<<<< HEAD
             "admin@yomismo.com",
+=======
+            "lanihel409@sc2hub.com",
+>>>>>>> 31094ce5c11cb32d5f1596926f1a0af161b7cfab
             "administrador",
             "${password}",
             "admin",

@@ -34,6 +34,8 @@ const {
 } = require("./controllers/experiences/deleteEntryPhoto");
 const { voteEntry } = require("./controllers/experiences/voteEntry");
 const { getComments } = require("./controllers/experiences/getComments");
+const { deleteComment } = require("./controllers/experiences/deleteComment");
+const { editComment } = require("./controllers/experiences/editComment");
 
 //OBTENEMOS MIDDLEWARES PARA LA PREVIA DE LOS
 // DISTINTOS MÉTODOS Y FUNCIONALIDADES
@@ -110,6 +112,12 @@ app.post("/experience/:idExperience/comments", validAuth, voteEntry);
 
 //OBTENER LOS COMENTARIOS DE UNA DETERMINADA EXPERIENCIA
 app.get("/experience/:id/comments", getComments);
+
+//  //  //BORRAR LOS COMENTARIOS DE UNA EXPERIENCIA
+app.delete("/experience/:id/comments/:idActividad", validAuth, deleteComment)
+
+//  //  //EDITAR LOS COMENTARIOS DE UNA EXPERIENCIA
+app.put("/experience/:id/comments/:idActividad", validAuth, editComment)
 
 //MIDDLEWARE DE GESTION DE ERRORES
 app.use(function (error, req, res, next) {
