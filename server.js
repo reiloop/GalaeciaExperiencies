@@ -43,6 +43,9 @@ const { validAuth } = require("./middlewares/validAuth");
 const { isSameUser } = require("./middlewares/isSameUser");
 const { isAdmin } = require("./middlewares/isAdmin");
 const { canEdit } = require("./middlewares/canEdit");
+const {
+  bookingExperience,
+} = require("./controllers/experiences/bookingExperience");
 
 //APLICAMOS MIDDLEWARES GENERALES DE USO
 app.use(morgan("dev"));
@@ -106,7 +109,8 @@ app.delete(
   isAdmin,
   deleteEntryPhoto
 );
-
+//RESERVAR UNA EXPERIENCIA
+app.post("/experience/:id/booking/:userID", validAuth, bookingExperience);
 // // VOTAR UNA EXPERIENCIA
 app.post("/experience/:idExperience/comments", validAuth, voteEntry);
 
@@ -114,10 +118,10 @@ app.post("/experience/:idExperience/comments", validAuth, voteEntry);
 app.get("/experience/:id/comments", getComments);
 
 //  //  //BORRAR LOS COMENTARIOS DE UNA EXPERIENCIA
-app.delete("/experience/:id/comments/:idActividad", validAuth, deleteComment)
+app.delete("/experience/:id/comments/:idActividad", validAuth, deleteComment);
 
 //  //  //EDITAR LOS COMENTARIOS DE UNA EXPERIENCIA
-app.put("/experience/:id/comments/:idActividad", validAuth, editComment)
+app.put("/experience/:id/comments/:idActividad", validAuth, editComment);
 
 //MIDDLEWARE DE GESTION DE ERRORES
 app.use(function (error, req, res, next) {

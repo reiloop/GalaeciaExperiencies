@@ -38,6 +38,7 @@ async function main() {
     await connection.query(`
     CREATE TABLE reservas(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+        localizador LONGTEXT,
         fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         fecha_uso DATETIME,
         precio DECIMAL(5,2),

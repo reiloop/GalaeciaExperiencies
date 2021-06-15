@@ -18,7 +18,7 @@ async function editUser(req, res, next) {
       try {
         nameFile = await uploadImage({
           file: req.files.picture,
-          directory: "avatares",
+          directory: "uploads",
         });
       } catch (error) {
         console.log(error);

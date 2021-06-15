@@ -34,7 +34,7 @@ async function addEntryPhoto(req, res, next) {
     if (req.files && req.files.photo) {
       savedPhotoName = await uploadImage({
         file: req.files.photo,
-        directory: "imagenes",
+        directory: "uploads",
       });
     } else {
       throw new Error("No subiste ninguna foto");
