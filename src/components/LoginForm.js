@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { TokenContext } from "./TokenContextProvider";
-import { useRef } from 'react';
 
 const LoginForm = (props) => {
   const [email, setEmail] = useState("");
@@ -45,8 +44,7 @@ const LoginForm = (props) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <input type="submit" value="Enviar" />
-      <input type="file" ref={fileInput} accept="image/*"></input>
-        <input type="submit" value="Subir archivo"></input>
+      <input type="submit" value="Subir archivo"></input>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
     </form>

@@ -1,12 +1,12 @@
-//import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 const Experience = (props) => {
   const { nombre, descripcion, localidad } = props;
   // const history = useHistory();
 
-  //   const goToExperiencePage = (e) => {
-  //     history.push(`/experiences/${id}`);
-  //   };
+  // const goToExperiencePage = (e) => {
+  //   history.push(`/experience/${id}`);
+  // };
 
   return (
     <div>
