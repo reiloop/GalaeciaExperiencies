@@ -6,6 +6,8 @@ import ExperiencesPage from "./pages/ExperiencePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Activation from "./components/Activation";
+import InicioPage from "./pages/InicioPage";
+import AdminPage from "./pages/AdminPage";
 //import ActividadesPage from "./pages/ActividadesPage";
 
 function App() {
@@ -14,6 +16,9 @@ function App() {
       <Router>
         <TokenContextProvider>
           <Switch>
+            <Route exact path="/">
+              <InicioPage />
+            </Route>
             <Route exact path="/activate/:registrationCode">
               <Activation />
             </Route>
@@ -26,11 +31,12 @@ function App() {
             <Route exact path="/experiences">
               <ListExperiences />
             </Route>
-            {
-              <Route exact path="/experience/:postId">
-                <ExperiencesPage></ExperiencesPage>
-              </Route>
-            }
+            <Route exact path="/experience/:postId">
+              <ExperiencesPage></ExperiencesPage>
+            </Route>
+            <Route exact path="/create">
+              <AdminPage></AdminPage>
+            </Route>
           </Switch>
         </TokenContextProvider>
       </Router>

@@ -18,6 +18,11 @@ const RegisterPage = (props) => {
               Haz login
             </Link>
           </p>
+          <footer>
+            <Link to="/" style={{ fontWeight: "300" }}>
+              Volver a página de inicio
+            </Link>
+          </footer>
         </div>
       ) : (
         <Redirect to="/" />

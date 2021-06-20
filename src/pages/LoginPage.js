@@ -5,6 +5,7 @@ import { Redirect, Link } from "react-router-dom";
 
 const LoginPage = (props) => {
   const [token] = useContext(TokenContext);
+  console.log(token);
   return (
     <>
       {!token ? (
@@ -17,6 +18,11 @@ const LoginPage = (props) => {
               Regístrate
             </Link>
           </p>
+          <footer>
+            <Link to="/" style={{ fontWeight: "300" }}>
+              Volver a página de inicio
+            </Link>
+          </footer>
         </div>
       ) : (
         <Redirect to="/" />

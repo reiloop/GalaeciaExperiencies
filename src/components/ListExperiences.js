@@ -23,6 +23,7 @@ const ListExperiences = () => {
   if (experiencias.status) {
     console.log(experiencias.data);
     const data = experiencias.data;
+
     const arrayExperiencias = data.map((item) => (
       <Experience
         key={item.id}
