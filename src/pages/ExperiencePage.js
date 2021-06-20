@@ -1,16 +1,13 @@
 import { useParams } from "react-router-dom";
 import Experience from "../components/Experience";
+import useExperiencias from "../hooks/useExperiencias";
 
-const Activity = (props) => {
-  const { id } = useParams();
-  const data = async () => {
-    const url = `https://localhost:4000/experience/${id}`;
-
-    const res = await fetch(url);
-    const body = await res.json();
-    return body;
-  };
-  const { nombre, descripcion, localidad } = data;
+const ExperiencesPage = (props) => {
+  const { postId } = useParams();
+  const [experiencias] = useExperiencias();
+  console.log(experiencias);
+  const data = experiencias[postId];
+  const { id, nombre, descripcion, localidad } = data;
   return (
     <div>
       <Experience
@@ -23,4 +20,4 @@ const Activity = (props) => {
   );
 };
 
-export default Activity;
+export default ExperiencesPage;

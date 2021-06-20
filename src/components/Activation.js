@@ -1,11 +1,37 @@
-// import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
 
-// const Activation = async () => {
-//   const { registrationCode } = useParams();
-//   const url = `https://localhost:4000/activate/${registrationCode}`;
-//   const res = await fetch(url);
-//   const body = await res.json();
-//   console.log(body);
-// };
+function Activation() {
+  const [, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+  const { registrationCode } = useParams();
 
-// export default Activation;
+  // Note: the empty deps array [] means
+  // this useEffect will run once
+  // similar to componentDidMount()
+  useEffect(() => {
+    fetch(`http://localhost:4000/activate/${registrationCode}`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
+  }, []);
+
+  if (items.error) {
+    return <div>Error: {items.error}</div>;
+  } else if (!isLoaded) {
+    return <div>Loading...</div>;
+  } else {
+    return <ul>{items.message}</ul>;
+  }
+}
+
+export default Activation;

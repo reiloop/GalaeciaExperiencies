@@ -53,9 +53,6 @@ const RegisterForm = (props) => {
         value={bio}
         onChange={(e) => setBio(e.target.value)}
       ></textarea>
-      <p>
-        ¿Tienes cuenta? <a href="./login">Inicia sesion</a>
-      </p>
     </form>
   );
 };

@@ -19,8 +19,7 @@ const LoginForm = (props) => {
     const data = await res.json();
     if (res.ok) {
       setError("");
-      setToken(data.accessToken);
-      console.log(data.token);
+      setToken(data.token);
     } else {
       setError(data);
     }
@@ -44,7 +43,6 @@ const LoginForm = (props) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <input type="submit" value="Enviar" />
-      <input type="submit" value="Subir archivo"></input>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
     </form>
