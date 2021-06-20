@@ -1,18 +1,20 @@
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Experience = (props) => {
-  const { key, nombre, descripcion, localidad } = props;
-  // const history = useHistory();
+  const { id, nombre, descripcion, localidad } = props;
+  const history = useHistory();
 
-  // const goToExperiencePage = (e) => {
-  //   history.push(`/experience/${id}`);
-  // };
+  const goToPostPage = (e) => {
+    history.push(`/experience/${id}`);
+  };
 
   return (
-    <div key={key}>
-      <h2>{nombre}</h2>
-      <p>{descripcion}</p>
-      <p>{localidad}</p>
+    <div onClick={goToPostPage}>
+      <h1>{nombre}</h1>
+      <p>
+        {descripcion} Provincia: {localidad}
+      </p>
+      <p>Experiencia: {id}</p>
     </div>
   );
 };

@@ -6,12 +6,13 @@ function Activation() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
   const { registrationCode } = useParams();
+  const [url] = useState(`http://localhost:4000/activate/${registrationCode}`);
 
   // Note: the empty deps array [] means
   // this useEffect will run once
   // similar to componentDidMount()
   useEffect(() => {
-    fetch(`http://localhost:4000/activate/${registrationCode}`)
+    fetch(url)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -23,7 +24,7 @@ function Activation() {
           setError(error);
         }
       );
-  }, []);
+  }, [url]);
 
   if (items.error) {
     return <div>Error: {items.error}</div>;

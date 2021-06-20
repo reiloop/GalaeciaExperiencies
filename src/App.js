@@ -26,9 +26,11 @@ function App() {
             <Route exact path="/experiences">
               <ListExperiences />
             </Route>
-            <Route exact path="/experience/:postId">
-              <ExperiencesPage></ExperiencesPage>
-            </Route>
+            {
+              <Route exact path="/experience/:postId">
+                <ExperiencesPage></ExperiencesPage>
+              </Route>
+            }
           </Switch>
         </TokenContextProvider>
       </Router>
