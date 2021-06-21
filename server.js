@@ -1,11 +1,13 @@
 //REQUERIMOS MODULOS Y DATOS PARA ARRANCAR EL SERVIDOR
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors")
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const fileUpload = require("express-fileupload");
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT;
 
 //OBTENEMOS CONTROLADORES PARA LOS DISTINTOS MÉTODOS

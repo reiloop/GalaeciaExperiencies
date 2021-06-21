@@ -125,7 +125,7 @@ async function main() {
         )
         VALUES(
             UTC_TIMESTAMP,
-            "lanihel409@sc2hub.com",
+            "esteban_stvez@hotmail.com",
             "administrador",
             "${password}",
             "admin",
