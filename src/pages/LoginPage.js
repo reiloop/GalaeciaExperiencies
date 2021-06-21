@@ -25,7 +25,7 @@ const LoginPage = (props) => {
           </footer>
         </div>
       ) : (
-        <Redirect to="/" />
+        <Redirect to="/create" />
       )}
     </>
   );

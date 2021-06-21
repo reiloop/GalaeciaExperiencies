@@ -26,9 +26,9 @@ const ExperiencesPage = () => {
   if (actividad.status) {
     const data = actividad.data;
     console.log(data);
-    const photos = data.photos;
-    const photo = photos[0].imagen;
-    console.log(photo);
+    //const photos = data.photos;
+    //const photo = photos[0].imagen;
+   // console.log(photo);
     return (
       <div>
         <Experience
@@ -37,7 +37,7 @@ const ExperiencesPage = () => {
           nombre={data.nombre}
           descripcion={data.descripcion}
           localidad={data.localidad}
-          photo={photo}
+          //photo={photo}
         />
       </div>
     );

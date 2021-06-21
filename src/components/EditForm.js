@@ -14,7 +14,7 @@ const EditForm = (props) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `${token}`,
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({ name, description, place, price }),

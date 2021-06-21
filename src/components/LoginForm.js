@@ -7,6 +7,7 @@ const LoginForm = (props) => {
   const [, setToken] = useContext(TokenContext);
   const [error, setError] = useState("");
 
+  
   const login = async (e) => {
     e.preventDefault();
     const res = await fetch("http://localhost:4000/login", {
@@ -20,6 +21,7 @@ const LoginForm = (props) => {
     if (res.ok) {
       setError("");
       setToken(data.token);
+
     } else {
       setError(data);
     }

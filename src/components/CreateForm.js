@@ -9,11 +9,11 @@ const CreateForm = (props) => {
   const [name, setName] = useState("");
   const createExperience = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:4000/experience", {
+    const res = await fetch(`http://localhost:4000/experience`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `${token}`,
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify({ name, description, place, price }),
@@ -41,7 +41,7 @@ const CreateForm = (props) => {
         value={description}
         onChange={(e) => setDescripcion(e.target.value)}
       ></textarea>
-      <label htmlFor="password">Precio</label>
+      <label htmlFor="price">Precio</label>
       <input
         type="text"
         id="price"
@@ -49,7 +49,7 @@ const CreateForm = (props) => {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       ></input>
-      <label htmlFor="bio">Localidad</label>
+      <label htmlFor="localidad">Localidad</label>
       <input
         type="text"
         id="localidad"
