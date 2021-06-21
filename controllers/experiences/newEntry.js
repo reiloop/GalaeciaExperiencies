@@ -20,7 +20,7 @@ async function newEntry(req, res, next) {
     if (!place) {
       throw new Error('Por lo menos debes incluír el campo "place"');
     }
-    fecha_disponible = new Date(availableDate);
+    const fecha_disponible = new Date(availableDate);
     // Meto la entrada en la base de datos
     const [result] = await connection.query(
       `

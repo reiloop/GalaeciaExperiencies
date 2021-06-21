@@ -1,6 +1,6 @@
 const { getConnection } = require("../../db");
-const { v4: uuidv4 } = require("uuid");
-const bookingID = uuidv4();
+const crypto = require("crypto");
+const bookingID = crypto.randomBytes(10).toString().slice(0, 10);
 
 async function bookingExperience(req, res, next) {
   let connection;

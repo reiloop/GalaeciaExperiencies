@@ -12,9 +12,8 @@ async function getEntry(req, res, next) {
     // Ejecuto la consulta
     const [result] = await connection.query(
       `
-      SELECT actividades.id, actividades.fecha_creacion, actividades.descripcion, actividades.localidad, users.nombre, users.id AS userid, AVG(comentarios.voto) as votes
+      SELECT actividades.nombre, actividades.id, actividades.fecha_creacion, actividades.descripcion, actividades.localidad, AVG(comentarios.voto) as votes
       FROM actividades
-      LEFT JOIN users ON actividades.id_user = users.id
       LEFT JOIN comentarios ON actividades.id = comentarios.id_actividad
       WHERE actividades.id=?
     `,
