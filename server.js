@@ -1,10 +1,9 @@
 //REQUERIMOS MODULOS Y DATOS PARA ARRANCAR EL SERVIDOR
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors")
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-const cors = require("cors");
 const fileUpload = require("express-fileupload");
 
 const app = express();
@@ -113,7 +112,7 @@ app.delete(
   deleteEntryPhoto
 );
 //RESERVAR UNA EXPERIENCIA
-app.post("/experience/:id/booking/:userID", validAuth, bookingExperience);
+app.post("/experience/:id/booking/", validAuth, bookingExperience);
 // // VOTAR UNA EXPERIENCIA
 app.post("/experience/:idExperience/comments", validAuth, voteEntry);
 

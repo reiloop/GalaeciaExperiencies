@@ -29,7 +29,7 @@ async function deleteEntryPhoto(req, res, next) {
     // Borramos la foto del disco
     await deleteImage({
       file: photos[0].imagen,
-      directory: "imagenes",
+      directory: "images",
     });
 
     // Actualizamos la base de datos
