@@ -8,19 +8,18 @@ async function deleteEntryPhoto(req, res, next) {
 
     // Sacamos de req.params la id de la entrada del diario y de la foto
     const { id, photoID } = req.params;
-
     // Comprobamos que la foto existe y está asociada a la entrada del diario
 
     const [photos] = await connection.query(
       `
       SELECT imagen
       FROM imagenes
-      WHERE id_actividad=? AND id=?
+      WHERE id_actividad=? AND imagen=?
     `,
       [id, photoID]
     );
 
-    if (photos.length < 1) {
+    if (!photos) {
       throw new Error(
         "La foto no existe o no está asociada a la la entrada del diario indicada"
       );
@@ -28,7 +27,7 @@ async function deleteEntryPhoto(req, res, next) {
 
     // Borramos la foto del disco
     await deleteImage({
-      file: photos[0].imagen,
+      file: `${photos[0].imagen}.jpg`,
       directory: "images",
     });
 
@@ -37,7 +36,7 @@ async function deleteEntryPhoto(req, res, next) {
     await connection.query(
       `
       DELETE FROM imagenes
-      WHERE id=? AND id_actividad=?
+      WHERE imagen=? AND id_actividad=?
     `,
       [photoID, id]
     );
@@ -45,7 +44,7 @@ async function deleteEntryPhoto(req, res, next) {
     // Damos una respuesta
     res.send({
       status: "ok",
-      message: `La foto con id ${photoID} fue borrada`,
+      message: `La foto con nombre ${photoID} fue borrada`,
     });
   } catch (error) {
     next(error);

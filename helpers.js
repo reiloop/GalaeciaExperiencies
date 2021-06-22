@@ -7,7 +7,8 @@ const sendgrid = require("@sendgrid/mail");
 sendgrid.setApiKey(process.env.APIKEY);
 
 // path de subida de imágenes
-const uploadsDir = path.join(__dirname, process.env.UPLOADS_DIR);
+const raizProyecto = "/public";
+const uploadsDir = path.join(process.env.UPLOADS_DIR, raizProyecto);
 
 async function sendMail({ to, subject, message }) {
   try {
@@ -45,10 +46,10 @@ async function uploadImage({ file, directory }) {
   }
 
   // generamos un nombre aleatorio para la imagen
-  const filename = `${uuid.v4()}.jpg`;
+  const filename = `${uuid.v4()}`;
 
   // guardamos la imagen en el directorio correcto
-  await image.toFile(path.join(targetDir, filename));
+  await image.toFile(path.join(targetDir, `${filename}.jpg`));
 
   return filename;
 }
