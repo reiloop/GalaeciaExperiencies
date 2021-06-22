@@ -45,7 +45,6 @@ const RegisterForm = (props) => {
         value={password}
         onChange={(e) => setPasword(e.target.value)}
       ></input>
-      <input type="submit" value="Enviar" />
       <label htmlFor="bio">Biografía</label>
       <textarea
         id="bio"
@@ -53,6 +52,8 @@ const RegisterForm = (props) => {
         value={bio}
         onChange={(e) => setBio(e.target.value)}
       ></textarea>
+      <input type="submit" value="Enviar" />
+
     </form>
   );
 };

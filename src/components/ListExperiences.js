@@ -23,8 +23,10 @@ const ListExperiences = () => {
   if (experiencias.status) {
     console.log(experiencias.data);
     const data = experiencias.data;
+   
 
     const arrayExperiencias = data.map((item) => (
+      <>
       <Experience
         key={item.id}
         id={item.id}
@@ -32,8 +34,9 @@ const ListExperiences = () => {
         descripcion={item.descripcion}
         localidad={item.localidad}
       />
+      </>
     ));
-    return <ul>{arrayExperiencias}</ul>;
+    return <ul className="listaExperiencias">{arrayExperiencias}</ul>;
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {

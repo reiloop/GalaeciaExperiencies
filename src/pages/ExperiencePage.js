@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Experience from "../components/Experience";
+import Imagenes from "../components/Imagenes";
+
 
 const ExperiencesPage = () => {
   const { postId } = useParams();
@@ -26,20 +28,24 @@ const ExperiencesPage = () => {
   if (actividad.status) {
     const data = actividad.data;
     console.log(data);
-    //const photos = data.photos;
-    //const photo = photos[0].imagen;
-   // console.log(photo);
+    const photos = data.photos;
+   
+    
+
     return (
-      <div>
+      
+      <div className="experience">
         <Experience
           key={data.id}
           id={data.id}
           nombre={data.nombre}
           descripcion={data.descripcion}
           localidad={data.localidad}
-          //photo={photo}
         />
+       <ul className="images">{photos.map((e) => <Imagenes  key={e.imagen} photo={e.imagen}></Imagenes>)}  </ul> 
+        
       </div>
+      
     );
   } else if (!isLoaded) {
     return <div>Loading...</div>;

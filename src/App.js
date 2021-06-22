@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ListExperiences from "./components/ListExperiences";
@@ -8,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage";
 import Activation from "./components/Activation";
 import InicioPage from "./pages/InicioPage";
 import AdminPage from "./pages/AdminPage";
+
 //import ActividadesPage from "./pages/ActividadesPage";
 
 function App() {
