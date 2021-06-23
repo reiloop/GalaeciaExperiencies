@@ -1,10 +1,11 @@
 // import { useState } from "react";
 // ''
-import icon from "../../src/images/ICON.png"
 
 const Imagenes = (props) => {
   const { photo } = props;
-  if (photo){
+  const random = Math.floor(Math.random() * 5 + 1);
+  console.log(random);
+  if (photo) {
     return (
       <div className="imagenes">
         <img
@@ -13,19 +14,18 @@ const Imagenes = (props) => {
         />
       </div>
     );
-  }else{
-
+  } else {
     return (
       <div className="icon">
-        <img 
-          height="100" 
+        <img
+          height="100"
           width="100"
-          src={icon}
+          src={`../images/icon-${random}.png`}
           alt="icon"
         />
       </div>
     );
-  };
-  };
+  }
+};
 
 export default Imagenes;

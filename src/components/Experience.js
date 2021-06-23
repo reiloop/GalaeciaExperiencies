@@ -17,7 +17,6 @@ const Experience = (props) => {
       </p>
       <Imagenes photo={photo}></Imagenes>
       <p>Experiencia: {id}</p>
-      
     </div>
   );
 };

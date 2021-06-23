@@ -3,11 +3,11 @@ import { TokenContext } from "./TokenContextProvider";
 
 const EraseForm = (props) => {
   const [token] = useContext(TokenContext);
-  const [description, setDescripcion] = useState("");
-  const [place, setPlace] = useState("");
-  const [price, setPrice] = useState("");
+  const [description] = useState("");
+  const [place] = useState("");
+  const [price] = useState("");
   const [id, setId] = useState("");
-  const [name, setName] = useState("");
+  const [name] = useState("");
   const eraseExperience = async (e) => {
     e.preventDefault();
     const res = await fetch(`http://localhost:4000/experience/${id}`, {

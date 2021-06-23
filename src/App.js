@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ListExperiences from "./components/ListExperiences";
 import { TokenContextProvider } from "./components/TokenContextProvider";
-import ExperiencesPage from "./pages/ExperiencePage";
+import ExperiencePage from "./pages/ExperiencePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Activation from "./components/Activation";
@@ -34,7 +34,7 @@ function App() {
               <ListExperiences />
             </Route>
             <Route exact path="/experience/:postId">
-              <ExperiencesPage></ExperiencesPage>
+              <ExperiencePage></ExperiencePage>
             </Route>
             <Route exact path="/create">
               <AdminPage></AdminPage>

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { TokenContext } from "../components/TokenContextProvider";
 import { Redirect, Link } from "react-router-dom";
 import decodeTokenData from "../utils/decodedTokenData";
+import HeaderMenu from "../components/HeaderMenu";
 
 const LoginPage = (props) => {
   const [token] = useContext(TokenContext);
@@ -21,6 +22,7 @@ const LoginPage = (props) => {
   return (
     <>
       <div>
+        <HeaderMenu></HeaderMenu>
         <h2 style={{ fontWeight: "600" }}>Login</h2>
         <LoginForm />
         <p>

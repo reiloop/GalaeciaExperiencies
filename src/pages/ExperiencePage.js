@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Experience from "../components/Experience";
+import HeaderMenu from "../components/HeaderMenu";
 import Imagenes from "../components/Imagenes";
-
 
 const ExperiencesPage = () => {
   const { postId } = useParams();
@@ -29,12 +29,10 @@ const ExperiencesPage = () => {
     const data = actividad.data;
     console.log(data);
     const photos = data.photos;
-   
-    
 
     return (
-      
       <div className="experience">
+        <HeaderMenu></HeaderMenu>
         <Experience
           key={data.id}
           id={data.id}
@@ -43,10 +41,12 @@ const ExperiencesPage = () => {
           localidad={data.localidad}
           categoria={data.categoria}
         />
-       <ul className="images">{photos.map((e) => <Imagenes  key={e.imagen} photo={e.imagen}></Imagenes>)}  </ul> 
-        
+        <ul className="images">
+          {photos.map((e) => (
+            <Imagenes key={e.imagen} photo={e.imagen}></Imagenes>
+          ))}{" "}
+        </ul>
       </div>
-      
     );
   } else if (!isLoaded) {
     return <div>Loading...</div>;

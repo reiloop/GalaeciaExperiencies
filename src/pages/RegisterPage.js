@@ -2,6 +2,7 @@ import RegisterForm from "../components/RegisterForm";
 import { useContext } from "react";
 import { TokenContext } from "../components/TokenContextProvider";
 import { Redirect, Link } from "react-router-dom";
+import HeaderMenu from "../components/HeaderMenu";
 
 const RegisterPage = (props) => {
   const [token] = useContext(TokenContext);
@@ -10,6 +11,7 @@ const RegisterPage = (props) => {
     <>
       {!token ? (
         <div>
+          <HeaderMenu></HeaderMenu>
           <h2 style={{ fontWeight: "600" }}>Registro</h2>
           <RegisterForm />
           <p>
