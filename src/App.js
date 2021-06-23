@@ -6,9 +6,9 @@ import { TokenContextProvider } from "./components/TokenContextProvider";
 import ExperiencePage from "./pages/ExperiencePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import Activation from "./components/Activation";
 import InicioPage from "./pages/InicioPage";
 import AdminPage from "./pages/AdminPage";
+import ActivationPage from "./pages/ActivationPage";
 
 //import ActividadesPage from "./pages/ActividadesPage";
 
@@ -22,7 +22,7 @@ function App() {
               <InicioPage />
             </Route>
             <Route exact path="/activate/:registrationCode">
-              <Activation />
+              <ActivationPage />
             </Route>
             <Route exact path="/register">
               <RegisterPage />
