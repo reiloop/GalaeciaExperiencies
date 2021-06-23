@@ -6,7 +6,7 @@ async function listEntries(req, res, next) {
   try {
     connection = await getConnection();
 
-    const { search } = req.query;
+    const { search, ciudad, fecha, precio } = req.query;
 
     let result;
 
@@ -17,11 +17,11 @@ async function listEntries(req, res, next) {
       SELECT actividades.*, AVG(comentarios.voto) as votes
       FROM actividades
       LEFT JOIN comentarios ON actividades.id = comentarios.id_actividad
-      WHERE actividades.localidad LIKE CONCAT("%", ? , "%") OR actividades.descripcion LIKE CONCAT("%", ? , "%") OR actividades.precio LIKE CONCAT("%", ? , "%")
+      WHERE actividades.localidad LIKE CONCAT("%", ? , "%") OR actividades.descripcion LIKE CONCAT("%", ? , "%") OR actividades.precio LIKE CONCAT("%", ? , "%") OR actividades.fecha_disponible LIKE CONCAT("%", ? , "%")
       GROUP BY actividades.id
       ORDER BY fecha_creacion DESC
     `,
-        [search, search, search]
+        [ciudad, search, precio, fecha]
       );
     } else {
       [result] = await connection.query(`
