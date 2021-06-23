@@ -57,7 +57,7 @@ async function main() {
         nombre VARCHAR(20) NOT NULL,
         descripcion TEXT,
         localidad VARCHAR(50) NOT NULL,
-        categoria ENUM("cursos", "actividades"),
+        categoria TEXT,
         disponible BOOLEAN,
         precio DECIMAL(5,2),
         fecha_disponible DATETIME,
@@ -127,7 +127,7 @@ async function main() {
         )
         VALUES(
             UTC_TIMESTAMP,
-            "admin@admin.com",
+            "esteban_stvez@hotmail.com",
             "administrador",
             "${password}",
             "admin",

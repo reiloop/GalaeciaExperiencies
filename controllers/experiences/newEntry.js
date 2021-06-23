@@ -13,6 +13,7 @@ async function newEntry(req, res, next) {
       name,
       place,
       price,
+      categoria,
       plazasLibres,
       plazasTotales,
     } = req.body;
@@ -24,8 +25,8 @@ async function newEntry(req, res, next) {
     // Meto la entrada en la base de datos
     const [result] = await connection.query(
       `
-      INSERT INTO actividades(fecha_disponible, descripcion, nombre, localidad, precio, plazas_disponibles,  plazas_totales, lastUpdate ,id_user)
-      VALUES(?,?,?,?,?,?,?,?,?)
+      INSERT INTO actividades(fecha_disponible, descripcion, nombre, localidad, precio, categoria, plazas_disponibles,  plazas_totales, lastUpdate ,id_user)
+      VALUES(?,?,?,?,?,?,?,?,?,?)
     `,
       [
         fecha_disponible,
@@ -33,6 +34,7 @@ async function newEntry(req, res, next) {
         name,
         place,
         price,
+        categoria,
         plazasLibres,
         plazasTotales,
         new Date(),
