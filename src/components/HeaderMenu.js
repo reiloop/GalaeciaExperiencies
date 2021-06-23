@@ -7,7 +7,6 @@ import decodeTokenData from "../utils/decodedTokenData";
 
 const HeaderMenu = (props) => {
   const [token, setToken] = useContext(TokenContext);
-  const decodedToken = decodeTokenData(token);
 
   if (token !== "") {
     const decodedToken = decodeTokenData(token);
