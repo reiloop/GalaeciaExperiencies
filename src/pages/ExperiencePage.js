@@ -41,6 +41,7 @@ const ExperiencesPage = () => {
           nombre={data.nombre}
           descripcion={data.descripcion}
           localidad={data.localidad}
+          categoria={data.categoria}
         />
        <ul className="images">{photos.map((e) => <Imagenes  key={e.imagen} photo={e.imagen}></Imagenes>)}  </ul> 
         

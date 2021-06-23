@@ -33,6 +33,7 @@ const ListExperiences = () => {
         nombre={item.nombre}
         descripcion={item.descripcion}
         localidad={item.localidad}
+        categoria={item.categoria}
       />
       </>
     ));

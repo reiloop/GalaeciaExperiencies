@@ -1,4 +1,5 @@
-import image from "/home/reiloop/Documents/Proyecto experiencias/Frontend/my-app/src/images/mountain.png"
+import image from "../../src/images/montana.png"
+import icon from "../../src/images/ICON.png"
 import { useContext } from 'react';
 import { TokenContext } from '../components/TokenContextProvider';
 
@@ -28,7 +29,7 @@ const HeaderMenu = (props) => {
  } else {
   return (
     <div className="HeaderMenu">
-      <img className='header-image' alt='icon' src={image}></img>
+      <img className='header-image' alt={icon} src={image}></img>
       <ul className="header-ul">
         <li>
           <a href="./experiences">Experiencias</a>
