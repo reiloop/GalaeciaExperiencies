@@ -17,11 +17,11 @@ async function listEntries(req, res, next) {
       SELECT actividades.*, AVG(comentarios.voto) as votes
       FROM actividades
       LEFT JOIN comentarios ON actividades.id = comentarios.id_actividad
-      WHERE actividades.localidad LIKE CONCAT("%", ? , "%") OR actividades.descripcion LIKE CONCAT("%", ? , "%")
+      WHERE actividades.localidad LIKE CONCAT("%", ? , "%") OR actividades.descripcion LIKE CONCAT("%", ? , "%") OR actividades.precio LIKE CONCAT("%", ? , "%")
       GROUP BY actividades.id
       ORDER BY fecha_creacion DESC
     `,
-        [search, search]
+        [search, search, search]
       );
     } else {
       [result] = await connection.query(`
@@ -37,7 +37,7 @@ async function listEntries(req, res, next) {
       // Si no hay resultados devolvemos una respuesta correcta pero sin datos
       res.send({
         status: "ok",
-        data: [],
+        data: "Sin resultados de búsqueda",
       });
     } else {
       // Si hay resultados tenemos que seleccionar las fotos de cada uno de los resultados
