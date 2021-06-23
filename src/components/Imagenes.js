@@ -17,12 +17,7 @@ const Imagenes = (props) => {
   } else {
     return (
       <div className="icon">
-        <img
-          height="100"
-          width="100"
-          src={`../images/icon-${random}.png`}
-          alt="icon"
-        />
+        <img height="100" width="100" src={`../images/icon-1.png`} alt="icon" />
       </div>
     );
   }
