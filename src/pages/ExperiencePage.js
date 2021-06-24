@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Experience from "../components/Experience";
 import HeaderMenu from "../components/HeaderMenu";
 import Imagenes from "../components/Imagenes";
+import AddComment from "../components/AddComment";
 
 const ExperiencesPage = () => {
   const { postId } = useParams();
@@ -33,6 +34,7 @@ const ExperiencesPage = () => {
     return (
       <div className="experience">
         <HeaderMenu></HeaderMenu>
+        <AddComment id={data.id}></AddComment>
         <Experience
           key={data.id}
           id={data.id}

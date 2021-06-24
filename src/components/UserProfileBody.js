@@ -8,7 +8,11 @@ const UserProfileBody = (props) => {
       <h1>Bienvenido, {name}</h1>
       <p>
         Biografía:{bio}
+        </p>
+        <p>
         Email: {email}
+        </p>
+        <p>
         Tu ID de usuario es: {userId}
       </p>
       <Imagenes photo={avatar}></Imagenes>

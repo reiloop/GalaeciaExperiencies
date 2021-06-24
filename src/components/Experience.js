@@ -25,8 +25,18 @@ const Experience = (props) => {
     <div onClick={goToPostPage}>
       <h1>{nombre}</h1>
       <p>
-        {descripcion} Provincia: {localidad} Categoria: {categoria}
+        Descripción: {descripcion} 
+      </p>
+      <p>
+        Provincia: {localidad}
+        </p>
+        <p> 
+        Categoria: {categoria}
+        </p>
+        <p>
         Fecha:{dia}/{mes}/{año}
+        </p>
+        <p>
         Precio:{precio}€
       </p>
       <Imagenes photo={photo}></Imagenes>

@@ -68,7 +68,7 @@ const Search = (props) => {
           id="precio"
           className="preciosForm"
           type="number"
-          step="0.01"
+          step="0.5"
           max="999"
           value={price}
           onChange={(e) => setPrice(e.target.value)}

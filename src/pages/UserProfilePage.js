@@ -1,4 +1,4 @@
-import UserProfileBody from "../components/CreateForm";
+import UserProfileBody from "../components/UserProfileBody";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { TokenContext } from "../components/TokenContextProvider";
@@ -18,22 +18,23 @@ const UserProfilePage = (props) => {
     userId = decodedToken.id;
   }
   useEffect(() => {
-    fetch(url, {
+     fetch(url, {
       "Content-Type": "application/json",
       Authorization: `${token}`,
     })
-      .then((res) => res.json())
+      .then((res) =>  res.json())
       .then(
         (result) => {
-          setUser(result);
+           setUser(result);
         },
         (error) => {
-          setError(error);
+           setError(error);
         }
       );
   }, [url, token]);
   if (token !== "") {
     console.log(token);
+    console.log(decodedToken);
     console.log(user);
     const [rol, id, nombre, email, biografia] = user;
 
@@ -41,11 +42,12 @@ const UserProfilePage = (props) => {
       <div>
         <HeaderMenu></HeaderMenu>
         <UserProfileBody
-          userId={id}
-          name={nombre}
-          email={email}
-          bio={biografia}
-          rol={rol}
+          key = {decodedToken.id}
+          userId={decodedToken.id}
+         // name={user[0].nombre}
+          //email={user[0].email}
+          //bio={user[0].biografia}
+          //rol={user[0].rol}
         ></UserProfileBody>
       </div>
     );
