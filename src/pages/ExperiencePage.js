@@ -4,6 +4,7 @@ import Experience from "../components/Experience";
 import HeaderMenu from "../components/HeaderMenu";
 import Imagenes from "../components/Imagenes";
 import AddComment from "../components/AddComment";
+import Booking from "../components/Booking";
 
 const ExperiencesPage = () => {
   const { postId } = useParams();
@@ -34,7 +35,7 @@ const ExperiencesPage = () => {
     return (
       <div className="experience">
         <HeaderMenu></HeaderMenu>
-        <AddComment id={data.id}></AddComment>
+
         <Experience
           key={data.id}
           id={data.id}
@@ -50,6 +51,12 @@ const ExperiencesPage = () => {
             <Imagenes key={e.imagen} photo={e.imagen}></Imagenes>
           ))}{" "}
         </ul>
+        <AddComment id={data.id}></AddComment>
+        <Booking
+          id={data.id}
+          precio={data.precio}
+          fecha={data.fecha_disponible}
+        ></Booking>
       </div>
     );
   } else if (!isLoaded) {

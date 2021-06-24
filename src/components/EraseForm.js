@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { TokenContext } from "./TokenContextProvider";
 
 const EraseForm = (props) => {
@@ -6,8 +6,10 @@ const EraseForm = (props) => {
   const [description] = useState("");
   const [place] = useState("");
   const [price] = useState("");
+  const [, setError] = useState(null);
   const [id, setId] = useState("");
   const [name] = useState("");
+  const [experiencias, setExperiencias] = useState([]);
   const eraseExperience = async (e) => {
     e.preventDefault();
     const res = await fetch(`http://localhost:4000/experience/${id}`, {
@@ -23,17 +25,35 @@ const EraseForm = (props) => {
     const body = await res.json();
     console.log(body);
   };
+  useEffect(() => {
+    fetch(`http://localhost:4000/experiences`)
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setExperiencias(result);
+        },
+        (error) => {
+          setError(error);
+        }
+      );
+  }, []);
+  const data = experiencias.data;
+  const arrayExperiencias = data.map((item) => (
+    <option value={item.id}>{item.id}</option>
+  ));
 
   return (
     <form onSubmit={eraseExperience}>
       <label htmlFor="id">Introduce el ID de la actividad a eliminar</label>
-      <input
+      <select
         type="text"
         id="id"
         name="id"
         value={id}
         onChange={(e) => setId(e.target.value)}
-      ></input>
+      >
+        {arrayExperiencias}
+      </select>
       <input type="submit" value="Eliminar" />
     </form>
   );

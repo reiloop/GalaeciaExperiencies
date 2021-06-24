@@ -6,10 +6,9 @@ import decodeTokenData from "../utils/decodedTokenData";
 import HeaderMenu from "../components/HeaderMenu";
 
 const UserProfilePage = (props) => {
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
   const [user, setUser] = useState([]); // ==> [state, setState]
   let { userId } = useParams();
-  const [url] = useState(`http://localhost:4000/user/${userId}`);
   const [token] = useContext(TokenContext);
   const decodedToken = decodeTokenData(token);
 
@@ -18,39 +17,48 @@ const UserProfilePage = (props) => {
     userId = decodedToken.id;
   }
   useEffect(() => {
-     fetch(url, {
+    fetch(`http://localhost:4000/user/${userId}`, {
       "Content-Type": "application/json",
       Authorization: `${token}`,
     })
-      .then((res) =>  res.json())
+      .then((res) => res.json())
       .then(
         (result) => {
-           setUser(result);
+          setUser(result);
         },
         (error) => {
-           setError(error);
+          setError(error);
         }
       );
-  }, [url, token]);
+  }, [userId, token]);
   if (token !== "") {
     console.log(token);
     console.log(decodedToken);
-    console.log(user);
-    const [rol, id, nombre, email, biografia] = user;
 
-    return (
-      <div>
-        <HeaderMenu></HeaderMenu>
-        <UserProfileBody
-          key = {decodedToken.id}
-          userId={decodedToken.id}
-         // name={user[0].nombre}
-          //email={user[0].email}
-          //bio={user[0].biografia}
-          //rol={user[0].rol}
-        ></UserProfileBody>
-      </div>
-    );
+    const data = user[0];
+    console.log(data);
+    if (data) {
+      return (
+        <div>
+          <HeaderMenu></HeaderMenu>
+          <UserProfileBody
+            key={decodedToken.id}
+            userId={decodedToken.id}
+            name={data.nombre}
+            email={data.email}
+            bio={data.biografia}
+            rol={decodedToken.rol}
+          ></UserProfileBody>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <HeaderMenu></HeaderMenu>
+          <p>ERROR: No se ha podido obtener info de usuario</p>
+        </div>
+      );
+    }
   }
 };
 

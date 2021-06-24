@@ -1,41 +1,11 @@
 import { useState, useEffect } from "react";
-import { TokenContext } from "./TokenContextProvider";
 
-/*
 const AddComment = (props) => {
-  const {id} = props;
-  const [token] = useContext(TokenContext);
-    const [Comments, setComments] = useState("");
-    const res = fetch(`http://localhost:4000/experience/${id}/comments`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${token}`,
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
-    const body =  res.json();
-    const comentario = body.data.comentario;
-    setComments(comentario)
-    
-    return (
-      <div>
-          <button onClick={AddComment}>Comentarios</button>
-        <p>
-            Comentarios: {Comments}
-        </p>
-    </div>
-)
-};
-export default AddComment;
-*/
-const AddComment = (props) => {
-  const {id} = props;
-  const [url] = useState(`http://localhost:4000/experience/${id}/comments`);
+  const { id } = props;
   const [, setError] = useState(null);
   const [comments, setComments] = useState("");
   useEffect(() => {
-    fetch(url)
+    fetch(`http://localhost:4000/experience/${id}/comments`)
       .then((res) => res.json())
       .then(
         (result) => {
@@ -45,18 +15,23 @@ const AddComment = (props) => {
           setError(error);
         }
       );
-  }, [url]);
-console.log(comments);
-const data = comments.data;
-const arrayComentarios = data.map((item) => (
-  
-    <p
-      key={item.id}
-      >{item.comentario}</p>
-  
-));
-return <ul className="listaComentarios">{arrayComentarios}</ul>;
-
-
-  };
-  export default AddComment;
+  }, [id]);
+  console.log(comments);
+  const data = comments.data;
+  console.log(data);
+  if (data !== undefined) {
+    if (data.length > 1) {
+      const arrayComentarios = data.map((item) => (
+        <p key={item.id}>{item.comentario}</p>
+      ));
+      return <ul className="listaComentarios">{arrayComentarios}</ul>;
+    } else if (data.lenght === 1) {
+      return <p>{data[0].comentario}</p>;
+    } else {
+      return <p>Sin comentarios en esta actividad</p>;
+    }
+  } else {
+    return <p>Sin comentarios en esta actividad</p>;
+  }
+};
+export default AddComment;
