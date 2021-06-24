@@ -52,13 +52,13 @@ async function bookingExperience(req, res, next) {
     }
 
     //Actualizar base de datos con la reserva
-    const { fecha_uso, precio } = req.body;
+    const { fecha, precio } = req.body;
     await connection.query(
       `
         INSERT INTO reservas(localizador, fecha_creacion, precio, fecha_uso, id_user, id_actividad)
         VALUES(?,?,?,?,?,?)
       `,
-      [bookingID, new Date(), precio, fecha_uso, req.auth.id, id]
+      [bookingID, new Date(), precio, fecha, req.auth.id, id]
     );
 
     // Doy una respuesta

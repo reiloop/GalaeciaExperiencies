@@ -24,7 +24,7 @@ const { recover } = require("./controllers/users/recover");
 const { resetPassword } = require("./controllers/users/resetPassword");
 const { editPassword } = require("./controllers/users/editPassword");
 
-// Controladores de diario
+// Controladores de experiencias
 const { newEntry } = require("./controllers/experiences/newEntry");
 const { editEntry } = require("./controllers/experiences/editEntry");
 const { getEntry } = require("./controllers/experiences/getEntry");
@@ -38,7 +38,7 @@ const { voteEntry } = require("./controllers/experiences/voteEntry");
 const { getComments } = require("./controllers/experiences/getComments");
 const { deleteComment } = require("./controllers/experiences/deleteComment");
 const { editComment } = require("./controllers/experiences/editComment");
-
+const { getBookings } = require("./controllers/experiences/getBookings");
 //OBTENEMOS MIDDLEWARES PARA LA PREVIA DE LOS
 // DISTINTOS MÉTODOS Y FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
@@ -65,7 +65,7 @@ app.get("/activate/:registrationCode", activateUser);
 app.post("/login", login);
 
 // //GET PERFIL USUARIO
-app.get("/user/:id", getUser);
+app.get("/user/:id", validAuth, getUser);
 
 // //EDITAR PERFIL USUARIO
 app.put("/user/:id", validAuth, isSameUser, editUser);
@@ -113,6 +113,9 @@ app.delete(
 );
 //RESERVAR UNA EXPERIENCIA
 app.post("/experience/:id/booking/", validAuth, bookingExperience);
+//LISTAR RESERVAS DE UNA EXPERIENCIA
+app.get("/experience/:id/booking", validAuth, getBookings);
+
 // // VOTAR UNA EXPERIENCIA
 app.post("/experience/:idExperience/comments", validAuth, voteEntry);
 
