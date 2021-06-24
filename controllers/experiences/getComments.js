@@ -23,7 +23,7 @@ async function getComments(req, res, next) {
       throw new Error("La entrada no existe");
     }
 
-    const data = result[0];
+    const data = result;
 
     // Devuelvo los datos
     res.send({
