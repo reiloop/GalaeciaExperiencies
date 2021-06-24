@@ -40,6 +40,8 @@ const ExperiencesPage = () => {
           descripcion={data.descripcion}
           localidad={data.localidad}
           categoria={data.categoria}
+          fecha={data.fecha_disponible}
+          precio={data.precio}
         />
         <ul className="images">
           {photos.map((e) => (

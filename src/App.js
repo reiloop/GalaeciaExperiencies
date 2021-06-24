@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import ListExperiences from "./components/ListExperiences";
+//import ListExperiences from "./components/ListExperiences";
 import { TokenContextProvider } from "./components/TokenContextProvider";
 import ExperiencePage from "./pages/ExperiencePage";
 import LoginPage from "./pages/LoginPage";
@@ -9,6 +9,8 @@ import RegisterPage from "./pages/RegisterPage";
 import InicioPage from "./pages/InicioPage";
 import AdminPage from "./pages/AdminPage";
 import ActivationPage from "./pages/ActivationPage";
+import SearchPage from "./pages/SearchPage";
+import UserProfilePage from "./pages/UserProfilePage";
 
 //import ActividadesPage from "./pages/ActividadesPage";
 
@@ -31,13 +33,16 @@ function App() {
               <LoginPage />
             </Route>
             <Route exact path="/experiences">
-              <ListExperiences />
+              <SearchPage />
             </Route>
             <Route exact path="/experience/:postId">
               <ExperiencePage></ExperiencePage>
             </Route>
             <Route exact path="/create">
               <AdminPage></AdminPage>
+            </Route>
+            <Route exact path="/user/:userId">
+              <UserProfilePage />
             </Route>
           </Switch>
         </TokenContextProvider>

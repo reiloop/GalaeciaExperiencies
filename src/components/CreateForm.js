@@ -4,10 +4,11 @@ import { TokenContext } from "./TokenContextProvider";
 const CreateForm = (props) => {
   const [token] = useContext(TokenContext);
   const [description, setDescripcion] = useState("");
-  const [place, setPlace] = useState("");
-  const [price, setPrice] = useState("");
+  const [place, setPlace] = useState("A Coruña");
+  const [price, setPrice] = useState("999");
   const [name, setName] = useState("");
-  const [categoria, setCategoria] = useState("Aventuras")
+  const [availableDate, setAvailableDate] = useState("");
+  const [categoria, setCategoria] = useState("Aventuras");
   const createExperience = async (e) => {
     e.preventDefault();
     const res = await fetch(`http://localhost:4000/experience`, {
@@ -17,17 +18,23 @@ const CreateForm = (props) => {
         Authorization: `${token}`,
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify({ name, description, place, price, categoria }),
+      body: JSON.stringify({
+        name,
+        description,
+        place,
+        price,
+        categoria,
+        availableDate,
+      }),
     });
-    
+
     const body = await res.json();
     console.log(body);
   };
-  
-  console.log({categoria})
+
   return (
     <form onSubmit={createExperience}>
-      <label htmlFor="nombre">Nombre</label>
+      <label htmlFor="nombre">Nombre:</label>
       <input
         type="text"
         id="nombre"
@@ -35,7 +42,7 @@ const CreateForm = (props) => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       ></input>
-      <label htmlFor="email">Descripcion</label>
+      <label htmlFor="email">Descripcion:</label>
       <textarea
         type="text"
         id="descripcion"
@@ -43,39 +50,50 @@ const CreateForm = (props) => {
         value={description}
         onChange={(e) => setDescripcion(e.target.value)}
       ></textarea>
-      <label htmlFor="price">Precio</label>
+      <label htmlFor="price">Precio:</label>
       <input
-        type="text"
+        type="number"
         id="price"
+        min="0"
+        max="999"
+        step="0.01"
         name="precio"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       ></input>
-      <label htmlFor="localidad">Localidad</label>
-      <input
-        type="text"
+      <label htmlFor="localidad">Localidad:</label>{" "}
+      <label htmlFor="localidad">Selecciona una ciudad:</label>
+      <select
         id="localidad"
-        name="localidad"
+        name="ciudad"
         value={place}
         onChange={(e) => setPlace(e.target.value)}
-      ></input>
+      >
+        <option value="A Coruña">A Coruña</option>
+        <option value="Lugo">Lugo</option>
+        <option value="Ourense">Ourense</option>
+        <option value="Pontevedra">Pontevedra</option>
+      </select>
+      <label htmlFor="categoria">Categoría:</label>
       <select
         id="categoria"
         name="categoria"
         value={categoria}
         onChange={(e) => setCategoria(e.target.value)}
-        >
-        <option 
-                value="Aventuras">Aventuras</option> 
-        <option 
-                value="Naturaleza">Naturaleza</option> 
-        <option 
-                value="Deportes">Deportes</option> 
-        <option 
-                value="Al aire libre">Al aire libre</option> 
-
-
+      >
+        <option value="Aventuras">Aventuras</option>
+        <option value="Naturaleza">Naturaleza</option>
+        <option value="Deportes">Deportes</option>
+        <option value="Al aire libre">Al aire libre</option>
       </select>
+      <label htmlFor="fecha">Fecha de la actividad:</label>
+      <input
+        id="fecha"
+        className="date-input"
+        type="date"
+        value={availableDate}
+        onChange={(e) => setAvailableDate(e.target.value)}
+      />
       <input type="submit" value="Enviar" />
     </form>
   );

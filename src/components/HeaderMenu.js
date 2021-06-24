@@ -10,26 +10,36 @@ const HeaderMenu = (props) => {
 
   if (token !== "") {
     const decodedToken = decodeTokenData(token);
+    const userId = decodedToken.id;
     if (decodedToken.rol === "admin") {
       return (
         <div className="HeaderMenu">
           <img className="header-image" alt="icon" src={image}></img>
           <ul className="header-ul">
             <li>
+              {" "}
               <Link to="/experiences" style={{ fontWeight: "bold" }}>
                 Experiencias
               </Link>
             </li>
+
             <li>
+              {" "}
               <Link to="/create" style={{ fontWeight: "bold" }}>
                 Panel de administrador
               </Link>
             </li>
+
             <li>
-              <a href="./booking/:id">Mis reservas</a>
+              <Link to="/booking/:id" style={{ fontWeight: "bold" }}>
+                Mis reservas
+              </Link>
             </li>
+
             <li>
-              <a href="./user/:id">Mi perfil</a>
+              <Link to={`/user/${userId}`} style={{ fontWeight: "bold" }}>
+                Mi perfil
+              </Link>
             </li>
           </ul>
           <button onClick={() => setToken("")}>Sign out</button>
@@ -45,11 +55,18 @@ const HeaderMenu = (props) => {
                 Experiencias
               </Link>
             </li>
+
             <li>
-              <a href="./booking/:id">Mis reservas</a>
+              {" "}
+              <Link to="/booking/:id" style={{ fontWeight: "bold" }}>
+                Mis reservas
+              </Link>
             </li>
+
             <li>
-              <a href="./user/:id">Mi perfil</a>
+              <Link to={`/user/${userId}`} style={{ fontWeight: "bold" }}>
+                Mi perfil
+              </Link>
             </li>
           </ul>
           <button onClick={() => setToken("")}>Sign out</button>

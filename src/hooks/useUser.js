@@ -1,22 +1,25 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
-const useUser = () => {
-  const { id } = useParams();
+function useUser(id, token) {
   const [user, setUser] = useState([]);
-  const [url] = useState(`http://localhost:4000/user/${id}`);
-
-  const cargarUser = async () => {
-    const res = await fetch(url);
-    const fetchedUser = await res.json();
-    setUser(fetchedUser);
-  };
 
   useEffect(() => {
+    const cargarUser = async () => {
+      const res = await fetch(`http://localhost:4000/user/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `${token}`,
+        },
+      });
+      const fetchedUser = await res.json();
+      setUser(fetchedUser);
+    };
     cargarUser();
-  }, []);
+  }, [id, token]);
 
-  return user;
-};
+  console.log(user);
+  return [user];
+}
 
 export default useUser;
