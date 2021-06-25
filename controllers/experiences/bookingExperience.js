@@ -1,6 +1,5 @@
 const { getConnection } = require("../../db");
 const uuid = require("uuid");
-const bookingID = `${uuid.v4()}`;
 
 async function bookingExperience(req, res, next) {
   let connection;
@@ -53,6 +52,7 @@ async function bookingExperience(req, res, next) {
 
     //Actualizar base de datos con la reserva
     const { fecha, precio } = req.body;
+    let bookingID = `${uuid.v4()}`;
     await connection.query(
       `
         INSERT INTO reservas(localizador, fecha_creacion, precio, fecha_uso, id_user, id_actividad)
