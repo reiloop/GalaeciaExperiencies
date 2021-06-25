@@ -18,8 +18,11 @@ const UserProfilePage = (props) => {
   }
   useEffect(() => {
     fetch(`http://localhost:4000/user/${userId}`, {
-      "Content-Type": "application/json",
-      Authorization: `${token}`,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+
+      }
     })
       .then((res) => res.json())
       .then(

@@ -30,14 +30,14 @@ const EraseForm = (props) => {
       .then((res) => res.json())
       .then(
         (result) => {
-          setExperiencias(result);
+          setExperiencias(result.data);
         },
         (error) => {
           setError(error);
         }
       );
   }, []);
-  const data = experiencias.data;
+  const data = experiencias;
   const arrayExperiencias = data.map((item) => (
     <option value={item.id}>{item.id}</option>
   ));

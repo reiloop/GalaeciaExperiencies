@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import Experience from "../components/Experience";
 import HeaderMenu from "../components/HeaderMenu";
 import Imagenes from "../components/Imagenes";
-import AddComment from "../components/AddComment";
+import Comments from "../components/Comments";
 import Booking from "../components/Booking";
+import AddComment from "../components/AddComment";
 
 const ExperiencesPage = () => {
   const { postId } = useParams();
@@ -51,6 +52,7 @@ const ExperiencesPage = () => {
             <Imagenes key={e.imagen} photo={e.imagen}></Imagenes>
           ))}{" "}
         </ul>
+        <Comments id={data.id}></Comments>
         <AddComment id={data.id}></AddComment>
         <Booking
           id={data.id}

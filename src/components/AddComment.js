@@ -1,37 +1,52 @@
-import { useState, useEffect } from "react";
+import { useContext, useState } from "react";
+import { TokenContext } from "./TokenContextProvider";
 
 const AddComment = (props) => {
-  const { id } = props;
-  const [, setError] = useState(null);
-  const [comments, setComments] = useState("");
-  useEffect(() => {
-    fetch(`http://localhost:4000/experience/${id}/comments`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setComments(result);
-        },
-        (error) => {
-          setError(error);
-        }
-      );
-  }, [id]);
-  console.log(comments);
-  const data = comments.data;
-  console.log(data);
-  if (data !== undefined) {
-    if (data.length > 1) {
-      const arrayComentarios = data.map((item) => (
-        <p key={item.id}>{item.comentario}</p>
-      ));
-      return <ul className="listaComentarios">{arrayComentarios}</ul>;
-    } else if (data.lenght === 1) {
-      return <p>{data[0].comentario}</p>;
-    } else {
-      return <p>Sin comentarios en esta actividad</p>;
-    }
-  } else {
-    return <p>Sin comentarios en esta actividad</p>;
-  }
+    const { id } = props;
+  const [token] = useContext(TokenContext);
+  const [vote, setVote] = useState(1);
+  const [comentario, setComment] = useState("");
+  const createComment = async (e) => {
+    e.preventDefault();
+    const res = await fetch(`http://localhost:4000/experience/${id}/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${token}`,
+      },
+      body: JSON.stringify({
+        vote,
+        comentario
+      }),
+    });
+
+    const body = await res.json();
+    console.log(body);
+  };
+
+  return (
+    <form onSubmit={createComment}>
+      <label htmlFor="vote">Voto:</label>
+      <input
+        type="number"
+        min="1" 
+        max="5"
+        id="vote"
+        name="vote"
+        value={vote}
+        onChange={(e) => setVote(Number(e.target.value))}
+      ></input>
+        <label htmlFor="comment">Comentario:</label>
+      <input
+        type="text"
+        id="comment"
+        name="comment"
+        value={comentario}
+        onChange={(e) => setComment(e.target.value)}
+      ></input>
+      <input type="submit" value="Comentar" />
+    </form>
+  );
 };
+
 export default AddComment;
