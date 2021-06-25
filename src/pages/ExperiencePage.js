@@ -32,7 +32,10 @@ const ExperiencesPage = () => {
     const data = actividad.data;
     console.log(data);
     const photos = data.photos;
-
+    const date = new Date(data.fecha_disponible)
+      .toISOString()
+      .slice(0, 19)
+      .replace("T", " ");
     return (
       <div className="experience">
         <HeaderMenu></HeaderMenu>
@@ -54,11 +57,7 @@ const ExperiencesPage = () => {
         </ul>
         <Comments id={data.id}></Comments>
         <AddComment id={data.id}></AddComment>
-        <Booking
-          id={data.id}
-          precio={data.precio}
-          fecha={data.fecha_disponible}
-        ></Booking>
+        <Booking id={data.id} precio={data.precio} fecha={date}></Booking>
       </div>
     );
   } else if (!isLoaded) {

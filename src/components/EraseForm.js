@@ -38,25 +38,31 @@ const EraseForm = (props) => {
       );
   }, []);
   const data = experiencias;
-  const arrayExperiencias = data.map((item) => (
-    <option value={item.id}>{item.id}</option>
-  ));
-
-  return (
-    <form onSubmit={eraseExperience}>
-      <label htmlFor="id">Introduce el ID de la actividad a eliminar</label>
-      <select
-        type="text"
-        id="id"
-        name="id"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
-      >
-        {arrayExperiencias}
-      </select>
-      <input type="submit" value="Eliminar" />
-    </form>
-  );
+  console.log(data);
+  if (data === String) {
+    return <p>{data}</p>;
+  } else if (Array.isArray(data)) {
+    const arrayExperiencias = data.map((item) => (
+      <option value={item.id}>{item.nombre}</option>
+    ));
+    return (
+      <form onSubmit={eraseExperience}>
+        <label htmlFor="id">Introduce el ID de la actividad a eliminar</label>
+        <select
+          type="text"
+          id="id"
+          name="id"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+        >
+          {arrayExperiencias}
+        </select>
+        <input type="submit" value="Eliminar" />
+      </form>
+    );
+  } else {
+    return <p>No hay actividades para eliminar</p>;
+  }
 };
 
 export default EraseForm;

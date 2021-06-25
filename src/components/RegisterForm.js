@@ -4,7 +4,7 @@ const RegisterForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
   const [bio, setBio] = useState("");
-  const [nombre, setNombre] = useState("");
+  const [name, setName] = useState("");
   const registerUser = async (e) => {
     e.preventDefault();
     const res = await fetch("http://localhost:4000/users", {
@@ -12,7 +12,7 @@ const RegisterForm = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ nombre, email, password }),
+      body: JSON.stringify({ name, email, password, bio }),
     });
 
     const body = await res.json();
@@ -21,13 +21,13 @@ const RegisterForm = (props) => {
 
   return (
     <form onSubmit={registerUser}>
-      <label htmlFor="nombre">Nombre</label>
+      <label htmlFor="name">Nombre</label>
       <input
         type="text"
-        id="nombre"
-        name="nombre"
-        value={nombre}
-        onChange={(e) => setNombre(e.target.value)}
+        id="name"
+        name="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       ></input>
       <label htmlFor="email">Email</label>
       <input
@@ -53,7 +53,6 @@ const RegisterForm = (props) => {
         onChange={(e) => setBio(e.target.value)}
       ></textarea>
       <input type="submit" value="Enviar" />
-
     </form>
   );
 };

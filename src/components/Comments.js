@@ -1,24 +1,9 @@
-import { useState, useEffect } from "react";
-
+import useComments from "../hooks/useComments";
 const Comments = (props) => {
   const { id } = props;
-  const [, setError] = useState(null);
-  const [comments, setComments] = useState("");
-  useEffect(() => {
-    fetch(`http://localhost:4000/experience/${id}/comments`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setComments(result);
-        },
-        (error) => {
-          setError(error);
-        }
-      );
-  }, [id]);
-  console.log(comments);
+  const [comments] = useComments(id);
   const data = comments.data;
-  console.log(data);
+
   if (data !== undefined) {
     if (data.length > 1) {
       const arrayComentarios = data.map((item) => (

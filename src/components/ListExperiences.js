@@ -20,7 +20,7 @@ const ListExperiences = () => {
       );
   }, []);
 
-  if (experiencias.status) {
+  if (Array.isArray(experiencias.data)) {
     console.log(experiencias.data);
     const data = experiencias.data;
 

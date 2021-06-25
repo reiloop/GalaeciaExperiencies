@@ -14,9 +14,9 @@ const Experience = (props) => {
   } = props;
   const history = useHistory();
   const f = new Date(fecha);
-  const dia = f.getDay();
-  const mes = f.getMonth();
-  const año = f.getDate();
+  const dia = f.getDate();
+  const mes = f.getMonth() + 1;
+  const año = f.getFullYear();
   const goToPostPage = (e) => {
     history.push(`/experience/${id}`);
   };
@@ -24,21 +24,13 @@ const Experience = (props) => {
   return (
     <div onClick={goToPostPage}>
       <h1>{nombre}</h1>
+      <p>Descripción: {descripcion}</p>
+      <p>Provincia: {localidad}</p>
+      <p>Categoria: {categoria}</p>
       <p>
-        Descripción: {descripcion} 
+        Fecha de la actividad: {dia}/{mes}/{año}
       </p>
-      <p>
-        Provincia: {localidad}
-        </p>
-        <p> 
-        Categoria: {categoria}
-        </p>
-        <p>
-        Fecha:{dia}/{mes}/{año}
-        </p>
-        <p>
-        Precio:{precio}€
-      </p>
+      <p>Precio: {precio}€</p>
       <Imagenes photo={photo}></Imagenes>
       <p>Experiencia: {id}</p>
     </div>
