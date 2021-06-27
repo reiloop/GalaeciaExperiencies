@@ -17,14 +17,14 @@ async function main() {
     await connection.query(`
     CREATE TABLE users(
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-        registrationDate DATETIME NOT NULL,
+        registrationDate DATETIME,
         nombre VARCHAR(20) NOT NULL,
         apellidos VARCHAR(50),
         email VARCHAR(100) NOT NULL UNIQUE,
         password TINYTEXT NOT NULL,
         rol ENUM("user", "admin") DEFAULT "user" NOT NULL,
         biografia TINYTEXT,
-        foto TINYTEXT,
+        foto VARCHAR(200),
         activado BOOLEAN DEFAULT false,
         registrationCode TINYTEXT,
         passwordUpdateCode TINYTEXT,

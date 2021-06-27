@@ -1,11 +1,28 @@
 const { getConnection } = require("../../db");
 const { uploadImage } = require("../../helpers");
-
-async function addUserPhoto(req, res, next) {
+async function UploadUserPhoto(req, res, next) {
   let connection;
 
   try {
     connection = await getConnection();
+
+    // Comprobamos que la entrada del diario a la que le estamos añadiendo foto
+    // tiene 3 o menos fotos añadidas
+
+    const [currentPhotos] = await connection.query(
+      `
+        SELECT foto
+        FROM users
+        WHERE id=?
+      `,
+      [req.auth.id]
+    );
+
+    if (currentPhotos.length === 1) {
+      throw new Error(
+        `El usuario ya tiene una foto de perfil subida, debe actualizarla no subir otra`
+      );
+    }
 
     // Guardamos la foto enviada en un directorio y sacamos el nombre del fichero
     let savedPhotoName;
@@ -22,16 +39,18 @@ async function addUserPhoto(req, res, next) {
     // Actualizamos la base de datos
     await connection.query(
       `
-      INSERT INTO users(lastUpdate, foto)
-      VALUES(?,?)
-    `,
-      [new Date(), savedPhotoName]
+        UPDATE USERS users
+            SET lastUpdate=?, foto=?
+            WHERE id=?
+        
+      `,
+      [new Date(), savedPhotoName, req.auth.id]
     );
 
     // Devolvemos una respuesta
     res.send({
       status: "ok",
-      message: `El usuario añadió correctamente un avatar con nombre ${savedPhotoName}`,
+      message: `Se añadió una foto de perfil al usurio con id ${req.auth.id}`,
     });
   } catch (error) {
     next(error);
@@ -41,5 +60,5 @@ async function addUserPhoto(req, res, next) {
 }
 
 module.exports = {
-  addUserPhoto,
+  UploadUserPhoto,
 };

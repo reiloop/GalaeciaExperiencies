@@ -1,6 +1,5 @@
 const { getConnection } = require("../../db");
 const bcrypt = require("bcrypt");
-const { uploadImage } = require("../../helpers");
 const crypto = require("crypto");
 
 const { sendMail } = require("../../helpers");
@@ -42,17 +41,7 @@ async function createUser(req, res, next) {
     //CODIFICAR PASSWORD
     const passwordDb = await bcrypt.hash(password, 10);
     // Guardamos la foto enviada en un directorio y sacamos el nombre del fichero
-    let savedPhotoName;
 
-    if (req.file) {
-      console.log(req.file);
-      savedPhotoName = await uploadImage({
-        file: req.file.photo,
-        directory: "avatars",
-      });
-    } else {
-      throw new Error("No subiste ninguna foto");
-    }
     //CREAR CÓDIGO DE REGISTRO PARA FUTURA ACTIVACIÓN
     const registrationCode = crypto
       .randomBytes(20)
@@ -78,7 +67,7 @@ async function createUser(req, res, next) {
                 "${email}",
                 "${passwordDb}",
                 "${name}",
-                "${savedPhotoName}",
+                "foto de usuario de ${name}",
                 "${bio}",
                 "${registrationCode}",
                 UTC_TIMESTAMP,

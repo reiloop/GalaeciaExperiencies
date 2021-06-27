@@ -23,6 +23,7 @@ const { deleteUser } = require("./controllers/users/deleteUser");
 const { recover } = require("./controllers/users/recover");
 const { resetPassword } = require("./controllers/users/resetPassword");
 const { editPassword } = require("./controllers/users/editPassword");
+const { UploadUserPhoto } = require("./controllers/users/UploadUserPhoto");
 
 // Controladores de experiencias
 const { newEntry } = require("./controllers/experiences/newEntry");
@@ -57,6 +58,8 @@ app.use(fileUpload());
 //APLICAMOS MIDDLEWARES ENDPOINTS
 //CREAR USUARIO
 app.post("/users", createUser);
+
+app.put("/users/:userId", validAuth, UploadUserPhoto);
 
 // //ACTIVACIÓN DE USUARIO
 app.get("/activate/:registrationCode", activateUser);
