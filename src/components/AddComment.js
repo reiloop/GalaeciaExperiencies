@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { TokenContext } from "./TokenContextProvider";
 
 const AddComment = (props) => {
-    const { id } = props;
+  const { id } = props;
   const [token] = useContext(TokenContext);
   const [vote, setVote] = useState(1);
   const [comentario, setComment] = useState("");
@@ -16,7 +16,7 @@ const AddComment = (props) => {
       },
       body: JSON.stringify({
         vote,
-        comentario
+        comentario,
       }),
     });
 
@@ -27,16 +27,17 @@ const AddComment = (props) => {
   return (
     <form onSubmit={createComment}>
       <label htmlFor="vote">Voto:</label>
+
       <input
         type="number"
-        min="1" 
+        min="1"
         max="5"
         id="vote"
         name="vote"
         value={vote}
         onChange={(e) => setVote(Number(e.target.value))}
       ></input>
-        <label htmlFor="comment">Comentario:</label>
+      <label htmlFor="comment">Comentario:</label>
       <input
         type="text"
         id="comment"

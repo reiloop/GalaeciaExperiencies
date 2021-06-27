@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { TokenContext } from "../components/TokenContextProvider";
 import decodeTokenData from "../utils/decodedTokenData";
 import HeaderMenu from "../components/HeaderMenu";
+import UploadUserPhoto from "../components/UploadUserPhoto";
 
 const UserProfilePage = (props) => {
   const [, setError] = useState(null);
@@ -21,8 +22,7 @@ const UserProfilePage = (props) => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `${token}`,
-
-      }
+      },
     })
       .then((res) => res.json())
       .then(
@@ -52,6 +52,7 @@ const UserProfilePage = (props) => {
             bio={data.biografia}
             rol={decodedToken.rol}
           ></UserProfileBody>
+          <UploadUserPhoto></UploadUserPhoto>
         </div>
       );
     } else {

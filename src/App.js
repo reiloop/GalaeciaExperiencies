@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 //import ListExperiences from "./components/ListExperiences";
@@ -13,6 +14,9 @@ import SearchPage from "./pages/SearchPage";
 import UserProfilePage from "./pages/UserProfilePage";
 
 //import ActividadesPage from "./pages/ActividadesPage";
+// Needed for onTouchTap
+// Check this repo:
+// https://github.com/zilverline/react-tap-event-plugin
 
 function App() {
   return (

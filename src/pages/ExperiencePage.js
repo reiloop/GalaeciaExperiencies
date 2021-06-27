@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Experience from "../components/Experience";
 import HeaderMenu from "../components/HeaderMenu";
@@ -6,8 +6,13 @@ import Imagenes from "../components/Imagenes";
 import Comments from "../components/Comments";
 import Booking from "../components/Booking";
 import AddComment from "../components/AddComment";
+import decodeTokenData from "../utils/decodedTokenData";
+import { TokenContext } from "../components/TokenContextProvider";
+import UploadEntryPhoto from "../components/UploadEntryPhoto";
 
 const ExperiencesPage = () => {
+  const [token] = useContext(TokenContext);
+
   const { postId } = useParams();
   const [url] = useState(`http://localhost:4000/experience/${postId}`);
   const [, setError] = useState(null);
@@ -30,36 +35,65 @@ const ExperiencesPage = () => {
 
   if (actividad.status) {
     const data = actividad.data;
+    const decodedToken = decodeTokenData(token);
     console.log(data);
     const photos = data.photos;
     const date = new Date(data.fecha_disponible)
       .toISOString()
       .slice(0, 19)
       .replace("T", " ");
-    return (
-      <div className="experience">
-        <HeaderMenu></HeaderMenu>
+    if (decodedToken.rol === "admin") {
+      return (
+        <div className="experience">
+          <HeaderMenu></HeaderMenu>
 
-        <Experience
-          key={data.id}
-          id={data.id}
-          nombre={data.nombre}
-          descripcion={data.descripcion}
-          localidad={data.localidad}
-          categoria={data.categoria}
-          fecha={data.fecha_disponible}
-          precio={data.precio}
-        />
-        <ul className="images">
-          {photos.map((e) => (
-            <Imagenes key={e.imagen} photo={e.imagen}></Imagenes>
-          ))}{" "}
-        </ul>
-        <Comments id={data.id}></Comments>
-        <AddComment id={data.id}></AddComment>
-        <Booking id={data.id} precio={data.precio} fecha={date}></Booking>
-      </div>
-    );
+          <Experience
+            key={data.id}
+            id={data.id}
+            nombre={data.nombre}
+            descripcion={data.descripcion}
+            localidad={data.localidad}
+            categoria={data.categoria}
+            fecha={data.fecha_disponible}
+            precio={data.precio}
+          />
+          <ul className="images">
+            {photos.map((e) => (
+              <Imagenes key={e.imagen} photo={e.imagen}></Imagenes>
+            ))}{" "}
+          </ul>
+          <Comments id={data.id}></Comments>
+          <AddComment id={data.id}></AddComment>
+          <Booking id={data.id} precio={data.precio} fecha={date}></Booking>
+          <UploadEntryPhoto></UploadEntryPhoto>
+        </div>
+      );
+    } else {
+      return (
+        <div className="experience">
+          <HeaderMenu></HeaderMenu>
+
+          <Experience
+            key={data.id}
+            id={data.id}
+            nombre={data.nombre}
+            descripcion={data.descripcion}
+            localidad={data.localidad}
+            categoria={data.categoria}
+            fecha={data.fecha_disponible}
+            precio={data.precio}
+          />
+          <ul className="images">
+            {photos.map((e) => (
+              <Imagenes key={e.imagen} photo={e.imagen}></Imagenes>
+            ))}{" "}
+          </ul>
+          <Comments id={data.id}></Comments>
+          <AddComment id={data.id}></AddComment>
+          <Booking id={data.id} precio={data.precio} fecha={date}></Booking>
+        </div>
+      );
+    }
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {

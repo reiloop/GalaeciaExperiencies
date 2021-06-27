@@ -1,20 +1,14 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const RegisterForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
   const [bio, setBio] = useState("");
   const [name, setName] = useState("");
-  const fileInput = useRef();
   const [uploadedFile, setUploadedFile] = useState("");
 
   const registerUser = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    const file = fileInput.current.files[0];
-
-    formData.append("photo", file);
-    console.log(file.name);
 
     const response = await fetch("http://localhost:4000/users", {
       method: "POST",
@@ -22,7 +16,6 @@ const RegisterForm = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ name, email, password, bio }),
-      formData,
     });
 
     const body = await response.json();
@@ -30,7 +23,7 @@ const RegisterForm = (props) => {
     console.log(body);
 
     if (response.ok) {
-      setUploadedFile(body.filename);
+      setUploadedFile(body);
     } else {
       console.error(body);
     }
@@ -70,22 +63,15 @@ const RegisterForm = (props) => {
           value={bio}
           onChange={(e) => setBio(e.target.value)}
         ></textarea>
-        <input
-          type="file"
-          ref={fileInput}
-          accept="image/*" /* multiple */
-        ></input>
-
         <input type="submit" value="Enviar" />
       </form>
 
       {uploadedFile && (
         <>
           <p>
-            Se ha subido correctamente tu imagen y se ha creado el usuario,
-            revisa tu correo para confirmar
+            Se ha creado correctamente tu cuenta de usuario, revisa tu correo
+            para confirmar tu cuenta.
           </p>
-          <img src={`../avatars/${uploadedFile}`} alt="Foto subida"></img>
         </>
       )}
     </div>
