@@ -42,7 +42,7 @@ const ExperiencesPage = () => {
       .toISOString()
       .slice(0, 19)
       .replace("T", " ");
-    if (decodedToken.rol === "admin") {
+    if (!decodedToken) {
       return (
         <div className="experience">
           <HeaderMenu></HeaderMenu>
@@ -65,10 +65,35 @@ const ExperiencesPage = () => {
           <Comments id={data.id}></Comments>
           <AddComment id={data.id}></AddComment>
           <Booking id={data.id} precio={data.precio} fecha={date}></Booking>
-          <UploadEntryPhoto></UploadEntryPhoto>
         </div>
       );
-    } else {
+    } else if (decodedToken.rol === "admin") {
+      return (
+        <div className="experience">
+          <HeaderMenu></HeaderMenu>
+
+          <Experience
+            key={data.id}
+            id={data.id}
+            nombre={data.nombre}
+            descripcion={data.descripcion}
+            localidad={data.localidad}
+            categoria={data.categoria}
+            fecha={data.fecha_disponible}
+            precio={data.precio}
+          />
+          <ul className="images">
+            {photos.map((e) => (
+              <Imagenes key={e.imagen} photo={e.imagen}></Imagenes>
+            ))}{" "}
+          </ul>
+          <Comments id={data.id}></Comments>
+          <AddComment id={data.id}></AddComment>
+          <Booking id={data.id} precio={data.precio} fecha={date}></Booking>
+          <UploadEntryPhoto id={postId}></UploadEntryPhoto>
+        </div>
+      );
+    } else if (decodedToken.rol === "user") {
       return (
         <div className="experience">
           <HeaderMenu></HeaderMenu>

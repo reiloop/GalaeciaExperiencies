@@ -1,12 +1,11 @@
 import { useState, useRef, useContext } from "react";
-import { useParams } from "react-router-dom";
 import { TokenContext } from "./TokenContextProvider";
 
 const UploadEntryPhoto = (props) => {
   const [uploadedFile, setUploadedFile] = useState("");
-  const { id } = useParams();
+  const { id } = props;
   const [token] = useContext(TokenContext);
-  const [url] = useState(`http://localhost:4000//experience/${id}/photo`);
+  const [url] = useState(`http://localhost:4000/experience/${id}/photo`);
   const fileInput = useRef();
 
   const fileUpload = async (e) => {
@@ -19,10 +18,11 @@ const UploadEntryPhoto = (props) => {
     formData.append("photo", file);
 
     const response = await fetch(url, {
+      method: "POST",
+      "Content-Type": "application/json",
       headers: {
         Authorization: `${token}`,
       },
-      method: "POST",
       body: formData,
     });
 
