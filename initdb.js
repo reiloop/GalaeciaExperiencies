@@ -45,7 +45,7 @@ async function main() {
         id_user INT UNSIGNED,
         FOREIGN KEY (id_user) REFERENCES users(id),
         id_actividad INT UNSIGNED,
-        FOREIGN KEY (id_actividad) REFERENCES actividades(id)
+        FOREIGN KEY (id_actividad) REFERENCES actividades(id) ON DELETE CASCADE
         )
         `);
 
@@ -94,7 +94,7 @@ async function main() {
         id_user INT UNSIGNED,
         FOREIGN KEY (id_user) REFERENCES users(id),
         id_actividad INT UNSIGNED,
-        FOREIGN KEY (id_actividad) REFERENCES actividades(id)
+        FOREIGN KEY (id_actividad) REFERENCES actividades(id) ON DELETE CASCADE
 )  
         `);
 
@@ -106,7 +106,7 @@ async function main() {
         uploadedDate DATETIME NOT NULL,
         imagen TINYTEXT,
         id_actividad INT UNSIGNED,
-        FOREIGN KEY (id_actividad) REFERENCES actividades(id)
+        FOREIGN KEY (id_actividad) REFERENCES actividades(id) ON DELETE CASCADE
         )
          `);
 

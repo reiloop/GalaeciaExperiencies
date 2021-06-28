@@ -5,23 +5,19 @@ async function UploadUserPhoto(req, res, next) {
 
   try {
     connection = await getConnection();
-
-    // Comprobamos que la entrada del diario a la que le estamos añadiendo foto
-    // tiene 3 o menos fotos añadidas
+    const { id } = req.params;
 
     const [currentPhotos] = await connection.query(
       `
-        SELECT foto
+        SELECT *
         FROM users
         WHERE id=?
       `,
-      [req.auth.id]
+      [id]
     );
 
-    if (currentPhotos.length === 1) {
-      throw new Error(
-        `El usuario ya tiene una foto de perfil subida, debe actualizarla no subir otra`
-      );
+    if (currentPhotos.foto === "") {
+      throw new Error(currentPhotos.foto);
     }
 
     // Guardamos la foto enviada en un directorio y sacamos el nombre del fichero
@@ -39,18 +35,18 @@ async function UploadUserPhoto(req, res, next) {
     // Actualizamos la base de datos
     await connection.query(
       `
-        UPDATE USERS users
+        UPDATE  users
             SET lastUpdate=?, foto=?
             WHERE id=?
         
       `,
-      [new Date(), savedPhotoName, req.auth.id]
+      [new Date(), savedPhotoName, id]
     );
 
     // Devolvemos una respuesta
     res.send({
       status: "ok",
-      message: `Se añadió una foto de perfil al usurio con id ${req.auth.id}`,
+      message: `Se añadió una foto de perfil al usurio con id ${id}`,
     });
   } catch (error) {
     next(error);

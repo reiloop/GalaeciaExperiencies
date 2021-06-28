@@ -6,22 +6,30 @@ async function listEntries(req, res, next) {
   try {
     connection = await getConnection();
 
-    const { search, ciudad, fecha, precio } = req.query;
+    const { search, ciudad, fecha_inicio, fecha_fin, precioIni, precioFin } =
+      req.query;
 
     let result;
 
     // Seleccionamos todas las entradas del diario (sin las fotos)
-    if (search) {
+    if (
+      search ||
+      ciudad ||
+      fecha_inicio ||
+      fecha_fin ||
+      precioIni ||
+      precioFin
+    ) {
       [result] = await connection.query(
         `
       SELECT actividades.*, AVG(comentarios.voto) as votes
       FROM actividades
       LEFT JOIN comentarios ON actividades.id = comentarios.id_actividad
-      WHERE actividades.localidad LIKE CONCAT("%", ? , "%") OR actividades.nombre LIKE CONCAT("%", ? , "%") AND actividades.precio LIKE CONCAT("%", ? , "%") AND actividades.fecha_disponible LIKE CONCAT("%", ? , "%")
+      WHERE actividades.localidad LIKE CONCAT("%", ? , "%") AND actividades.nombre LIKE CONCAT("%", ? , "%") AND actividades.precio BETWEEN ? AND ? AND actividades.fecha_disponible BETWEEN ? AND ?
       GROUP BY actividades.id
-      ORDER BY fecha_creacion DESC
+      ORDER BY fecha_disponible DESC
     `,
-        [ciudad, search, precio, fecha]
+        [ciudad, search, precioIni, precioFin, fecha_inicio, fecha_fin]
       );
     } else {
       [result] = await connection.query(`
