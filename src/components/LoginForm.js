@@ -6,8 +6,7 @@ const LoginForm = (props) => {
   const [password, setPassword] = useState("");
   const [, setToken] = useContext(TokenContext);
   const [error, setError] = useState("");
-
-  
+  console.log(error);
   const login = async (e) => {
     e.preventDefault();
     const res = await fetch("http://localhost:4000/login", {
@@ -21,7 +20,6 @@ const LoginForm = (props) => {
     if (res.ok) {
       setError("");
       setToken(data.token);
-
     } else {
       setError(data);
     }
@@ -45,8 +43,7 @@ const LoginForm = (props) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <input type="submit" value="Enviar" />
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error.error}</p>}
     </form>
   );
 };

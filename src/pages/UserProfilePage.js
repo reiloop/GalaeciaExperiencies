@@ -5,6 +5,7 @@ import { TokenContext } from "../components/TokenContextProvider";
 import decodeTokenData from "../utils/decodedTokenData";
 import HeaderMenu from "../components/HeaderMenu";
 import UploadUserPhoto from "../components/UploadUserPhoto";
+import UserAvatar from "../components/UserAvatar";
 
 const UserProfilePage = (props) => {
   const [, setError] = useState(null);
@@ -52,7 +53,8 @@ const UserProfilePage = (props) => {
             bio={data.biografia}
             rol={decodedToken.rol}
           ></UserProfileBody>
-          <UploadUserPhoto></UploadUserPhoto>
+          <UploadUserPhoto id={userId}></UploadUserPhoto>
+          <UserAvatar photo={data.foto}></UserAvatar>
         </div>
       );
     } else {

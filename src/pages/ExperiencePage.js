@@ -9,6 +9,8 @@ import AddComment from "../components/AddComment";
 import decodeTokenData from "../utils/decodedTokenData";
 import { TokenContext } from "../components/TokenContextProvider";
 import UploadEntryPhoto from "../components/UploadEntryPhoto";
+import EraseForm from "../components/EraseForm";
+import EditForm from "../components/EditForm";
 
 const ExperiencesPage = () => {
   const [token] = useContext(TokenContext);
@@ -71,6 +73,8 @@ const ExperiencesPage = () => {
       return (
         <div className="experience">
           <HeaderMenu></HeaderMenu>
+          <EditForm id={data.id}></EditForm>
+          <UploadEntryPhoto id={postId}></UploadEntryPhoto>
 
           <Experience
             key={data.id}
@@ -87,10 +91,7 @@ const ExperiencesPage = () => {
               <Imagenes key={e.imagen} photo={e.imagen}></Imagenes>
             ))}{" "}
           </ul>
-          <Comments id={data.id}></Comments>
-          <AddComment id={data.id}></AddComment>
-          <Booking id={data.id} precio={data.precio} fecha={date}></Booking>
-          <UploadEntryPhoto id={postId}></UploadEntryPhoto>
+          <EraseForm id={data.id}></EraseForm>
         </div>
       );
     } else if (decodedToken.rol === "user") {

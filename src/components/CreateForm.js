@@ -5,7 +5,7 @@ const CreateForm = (props) => {
   const [token] = useContext(TokenContext);
   const [description, setDescripcion] = useState("");
   const [place, setPlace] = useState("A Coruña");
-  const [price, setPrice] = useState("999");
+  const [price, setPrice] = useState("100");
   const [name, setName] = useState("");
   const [availableDate, setAvailableDate] = useState("");
   const [categoria, setCategoria] = useState("Aventuras");
@@ -41,6 +41,7 @@ const CreateForm = (props) => {
         name="nombre"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        required
       ></input>
       <label htmlFor="email">Descripcion:</label>
       <textarea
@@ -49,6 +50,7 @@ const CreateForm = (props) => {
         name="descripcion"
         value={description}
         onChange={(e) => setDescripcion(e.target.value)}
+        required
       ></textarea>
       <label htmlFor="price">Precio:</label>
       <input
@@ -56,7 +58,7 @@ const CreateForm = (props) => {
         id="price"
         min="0"
         max="999"
-        step="0.01"
+        step="0.5"
         name="precio"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
@@ -93,6 +95,7 @@ const CreateForm = (props) => {
         type="date"
         value={availableDate}
         onChange={(e) => setAvailableDate(e.target.value)}
+        required
       />
       <input type="submit" value="Enviar" />
     </form>

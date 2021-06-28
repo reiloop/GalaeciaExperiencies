@@ -1,12 +1,11 @@
 import { useState, useRef, useContext } from "react";
-import { useParams } from "react-router-dom";
 import { TokenContext } from "./TokenContextProvider";
 
 const UploadUserPhoto = (props) => {
   const [uploadedFile, setUploadedFile] = useState("");
-  const userId = useParams();
+  const { id } = props;
   const [token] = useContext(TokenContext);
-  const [url] = useState(`http://localhost:4000/users/${userId}`);
+  const [url] = useState(`http://localhost:4000/users/${id}`);
   const fileInput = useRef();
 
   const fileUpload = async (e) => {
