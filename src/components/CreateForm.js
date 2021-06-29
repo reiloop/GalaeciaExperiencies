@@ -9,6 +9,9 @@ const CreateForm = (props) => {
   const [name, setName] = useState("");
   const [availableDate, setAvailableDate] = useState("");
   const [categoria, setCategoria] = useState("Aventuras");
+  const [plazasLibres, setPlazasLibres] = useState("10");
+  const [plazasTotales, setPlazasTotales] = useState("10");
+
   const createExperience = async (e) => {
     e.preventDefault();
     const res = await fetch(`http://localhost:4000/experience`, {
@@ -25,6 +28,8 @@ const CreateForm = (props) => {
         price,
         categoria,
         availableDate,
+        plazasLibres,
+        plazasTotales
       }),
     });
 
@@ -63,6 +68,30 @@ const CreateForm = (props) => {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       ></input>
+            <label htmlFor="plazasLibres">Plazas libres:</label>
+      <input
+        type="number"
+        id="plazasLibres"
+        min="0"
+        max="10"
+        step="1"
+        name="plazasLibres"
+        value={plazasLibres}
+        onChange={(e) => setPlazasLibres(e.target.value)}
+      ></input>
+                  <label htmlFor="plazasTotales">Plazas totales:</label>
+      <input
+        type="number"
+        id="plazasTotales"
+        min="0"
+        max="10"
+        step="1"
+        name="plazasTotales"
+        value={plazasTotales}
+        onChange={(e) => setPlazasTotales(e.target.value)}
+      ></input>
+
+
       <label htmlFor="localidad">Localidad:</label>{" "}
       <label htmlFor="localidad">Selecciona una ciudad:</label>
       <select

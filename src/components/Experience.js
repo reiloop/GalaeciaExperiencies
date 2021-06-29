@@ -10,6 +10,8 @@ const Experience = (props) => {
     photo,
     categoria,
     precio,
+    libres,
+    totales,
     fecha,
   } = props;
   const history = useHistory();
@@ -31,6 +33,7 @@ const Experience = (props) => {
         Fecha de la actividad: {dia}/{mes}/{año}
       </p>
       <p>Precio: {precio}€</p>
+      <p>Plazas libres: {libres}/{totales}</p>
       <Imagenes photo={photo}></Imagenes>
       <p>Experiencia: {id}</p>
     </div>

@@ -58,6 +58,8 @@ const ExperiencesPage = () => {
             categoria={data.categoria}
             fecha={data.fecha_disponible}
             precio={data.precio}
+            libres={data.plazas_disponibles}
+            totales={data.plazas_totales}
           />
           <ul className="images">
             {photos.map((e) => (
@@ -66,7 +68,7 @@ const ExperiencesPage = () => {
           </ul>
           <Comments id={data.id}></Comments>
           <AddComment id={data.id}></AddComment>
-          <Booking id={data.id} precio={data.precio} fecha={date}></Booking>
+          <Booking id={data.id} precio={data.precio} fecha={date} plazasLibres={data.plazas_disponibles}></Booking>
         </div>
       );
     } else if (decodedToken.rol === "admin") {
@@ -85,6 +87,9 @@ const ExperiencesPage = () => {
             categoria={data.categoria}
             fecha={data.fecha_disponible}
             precio={data.precio}
+            libres={data.plazas_disponibles}
+            totales={data.plazas_totales}
+
           />
           <ul className="images">
             {photos.map((e) => (
@@ -108,6 +113,9 @@ const ExperiencesPage = () => {
             categoria={data.categoria}
             fecha={data.fecha_disponible}
             precio={data.precio}
+            libres={data.plazas_disponibles}
+            totales={data.plazas_totales}
+
           />
           <ul className="images">
             {photos.map((e) => (
@@ -116,7 +124,7 @@ const ExperiencesPage = () => {
           </ul>
           <Comments id={data.id}></Comments>
           <AddComment id={data.id}></AddComment>
-          <Booking id={data.id} precio={data.precio} fecha={date}></Booking>
+          <Booking id={data.id} precio={data.precio} fecha={date} plazasLibres={data.plazas_disponibles}></Booking>
         </div>
       );
     }

@@ -10,6 +10,9 @@ const EditForm = (props) => {
   const [categoria, setCategoria] = useState("Aventuras");
   const { id } = props;
   const [name, setName] = useState("");
+  const [plazasLibres, setPlazasLibres] = useState("10");
+  const [plazasTotales, setPlazasTotales] = useState("10");
+
   const editExperience = async (e) => {
     e.preventDefault();
     if (window.confirm("¿Está seguro de editar esta actividad?")) {
@@ -26,6 +29,8 @@ const EditForm = (props) => {
           price,
           categoria,
           availableDate,
+          plazasTotales,
+          plazasLibres,
         }),
       });
       const body = await res.json();
@@ -71,6 +76,33 @@ const EditForm = (props) => {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         ></input>
+                    <label htmlFor="plazasLibres">Plazas libres:</label>
+      <input
+      required
+        type="number"
+        id="plazasLibres"
+        min="0"
+        max="10"
+        step="1"
+        name="plazasLibres"
+        value={plazasLibres}
+        onChange={(e) => setPlazasLibres(e.target.value)}
+      ></input>
+                  <label htmlFor="plazasTotales">Plazas totales:</label>
+      <input
+      required
+        type="number"
+        id="plazasTotales"
+        min="0"
+        max="10"
+        step="1"
+        name="plazasTotales"
+        value={plazasTotales}
+        onChange={(e) => setPlazasTotales(e.target.value)}
+      ></input>
+
+
+
         <label htmlFor="localidad">Localidad:</label>{" "}
         <label htmlFor="localidad">Selecciona una ciudad:</label>
         <select

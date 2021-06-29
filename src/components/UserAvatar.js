@@ -9,7 +9,7 @@ const UserAvatar = (props) => {
       <div className="imagenes">
         <img
           src={`${process.env.PUBLIC_URL}/avatars/${photo}.jpg`}
-          alt="Foto de experiencia"
+          alt="Foto de usuario"
         />
       </div>
     );

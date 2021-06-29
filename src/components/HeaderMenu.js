@@ -32,7 +32,7 @@ const HeaderMenu = (props) => {
 
             <li>
               <Link to={`/experience/${userId}/booking`} style={{ fontWeight: "bold" }}>
-                Mis reservas
+                Reservas
               </Link>
             </li>
 

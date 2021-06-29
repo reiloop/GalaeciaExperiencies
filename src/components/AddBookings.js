@@ -1,6 +1,6 @@
 import useBookings from "../hooks/useBookings";
 import useAllBookings from "../hooks/useAllBookings";
-
+import { format } from "date-fns";
 import decodeTokenData from "../utils/decodedTokenData";
 import { useContext } from "react";
 import { TokenContext } from "../components/TokenContextProvider";
@@ -14,14 +14,18 @@ const AddBookings = (props) => {
   const data = bookings.data;
   const allData = allBookings.data;
   if (decodedToken.rol === "admin") {
+  
 
     if (allData !== undefined) {
       if (allData.length > 1) {
+      
         const arrayAllBookings = allData.map((item) => (
+          
         <>
-          <p key={item.id}>ID de la actividad: {item.id_actividad}</p>
-          <p>Id del usuario:{item.id_user}</p>
-          <p>Fecha de la reserva:{item.fecha_uso}</p>
+
+          <p>El usuario {item.nombre_usuario} ha reservado la actividad {item.nombre_actividad}</p>
+          <p>Fecha de la reserva: {item.fecha_uso.slice(0,9)}</p>
+
         </>
         ));
         return <ul className="listaReservas">{arrayAllBookings}</ul>;

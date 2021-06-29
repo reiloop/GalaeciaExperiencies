@@ -35,6 +35,9 @@ const ListExperiences = () => {
           categoria={item.categoria}
           precio={item.precio}
           fecha={item.fecha_disponible}
+          libres={item.plazas_disponibles}
+          totales={item.plazas_totales}
+
         />
       </>
     ));
