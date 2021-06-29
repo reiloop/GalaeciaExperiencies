@@ -8,14 +8,13 @@ async function editEntry(req, res, next) {
     const { id } = req.params;
 
     // Comprobamos que en el body vienen todos los datos necesarios
-    const { name, categoria, availableDate, place, description, price } =
-      req.body;
+    const { name, categoria, availableDate, place, description, price, plazasLibres, plazasTotales,} = req.body;
 
     // Actualizamos la entrada
     await connection.query(
       `
       UPDATE actividades
-      SET localidad=?, descripcion=?, lastUpdate=?, precio=?, nombre=?, categoria=?, fecha_disponible=? 
+      SET localidad=?, descripcion=?, lastUpdate=?, precio=?, nombre=?, categoria=?, fecha_disponible=?, plazas_disponibles=?, plazas_totales=?
       WHERE id=?
     `,
       [
@@ -26,7 +25,10 @@ async function editEntry(req, res, next) {
         name,
         categoria,
         availableDate,
+        plazasLibres,
+        plazasTotales,
         id,
+  
       ]
     );
 

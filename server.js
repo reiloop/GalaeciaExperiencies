@@ -41,7 +41,7 @@ const { deleteComment } = require("./controllers/experiences/deleteComment");
 const { editComment } = require("./controllers/experiences/editComment");
 const { getBookings } = require("./controllers/experiences/getBookings");
 const { getAllBookings } = require("./controllers/experiences/getAllBookings");
-
+const { updatePlazas } = require("./controllers/experiences/updatePlazas");
 //OBTENEMOS MIDDLEWARES PARA LA PREVIA DE LOS
 // DISTINTOS MÉTODOS Y FUNCIONALIDADES
 const { validAuth } = require("./middlewares/validAuth");
@@ -122,6 +122,7 @@ app.delete(
 app.post("/experience/:id/booking/", validAuth, bookingExperience);
 //LISTAR RESERVAS DE UNA EXPERIENCIA
 app.get("/experience/:id/booking", validAuth, getBookings);
+app.put("/experience/:id/booking", validAuth, updatePlazas);
 
 //LISTAR TODAS LAS RESERVAS PARA EL ADMINISTRADOR
 app.get("/bookings", validAuth, isAdmin, getAllBookings);
