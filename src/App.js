@@ -12,7 +12,7 @@ import AdminPage from "./pages/AdminPage";
 import ActivationPage from "./pages/ActivationPage";
 import SearchPage from "./pages/SearchPage";
 import UserProfilePage from "./pages/UserProfilePage";
-
+import BookingPage from "./pages/BookingPage";
 //import ActividadesPage from "./pages/ActividadesPage";
 // Needed for onTouchTap
 // Check this repo:
@@ -47,6 +47,9 @@ function App() {
             </Route>
             <Route exact path="/user/:userId">
               <UserProfilePage />
+            </Route>
+            <Route exact path="/experience/:userId/booking">
+              <BookingPage></BookingPage>
             </Route>
           </Switch>
         </TokenContextProvider>

@@ -31,7 +31,7 @@ const HeaderMenu = (props) => {
             </li>
 
             <li>
-              <Link to="/booking/:id" style={{ fontWeight: "bold" }}>
+              <Link to={`/experience/${userId}/booking`} style={{ fontWeight: "bold" }}>
                 Mis reservas
               </Link>
             </li>
@@ -58,7 +58,7 @@ const HeaderMenu = (props) => {
 
             <li>
               {" "}
-              <Link to="/booking/:id" style={{ fontWeight: "bold" }}>
+              <Link to={`/experience/${userId}/booking`} style={{ fontWeight: "bold" }}>
                 Mis reservas
               </Link>
             </li>
