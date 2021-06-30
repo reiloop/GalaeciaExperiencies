@@ -24,7 +24,7 @@ const AddBookings = (props) => {
         <>
 
           <p>El usuario {item.nombre_usuario} ha reservado la actividad {item.nombre_actividad}</p>
-          <p>Fecha de la reserva: {item.fecha_uso.slice(0,9)}</p>
+          <p>Fecha de la reserva: {item.fecha_uso.slice(0,10)}</p>
 
         </>
         ));
@@ -32,10 +32,10 @@ const AddBookings = (props) => {
       } else if (allData.length === 1) {
         return (
         <>
-        <p key={id}>ID de la actividad: {allData[0].id_actividad}</p>
-        <p>Id del usuario:{allData[0].id_user}</p>
 
-        <p>Fecha de la reserva:{allData[0].fecha_uso}</p>
+          <p>El usuario {allData[0].nombre_usuario} ha reservado la actividad {allData[0].nombre_actividad}</p>
+          <p>Fecha de la reserva: {allData[0].fecha_uso.slice(0,10)}</p>
+        
         </>
         )
       } else {
@@ -52,16 +52,18 @@ const AddBookings = (props) => {
       if (data.length > 1) {
         const arrayBookings = data.map((item) => (
         <>
-          <p key={item.id}>ID de la actividad: {item.id_actividad}</p>
-          <p>Fecha de la reserva:{item.fecha_uso}</p>
+          <p>Has reservado la actividad {item.nombre}</p>
+          <p>Fecha de la reserva: {item.fecha_uso.slice(0,10)}</p>
         </>
         ));
         return <ul className="listaReservas">{arrayBookings}</ul>;
       } else if (data.length === 1) {
         return (
         <>
-        <p key={id}>ID de la actividad: {data[0].id_actividad}</p>
-        <p>Fecha de la reserva:{data[0].fecha_uso}</p>
+
+          <p>Has reservado la actividad {data[0].nombre}</p>
+          <p>Fecha de la reserva: {data[0].fecha_uso.slice(0,10)}</p>
+
         </>
         )
       } else {
