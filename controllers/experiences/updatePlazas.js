@@ -10,7 +10,22 @@ async function updatePlazas(req, res, next) {
     // Comprobamos que en el body vienen todos los datos necesarios
     const {  plazasLibres } = req.body;
     const libres = plazasLibres - 1;
-    if (libres === 0){
+    if (plazasLibres < 1){
+
+        // Actualizamos la entrada
+        await connection.query(
+          `
+          UPDATE actividades
+          SET plazas_disponibles=?
+          WHERE id=?
+        `,
+          [
+            plazasLibres,
+            id,
+
+          ]
+        );
+
         res.send({
             status: "ok",
             message: `No quedan plazas libres`,
