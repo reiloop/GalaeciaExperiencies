@@ -70,6 +70,7 @@ const CreateForm = (props) => {
       ></input>
             <label htmlFor="plazasLibres">Plazas libres:</label>
       <input
+      required
         type="number"
         id="plazasLibres"
         min="0"
@@ -81,6 +82,7 @@ const CreateForm = (props) => {
       ></input>
                   <label htmlFor="plazasTotales">Plazas totales:</label>
       <input
+      required
         type="number"
         id="plazasTotales"
         min="0"
