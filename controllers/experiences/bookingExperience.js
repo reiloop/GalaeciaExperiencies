@@ -52,8 +52,9 @@ async function bookingExperience(req, res, next) {
     }
 
     //Actualizar base de datos con la reserva
-    const { fecha, precio } = req.body;
+    const { fecha, precio, plazasLibres } = req.body;
     let bookingID = `${uuid.v4()}`;
+
     await connection.query(
       `
         INSERT INTO reservas(localizador, fecha_creacion, precio, fecha_uso, id_user, id_actividad)
@@ -78,11 +79,26 @@ async function bookingExperience(req, res, next) {
       next(error);
     }
 
-    // Doy una respuesta
-    res.send({
-      status: "ok",
-      message: `Reservaste correctamente la entrada con id ${id} tu número de reserva es ${bookingID}`,
-    });
+    if (plazasLibres === 0) {
+      res.send({
+        status: "ok",
+        message: `No quedan plazas para la actividad con id ${id}`,
+      });
+    } else {
+      await connection.query(
+        `
+          INSERT INTO reservas(localizador, fecha_creacion, precio, fecha_uso, id_user, id_actividad)
+          VALUES(?,?,?,?,?,?)
+        `,
+        [bookingID, new Date(), precio, fecha, req.auth.id, id]
+      );
+
+      // Doy una respuesta
+      res.send({
+        status: "ok",
+        message: `Reservaste correctamente la entrada con id ${id} tu número de reserva es ${bookingID}`,
+      });
+    }
   } catch (error) {
     next(error);
   } finally {

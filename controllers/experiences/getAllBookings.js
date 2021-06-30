@@ -1,24 +1,22 @@
 const { getConnection } = require("../../db");
 
-async function getBookings(req, res, next) {
+async function getAllBookings(req, res, next) {
   let connection;
 
   try {
     connection = await getConnection();
 
     // Saco la id de los parámetros
-    const { id } = req.params;
 
     // Ejecuto la consulta
     const [result] = await connection.query(
       `
-      SELECT *
-      FROM reservas R
-      LEFT JOIN actividades A ON R.id_actividad = A.id
-      WHERE R.id_user=?
+      SELECT fecha_uso,  A.nombre AS "nombre_actividad", U.nombre AS "nombre_usuario"
+      FROM reservas
+      LEFT JOIN users U ON reservas.id_user = U.id
+      LEFT JOIN actividades A ON reservas.id_actividad = A.id
 
-    `,
-      [id]
+    `
     );
 
     if (result.length < 1) {
@@ -40,5 +38,5 @@ async function getBookings(req, res, next) {
 }
 
 module.exports = {
-  getBookings,
+  getAllBookings,
 };
