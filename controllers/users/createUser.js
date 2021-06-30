@@ -67,7 +67,7 @@ async function createUser(req, res, next) {
                 "${email}",
                 "${passwordDb}",
                 "${name}",
-                "foto de usuario de ${name}",
+                "avatar",
                 "${bio}",
                 "${registrationCode}",
                 UTC_TIMESTAMP,

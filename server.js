@@ -49,6 +49,9 @@ const { canEdit } = require("./middlewares/canEdit");
 const {
   bookingExperience,
 } = require("./controllers/experiences/bookingExperience");
+const {
+  activateBooking,
+} = require("./controllers/experiences/activateBooking");
 
 //APLICAMOS MIDDLEWARES GENERALES DE USO
 app.use(morgan("dev"));
@@ -60,8 +63,6 @@ app.use(fileUpload());
 app.post("/users", createUser);
 // //SUBIR FOTO DE USUARIO
 app.put("/users/:id", validAuth, UploadUserPhoto);
-
-app.get("/users/:id", validAuth, UploadUserPhoto);
 
 // //ACTIVACIÓN DE USUARIO
 app.get("/activate/:registrationCode", activateUser);
@@ -118,6 +119,10 @@ app.delete(
 );
 //RESERVAR UNA EXPERIENCIA
 app.post("/experience/:id/booking/", validAuth, bookingExperience);
+
+//ACTIVAR LA RESERVA
+app.get("/activate/:bookinID", activateBooking);
+
 //LISTAR RESERVAS DE UNA EXPERIENCIA
 app.get("/experience/:id/booking", validAuth, getBookings);
 

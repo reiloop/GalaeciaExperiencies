@@ -6,10 +6,10 @@ async function editUser(req, res, next) {
   try {
     connection = await getConnection();
 
-    const { nombre, email } = req.body;
+    const { nombre, bio } = req.body;
 
-    if (!email) {
-      throw new Error("Obligatorio introducir el mail");
+    if (!nombre) {
+      throw new Error("Obligatorio introducir al menos el nombre");
     }
 
     if (req.files) {
@@ -31,11 +31,11 @@ async function editUser(req, res, next) {
           `
                 UPDATE users
                 SET nombre=?,
-                email=?,
                 foto=?
+                biografia=?
                 WHERE id=?
                 `,
-          [nombre, email, nameFile, req.auth.id]
+          [nombre, nameFile, bio, req.auth.id]
         );
       } catch (error) {
         throw new Error("Error al actualizar tu usuario");
@@ -46,10 +46,10 @@ async function editUser(req, res, next) {
           `
                 UPDATE users
                 SET nombre=?,
-                email=?
+                biografia=?
                 WHERE id=?
                 `,
-          [nombre, email, req.auth.id]
+          [nombre, bio, req.auth.id]
         );
       } catch (error) {
         throw new Error("Error al actualizar tu usuario");
