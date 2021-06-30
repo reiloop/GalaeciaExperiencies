@@ -15,6 +15,7 @@ const UserProfilePage = (props) => {
   const decodedToken = decodeTokenData(token);
 
   console.log(userId);
+
   if (!userId) {
     userId = decodedToken.id;
   }
@@ -65,6 +66,15 @@ const UserProfilePage = (props) => {
         </div>
       );
     }
+  } else {
+    return (
+    <div>
+    <HeaderMenu></HeaderMenu>
+      <p>No estás logeado, <a href="/login">inicia sesión</a> o <a href="/register">regístrate</a></p>
+  </div>
+    )
+
+    
   }
 };
 

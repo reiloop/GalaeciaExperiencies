@@ -42,7 +42,9 @@ const HeaderMenu = (props) => {
               </Link>
             </li>
           </ul>
-          <button onClick={() => setToken("")}>Sign out</button>
+          <button onClick={() => 
+            setToken("")
+            }>Sign out</button>
         </div>
       );
     } else if (decodedToken.rol === "user") {
