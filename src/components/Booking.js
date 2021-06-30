@@ -16,6 +16,7 @@ const Booking = (props) => {
       body: JSON.stringify({
         fecha,
         precio,
+        plazasLibres,
       }),
     });
     const restarPlazaLibre = async (e) => {
