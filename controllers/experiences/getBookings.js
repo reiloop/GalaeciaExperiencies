@@ -13,8 +13,10 @@ async function getBookings(req, res, next) {
     const [result] = await connection.query(
       `
       SELECT *
-      FROM reservas
-      WHERE id_user=?
+      FROM reservas R
+      LEFT JOIN actividades A ON R.id_actividad = A.id
+      WHERE R.id_user=?
+
     `,
       [id]
     );
