@@ -1,6 +1,5 @@
 const { getConnection } = require("../../db");
 const uuid = require("uuid");
-const { sendMail } = require("../../helpers");
 
 async function bookingExperience(req, res, next) {
   let connection;
@@ -9,7 +8,7 @@ async function bookingExperience(req, res, next) {
     connection = await getConnection();
 
     // Saco la id de la entrada del diario de req.params
-    const { id, email } = req.params;
+    const { id } = req.params;
 
     // Compruebo que la entrada que queremos reservar existe
     const [exists] = await connection.query(
@@ -54,31 +53,6 @@ async function bookingExperience(req, res, next) {
     //Actualizar base de datos con la reserva
     const { fecha, precio, plazasLibres } = req.body;
     let bookingID = `${uuid.v4()}`;
-
-    await connection.query(
-      `
-        INSERT INTO reservas(localizador, fecha_creacion, precio, fecha_uso, id_user, id_actividad)
-        VALUES(?,?,?,?,?,?)
-      `,
-      [bookingID, new Date(), precio, fecha, req.auth.id, id]
-    );
-    try {
-      const validationLink = `${process.env.DOMINIO}/activate/${bookingID}`;
-
-      await sendMail({
-        to: email,
-        subject: "Gracias por reservar tu experiencia",
-        message: `
-              Muchas gracias por reservas tu experiencia con nosotros.
-              Pulsa en el enlace para activarla.
-  
-              ${validationLink}
-            `,
-      });
-    } catch (error) {
-      next(error);
-    }
-
     if (plazasLibres === 0) {
       res.send({
         status: "ok",
