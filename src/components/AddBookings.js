@@ -12,6 +12,7 @@ const AddBookings = (props) => {
   const [allBookings] = useAllBookings();
   const data = bookings.data;
   const allData = allBookings.data;
+  console.log(allData)
   if (decodedToken.rol === "admin") {
     if (allData !== undefined) {
       if (allData.length > 1) {
