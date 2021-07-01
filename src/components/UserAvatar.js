@@ -4,19 +4,21 @@
 const UserAvatar = (props) => {
   const { photo } = props;
 
-  if (photo) {
+  if (photo === "avatar") {
+    console.log(photo);
+
     return (
-      <div className="imagenes">
-        <img
-          src={`${process.env.PUBLIC_URL}/avatars/${photo}.jpg`}
-          alt="Foto de usuario"
-        />
+      <div className="userImage">
+        <img height="150" width="150" src={"../images/avatar.png"} alt="icon" />
       </div>
     );
   } else {
     return (
-      <div className="icon">
-        <img height="100" width="100" src={`../images/icon-5.png`} alt="icon" />
+      <div className="userImage">
+        <img
+          src={`${process.env.PUBLIC_URL}/avatars/${photo}.jpg`}
+          alt="Foto de usuario"
+        />
       </div>
     );
   }

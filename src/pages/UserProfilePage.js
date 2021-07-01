@@ -6,6 +6,7 @@ import decodeTokenData from "../utils/decodedTokenData";
 import HeaderMenu from "../components/HeaderMenu";
 import UploadUserPhoto from "../components/UploadUserPhoto";
 import UserAvatar from "../components/UserAvatar";
+import EditUser from "../components/EditUser";
 
 const UserProfilePage = (props) => {
   const [, setError] = useState(null);
@@ -46,6 +47,7 @@ const UserProfilePage = (props) => {
       return (
         <div>
           <HeaderMenu></HeaderMenu>
+          <UserAvatar photo={data.foto}></UserAvatar>
           <UserProfileBody
             key={decodedToken.id}
             userId={decodedToken.id}
@@ -54,8 +56,8 @@ const UserProfilePage = (props) => {
             bio={data.biografia}
             rol={decodedToken.rol}
           ></UserProfileBody>
+          <EditUser id={userId}></EditUser>
           <UploadUserPhoto id={userId}></UploadUserPhoto>
-          <UserAvatar photo={data.foto}></UserAvatar>
         </div>
       );
     } else {
@@ -68,13 +70,14 @@ const UserProfilePage = (props) => {
     }
   } else {
     return (
-    <div>
-    <HeaderMenu></HeaderMenu>
-      <p>No estás logeado, <a href="/login">inicia sesión</a> o <a href="/register">regístrate</a></p>
-  </div>
-    )
-
-    
+      <div>
+        <HeaderMenu></HeaderMenu>
+        <p>
+          No estás logeado, <a href="/login">inicia sesión</a> o{" "}
+          <a href="/register">regístrate</a>
+        </p>
+      </div>
+    );
   }
 };
 

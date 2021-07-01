@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { TokenContext } from "./TokenContextProvider";
 
 const Booking = (props) => {
-  const { id, precio, fecha, plazasLibres } = props;
+  const { id, precio, fecha, plazasLibres, email } = props;
   const [token] = useContext(TokenContext);
 
   const bookExperience = async (e) => {
@@ -17,32 +17,33 @@ const Booking = (props) => {
         fecha,
         precio,
         plazasLibres,
+        email,
       }),
     });
     const restarPlazaLibre = async (e) => {
-    const res = await fetch(`http://localhost:4000/experience/${id}/booking`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${token}`,
-      },
-      body: JSON.stringify({
-        plazasLibres,
-      }),
-    });
+      const res = await fetch(
+        `http://localhost:4000/experience/${id}/booking`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${token}`,
+          },
+          body: JSON.stringify({
+            plazasLibres,
+          }),
+        }
+      );
+      const body = await res.json();
+      console.log(body);
+    };
     const body = await res.json();
     console.log(body);
-  };
-  const body = await res.json();
-  console.log(body);
-  if (body.error){
-    return <p>
-      {body.error}
-    </p>
-  }else{
-
-    restarPlazaLibre()
-  }
+    if (body.error) {
+      return <p>{body.error}</p>;
+    } else {
+      restarPlazaLibre();
+    }
   };
   return (
     <div>

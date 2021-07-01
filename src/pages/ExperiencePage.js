@@ -18,6 +18,7 @@ const ExperiencesPage = () => {
   const { postId } = useParams();
   const [url] = useState(`http://localhost:4000/experience/${postId}`);
   const [, setError] = useState(null);
+
   const [isLoaded, setIsLoaded] = useState(false);
   const [actividad, setActividad] = useState([]); // ==> [state, setState]
   useEffect(() => {
@@ -46,7 +47,7 @@ const ExperiencesPage = () => {
       .replace("T", " ");
     if (!decodedToken) {
       return (
-        <div className="experience">
+        <div className="experiencePage">
           <HeaderMenu></HeaderMenu>
 
           <Experience
@@ -68,15 +69,19 @@ const ExperiencesPage = () => {
           </ul>
           <Comments id={data.id}></Comments>
           <AddComment id={data.id}></AddComment>
-          <Booking id={data.id} precio={data.precio} fecha={date} plazasLibres={data.plazas_disponibles}></Booking>
+          <Booking
+            id={data.id}
+            precio={data.precio}
+            email={data.email}
+            fecha={date}
+            plazasLibres={data.plazas_disponibles}
+          ></Booking>
         </div>
       );
     } else if (decodedToken.rol === "admin") {
       return (
-        <div className="experience">
+        <div className="experiencePage">
           <HeaderMenu></HeaderMenu>
-          <EditForm id={data.id}></EditForm>
-          <UploadEntryPhoto id={postId}></UploadEntryPhoto>
 
           <Experience
             key={data.id}
@@ -89,19 +94,20 @@ const ExperiencesPage = () => {
             precio={data.precio}
             libres={data.plazas_disponibles}
             totales={data.plazas_totales}
-
           />
           <ul className="images">
             {photos.map((e) => (
               <Imagenes key={e.imagen} photo={e.imagen}></Imagenes>
             ))}{" "}
           </ul>
+          <UploadEntryPhoto id={postId}></UploadEntryPhoto>
+          <EditForm id={data.id}></EditForm>
           <EraseForm id={data.id}></EraseForm>
         </div>
       );
     } else if (decodedToken.rol === "user") {
       return (
-        <div className="experience">
+        <div className="experiencePage">
           <HeaderMenu></HeaderMenu>
 
           <Experience
@@ -115,7 +121,6 @@ const ExperiencesPage = () => {
             precio={data.precio}
             libres={data.plazas_disponibles}
             totales={data.plazas_totales}
-
           />
           <ul className="images">
             {photos.map((e) => (
@@ -124,7 +129,12 @@ const ExperiencesPage = () => {
           </ul>
           <Comments id={data.id}></Comments>
           <AddComment id={data.id}></AddComment>
-          <Booking id={data.id} precio={data.precio} fecha={date} plazasLibres={data.plazas_disponibles}></Booking>
+          <Booking
+            id={data.id}
+            precio={data.precio}
+            fecha={date}
+            plazasLibres={data.plazas_disponibles}
+          ></Booking>
         </div>
       );
     }

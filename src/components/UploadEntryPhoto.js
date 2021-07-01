@@ -37,7 +37,7 @@ const UploadEntryPhoto = (props) => {
     }
   };
   return (
-    <div>
+    <div className="entryfoto">
       <p>Añade aquí las fotos de esta experiencia</p>
       <form onSubmit={fileUpload}>
         <input

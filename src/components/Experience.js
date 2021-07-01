@@ -24,7 +24,7 @@ const Experience = (props) => {
   };
   console.log("Foto", photo);
   return (
-    <div onClick={goToPostPage}>
+    <div className="experience" onClick={goToPostPage}>
       <h1>{nombre}</h1>
       <p>Descripción: {descripcion}</p>
       <p>Provincia: {localidad}</p>
@@ -33,7 +33,9 @@ const Experience = (props) => {
         Fecha de la actividad: {dia}/{mes}/{año}
       </p>
       <p>Precio: {precio}€</p>
-      <p>Plazas libres: {libres}/{totales}</p>
+      <p>
+        Plazas libres: {libres}/{totales}
+      </p>
       <Imagenes photo={photo}></Imagenes>
       <p>Experiencia: {id}</p>
     </div>
