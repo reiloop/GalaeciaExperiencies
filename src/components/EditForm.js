@@ -43,10 +43,10 @@ const EditForm = (props) => {
   };
 
   return (
-    <div className="editExperience">
+    <div className="editForm">
       <h2>Edita esta experiencia</h2>
       <form onSubmit={editExperience}>
-        <label htmlFor="nombre">Nombre</label>
+        <label htmlFor="nombre">Nombre </label>
         <input
           type="text"
           id="nombre"
@@ -64,8 +64,8 @@ const EditForm = (props) => {
           onChange={(e) => setDescripcion(e.target.value)}
           required
         ></textarea>
-        <label htmlFor="password">Precio</label>
-        <label htmlFor="price">Precio:</label>
+        <label htmlFor="password">Precio </label>
+        <label htmlFor="price">Precio </label>
         <input
           type="number"
           id="price"
@@ -76,35 +76,32 @@ const EditForm = (props) => {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         ></input>
-                    <label htmlFor="plazasLibres">Plazas libres:</label>
-      <input
-      required
-        type="number"
-        id="plazasLibres"
-        min="0"
-        max="10"
-        step="1"
-        name="plazasLibres"
-        value={plazasLibres}
-        onChange={(e) => setPlazasLibres(e.target.value)}
-      ></input>
-                  <label htmlFor="plazasTotales">Plazas totales:</label>
-      <input
-      required
-        type="number"
-        id="plazasTotales"
-        min="0"
-        max="10"
-        step="1"
-        name="plazasTotales"
-        value={plazasTotales}
-        onChange={(e) => setPlazasTotales(e.target.value)}
-      ></input>
-
-
-
-        <label htmlFor="localidad">Localidad:</label>{" "}
-        <label htmlFor="localidad">Selecciona una ciudad:</label>
+        <label htmlFor="plazasLibres">Plazas libres </label>
+        <input
+          required
+          type="number"
+          id="plazasLibres"
+          min="0"
+          max="10"
+          step="1"
+          name="plazasLibres"
+          value={plazasLibres}
+          onChange={(e) => setPlazasLibres(e.target.value)}
+        ></input>
+        <label htmlFor="plazasTotales">Plazas totales </label>
+        <input
+          required
+          type="number"
+          id="plazasTotales"
+          min="0"
+          max="10"
+          step="1"
+          name="plazasTotales"
+          value={plazasTotales}
+          onChange={(e) => setPlazasTotales(e.target.value)}
+        ></input>
+        <label htmlFor="localidad">Localidad </label>{" "}
+        <label htmlFor="localidad">Selecciona una ciudad </label>
         <select
           id="localidad"
           name="ciudad"
@@ -116,7 +113,7 @@ const EditForm = (props) => {
           <option value="Ourense">Ourense</option>
           <option value="Pontevedra">Pontevedra</option>
         </select>
-        <label htmlFor="categoria">Categoría:</label>
+        <label htmlFor="categoria">Categoría </label>
         <select
           id="categoria"
           name="categoria"
@@ -128,7 +125,7 @@ const EditForm = (props) => {
           <option value="Deportes">Deportes</option>
           <option value="Al aire libre">Al aire libre</option>
         </select>
-        <label htmlFor="fecha">Fecha de la actividad:</label>
+        <label htmlFor="fecha">Fecha de la actividad </label>
         <input
           id="fecha"
           className="date-input"

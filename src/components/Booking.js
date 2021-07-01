@@ -48,7 +48,7 @@ const Booking = (props) => {
     }
   };
   return (
-    <div>
+    <div className="booking">
       <form onSubmit={bookExperience}>
         <input type="submit" value="RESERVAR" />
       </form>

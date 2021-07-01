@@ -4,29 +4,51 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
   font-family: Roboto, sans-serif;
 }
+
 h1,
 h2 {
   color: white;
   font-size: 1.5rem;
 }
+p {
+  text-align: center;
+}
+
+footer {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+}
+footer p {
+  margin-top: 1rem;
+  font-size: 13px;
+  color: rgb(187, 176, 176);
+}
+.link {
+  font-size: 18px;
+  text-decoration: none;
+}
 
 .HeaderMenu {
-  flex-direction: column;
   display: flex;
+
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .HeaderMenu > img {
+  margin-top: 15px;
   width: 25vh;
   margin-bottom: 0;
 }
 .listaExperiencias {
   display: flex;
+  padding: 3rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -38,8 +60,6 @@ h2 {
   color: rgb(40, 46, 46);
 }
 .listaExperiencias > div {
-  margin-right: 1rem;
-  margin-left: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,6 +69,8 @@ h2 {
   background-color: rgba(46, 134, 248, 0.527);
 }
 .experience {
+  margin: 1rem;
+  border-radius: 20px;
   background-color: #2976dbf6;
 }
 .HeaderMenu {
@@ -59,27 +81,30 @@ h2 {
   position: absolute;
   right: 18px;
   top: 50px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: white;
   background-color: #2976dbf6;
 }
 .header-ul {
   background: none;
-  margin: 0;
-  padding: 0;
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 .header-ul > li a {
   text-decoration: none;
   color: white;
 }
 .header-ul > li {
-  font-size: 2rem;
-  min-width: 100%;
-  display: inline;
+  font-size: 1rem;
+  margin: 10px;
+  display: inline-block;
   list-style: none;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  top: 0px;
   height: 50px;
 }
 
@@ -89,11 +114,11 @@ h2 {
 }
 .imagenes {
   display: inline;
-  margin: 1rem;
 }
 .imagenes > img {
   border-radius: 25px;
-  height: 500px;
+  height: 400px;
+  margin: 0.5rem;
 }
 .userImage {
   display: flex;
@@ -144,79 +169,216 @@ h2 {
   justify-content: center;
 }
 
-.editExperience,
-.entryfoto {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(236, 100, 118, 0.829);
-}
 .reservas {
   margin: 1rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  background-color: rgb(148, 154, 163);
+  color: white;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 1rem;
 }
-/*----------------------------------------------------------------*/
-.cssAdminPage {
-  margin: 0;
-  padding: 0;
-  background-color: rgba(106, 209, 212, 0.383);
-  min-height: 75vh;
+.reservas ul {
+  margin: 1rem;
 }
 
-.cssAdminPage > h1, h2{
-  color: rgb(0, 0, 0);
+.divForm {
+  width: 100%;
+}
+form {
+  width: 300px;
+  height: 400px;
+  border-radius: 10px;
+  margin: auto;
+
+  background-color: #ccc;
   display: flex;
-  align-content: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-.divCreate {
-  display: flex;
-  align-content: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color: rgb(236, 166, 54);
-  height: 40vh;
-  width: 30vh;
-
-}
-
-.formularioCreate {
-  background-color: rgb(236, 166, 54);
-  height: 40vh;
-  width: 30vh;
-  
-}
-
-.reservas{
-  display: grid;
-  align-content: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color: cadetblue;
-  max-width: 50vh;
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+form label {
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  margin: 10px;
+}
+form input,
+form textarea {
+  border: none;
+  border-radius: 5px;
+}
+form input[type="submit"] {
+  padding: 5px 15px;
+  margin: 10px;
+  background: rgb(119, 187, 233);
+  border: 1px none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.search {
+  background: #ccc;
+}
+.search > form {
+  padding: 1rem;
+  display: flex;
+  height: 100%;
+  justify-content: flex-end;
+}
+.search label,
+.search input {
+  justify-content: center;
+  margin: 1rem;
+  width: 75%;
+}
+.createForm > form,
+.editForm > form,
+.editUser > form,
+.upUserFoto > form {
+  background-color: #ccc;
+  height: 100%;
+}
+.addComments > form,
+.booking > form {
+  background-color: #ccc;
+  margin: auto;
+  height: 100%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.booking > form {
+  background-color: transparent;
+}
+form.eraseExp {
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 50%;
+  background-color: rgba(241, 56, 102, 0.787);
+}
+.upUserFoto > form {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+form.eraseExp > label {
+  color: rgba(27, 20, 20, 0.924);
+  text-shadow: 1px 1px 2px rgba(255, 242, 242, 0.774), 0 0 1em rgb(23, 23, 24),
+    0 0 0.2em rgb(240, 19, 19);
+  text-align: center;
+}
+div.userBody {
+  border-radius: 20px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.entryfoto p {
+  color: rgb(34, 228, 131);
+  text-align: center;
+  text-shadow: 1px 1px 2px rgb(2, 1, 1), 0 0 2em #62aec5,
+    0 0 0.2em rgb(18, 18, 19);
+  margin-top: 1rem;
+}
+.editForm h2 {
+  color: rgb(214, 230, 238);
+  text-align: center;
+  text-shadow: 1px 1px 2px rgb(2, 1, 1), 0 0 2em #62aec5,
+    0 0 0.2em rgb(18, 18, 19);
+  margin-top: 1rem;
+}
+.entryfoto > form {
+  padding: 1rem;
+  background-color: rgb(112, 219, 166);
+  height: 30%;
+  font-weight: bold;
+}
+.entryfoto input {
+  text-shadow: 1px 1px 2px rgb(255, 255, 255), 0 0 2em #62aec5,
+    0 0 1em rgb(18, 18, 19);
 }
 
-.listaReservas{
-  
-  background-color: rgb(155, 153, 26);
+div.experience {
+  max-width: 900px;
+  margin: auto;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
-
-/*----------------------------------------------------------------*/
-
-@media (max-width: 800px) {
-  a {
-    font-size: 1rem;
-  }
-  p {
-    font-size: 0.75rem;
-  }
+div.experience h1 {
+  color: rgb(243, 255, 247);
+  text-align: center;
+  text-decoration: underline rgba(43, 126, 235, 0.863);
+  text-shadow: 1px 1px 2px rgb(2, 1, 1), 0 0 2em #bdc6c8,
+    0 0 0.2em rgb(18, 18, 19);
+  margin-bottom: 1.3rem;
+  font-size: 1.7rem;
+}
+.descripcion {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(72, 162, 236, 0.89);
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px 2px rgb(146, 158, 157), 0 0 0.2em #1d1010,
+    0 0 0.2em rgb(0, 0, 0);
+}
+.precio {
+  color: rgb(74, 228, 74);
+  text-shadow: 1px 1px 2px rgb(45, 58, 57), 0 0 1em #bbbbbb,
+    0 0 0.2em rgb(9, 12, 11);
+}
+.experience ul {
+  list-style: none;
+}
+.experience li {
+  margin: 0.4rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+.comentarios {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: aliceblue;
+  background-color: rgba(86, 161, 246, 0.89);
+  max-width: 400px;
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 1rem;
+}
+.comentarios h2 {
+  text-decoration-line: underline;
+}
+.comentarios p {
+  margin: 1rem;
+  font-style: italic;
+  font-weight: 600;
+}
+.activation {
+  align-items: center;
+  justify-content: center;
+}
+.activa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #ccc;
+}
+.activation > .link {
+  display: flex;
+  justify-content: center;
 }

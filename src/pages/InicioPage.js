@@ -6,6 +6,9 @@ const InicioPage = (props) => {
     <div>
       <HeaderMenu></HeaderMenu>
       <ListExperiences></ListExperiences>
+      <footer>
+        <p>(C) ESTÉBAN ESTÉVEZ & JOSÉ M. REIMÓNDEZ (2021)</p>
+      </footer>
     </div>
   );
 };

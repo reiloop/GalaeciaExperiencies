@@ -42,9 +42,9 @@ const CreateForm = (props) => {
   };
 
   return (
-    <div className="divCreate">
-      <form  className="formularioCreate" onSubmit={createExperience}>
-        <label htmlFor="nombre">Nombre:</label>
+    <div className="createForm">
+      <form className="formularioCreate" onSubmit={createExperience}>
+        <label htmlFor="nombre">Nombre </label>
         <input
           type="text"
           id="nombre"
@@ -53,7 +53,7 @@ const CreateForm = (props) => {
           onChange={(e) => setName(e.target.value)}
           required
         ></input>
-        <label htmlFor="email">Descripcion:</label>
+        <label htmlFor="email">Descripcion </label>
         <textarea
           type="text"
           id="descripcion"
@@ -62,7 +62,7 @@ const CreateForm = (props) => {
           onChange={(e) => setDescripcion(e.target.value)}
           required
         ></textarea>
-        <label htmlFor="price">Precio:</label>
+        <label htmlFor="price">Precio </label>
         <input
           type="number"
           id="price"
@@ -73,7 +73,7 @@ const CreateForm = (props) => {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         ></input>
-        <label htmlFor="plazasLibres">Plazas libres:</label>
+        <label htmlFor="plazasLibres">Plazas libres </label>
         <input
           required
           type="number"
@@ -85,7 +85,7 @@ const CreateForm = (props) => {
           value={plazasLibres}
           onChange={(e) => setPlazasLibres(e.target.value)}
         ></input>
-        <label htmlFor="plazasTotales">Plazas totales:</label>
+        <label htmlFor="plazasTotales">Plazas totales </label>
         <input
           required
           type="number"
@@ -97,8 +97,8 @@ const CreateForm = (props) => {
           value={plazasTotales}
           onChange={(e) => setPlazasTotales(e.target.value)}
         ></input>
-        <label htmlFor="localidad">Localidad:</label>{" "}
-        <label htmlFor="localidad">Selecciona una ciudad:</label>
+        <label htmlFor="localidad">Localidad </label>{" "}
+        <label htmlFor="localidad">Selecciona una ciudad </label>
         <select
           id="localidad"
           name="ciudad"

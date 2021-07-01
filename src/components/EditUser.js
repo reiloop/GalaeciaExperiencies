@@ -34,7 +34,7 @@ const EditUser = (props) => {
     <div className="editUser">
       <h2>Edita tu perfil</h2>
       <form onSubmit={editUser}>
-        <label htmlFor="nombre">Nombre</label>
+        <label htmlFor="nombre">Nombre </label>
         <input
           type="text"
           id="nombre"
@@ -42,7 +42,7 @@ const EditUser = (props) => {
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
         ></input>
-        <label htmlFor="bio">Biografía: </label>
+        <label htmlFor="bio">Biografía </label>
         <textarea
           type="textarea"
           id="bio"

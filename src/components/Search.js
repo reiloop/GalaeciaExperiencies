@@ -48,7 +48,7 @@ const Search = (props) => {
   };
   if (result.length === 0) {
     return (
-      <div>
+      <div className="search">
         <form onSubmit={results}>
           <label htmlFor="busca">¿Que buscas?</label>
           <input
@@ -59,7 +59,7 @@ const Search = (props) => {
             value={searched}
             onChange={(e) => setSearched(e.target.value)}
           />
-          <label htmlFor="fechaIni">Fechas entre </label>
+          <label htmlFor="fechaIni">Fecha Inicial </label>
           <input
             id="fechaIni"
             className="date-input"
@@ -67,7 +67,7 @@ const Search = (props) => {
             value={fechaInicio}
             onChange={(e) => setFechaInicio(e.target.value)}
           />
-          <label htmlFor="fechaFin"> y </label>
+          <label htmlFor="fechaFin"> Fecha Final </label>
           <input
             id="fechaFin"
             className="date-input"
@@ -75,7 +75,7 @@ const Search = (props) => {
             value={fechaFin}
             onChange={(e) => setFechaFin(e.target.value)}
           />
-          <label htmlFor="precioIni">Precio entre </label>
+          <label htmlFor="precioIni">Precio Mín. </label>
           <input
             id="precioIni"
             className="preciosForm"
@@ -86,7 +86,7 @@ const Search = (props) => {
             value={priceIni}
             onChange={(e) => setPriceIni(e.target.value)}
           />
-          <label htmlFor="precioFin"> y </label>
+          <label htmlFor="precioFin"> Precio Máx. </label>
           <input
             id="precioFin"
             className="preciosForm"
@@ -97,7 +97,7 @@ const Search = (props) => {
             value={priceFin}
             onChange={(e) => setPriceFin(e.target.value)}
           />
-          <label htmlFor="ciudad">Selecciona una ciudad:</label>
+          <label htmlFor="ciudad">Lugar</label>
           <select
             id="ciudad"
             name="ciudad"
@@ -116,7 +116,7 @@ const Search = (props) => {
     );
   } else {
     return (
-      <div>
+      <div className="search">
         <form onSubmit={results}>
           <label htmlFor="busca">¿Que buscas?</label>
           <input

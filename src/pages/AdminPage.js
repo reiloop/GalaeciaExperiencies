@@ -2,7 +2,7 @@ import CreateForm from "../components/CreateForm";
 
 import { useContext } from "react";
 import { TokenContext } from "../components/TokenContextProvider";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import decodeTokenData from "../utils/decodedTokenData";
 import HeaderMenu from "../components/HeaderMenu";
 
@@ -12,10 +12,18 @@ const AdminPage = (props) => {
     const decodedToken = decodeTokenData(token);
     if (decodedToken.rol === "admin") {
       return (
-        <div className="cssAdminPage">
+        <div>
           <HeaderMenu></HeaderMenu>
-          <h2 style={{ fontWeight: "600" }}>Crear una experiencia</h2>
+          <h2 className="cssAdminPage" style={{ fontWeight: "600" }}>
+            Crear una experiencia
+          </h2>
           <CreateForm></CreateForm>
+          <footer>
+            <Link className="link" to="/" style={{ fontWeight: "300" }}>
+              Volver a página de inicio
+            </Link>
+            <p>(C) ESTÉBAN ESTÉVEZ & JOSÉ M. REIMÓNDEZ (2021)</p>
+          </footer>
         </div>
       );
     }

@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { TokenContext } from "../components/TokenContextProvider";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import decodeTokenData from "../utils/decodedTokenData";
 import HeaderMenu from "../components/HeaderMenu";
 import { useParams } from "react-router-dom";
 import AddBookings from "../components/AddBookings";
-
 
 const BookingPage = (props) => {
   const { userId } = useParams();
@@ -17,9 +16,13 @@ const BookingPage = (props) => {
       return (
         <div>
           <HeaderMenu></HeaderMenu>
-          <AddBookings 
-            key={userId}
-            id={userId} ></AddBookings>
+          <AddBookings key={userId} id={userId}></AddBookings>
+          <footer>
+            <Link className="link" to="/" style={{ fontWeight: "300" }}>
+              Volver a página de inicio
+            </Link>
+            <p>(C) ESTÉBAN ESTÉVEZ & JOSÉ M. REIMÓNDEZ (2021)</p>
+          </footer>
         </div>
       );
     }

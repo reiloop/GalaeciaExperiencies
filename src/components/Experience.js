@@ -26,18 +26,30 @@ const Experience = (props) => {
   return (
     <div className="experience" onClick={goToPostPage}>
       <h1>{nombre}</h1>
-      <p>Descripción: {descripcion}</p>
-      <p>Provincia: {localidad}</p>
-      <p>Categoria: {categoria}</p>
-      <p>
-        Fecha de la actividad: {dia}/{mes}/{año}
-      </p>
-      <p>Precio: {precio}€</p>
-      <p>
-        Plazas libres: {libres}/{totales}
-      </p>
+
       <Imagenes photo={photo} categoria={categoria}></Imagenes>
-      <p>Experiencia: {id}</p>
+      <p className="precio">{precio}€</p>
+      <ul>
+        <li>
+          <p> {localidad} </p>
+        </li>
+        <li>
+          <p>
+            {dia}/{mes}/{año} 📆
+          </p>
+        </li>
+        <li>
+          <p>Categoria: {categoria}</p>
+        </li>
+
+        <li>
+          <p>
+            Plazas disponibles: {libres}/{totales}
+          </p>
+        </li>
+      </ul>
+
+      <p className="descripcion">{descripcion}</p>
     </div>
   );
 };

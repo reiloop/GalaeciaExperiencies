@@ -25,26 +25,28 @@ const LoginForm = (props) => {
     }
   };
   return (
-    <form id="login" onSubmit={login}>
-      <label htmlFor="loginEmail">Email</label>
-      <input
-        type="email"
-        id="loginEmail"
-        name="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <label htmlFor="loginPassword">Password</label>
-      <input
-        type="password"
-        id="loginPassword"
-        name="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <input type="submit" value="Enviar" />
-      {error && <p style={{ color: "red" }}>{error.error}</p>}
-    </form>
+    <div className="divForm">
+      <form id="login" onSubmit={login}>
+        <label htmlFor="loginEmail">Email</label>
+        <input
+          type="email"
+          id="loginEmail"
+          name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="loginPassword">Password</label>
+        <input
+          type="password"
+          id="loginPassword"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input type="submit" value="Enviar" />
+        {error && <p style={{ color: "red" }}>{error.error}</p>}
+      </form>
+    </div>
   );
 };
 

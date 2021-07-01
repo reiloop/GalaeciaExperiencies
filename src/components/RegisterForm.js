@@ -30,7 +30,7 @@ const RegisterForm = (props) => {
   };
 
   return (
-    <div>
+    <div className="divForm">
       <form onSubmit={registerUser}>
         <label htmlFor="name">Nombre</label>
         <input
@@ -68,7 +68,7 @@ const RegisterForm = (props) => {
 
       {uploadedFile && (
         <>
-          <p>
+          <p style={{ color: "green" }}>
             Se ha creado correctamente tu cuenta de usuario, revisa tu correo
             para confirmar tu cuenta.
           </p>

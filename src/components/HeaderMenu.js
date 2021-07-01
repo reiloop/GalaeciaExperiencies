@@ -31,7 +31,10 @@ const HeaderMenu = (props) => {
             </li>
 
             <li>
-              <Link to={`/experience/${userId}/booking`} style={{ fontWeight: "bold" }}>
+              <Link
+                to={`/experience/${userId}/booking`}
+                style={{ fontWeight: "bold" }}
+              >
                 Reservas
               </Link>
             </li>
@@ -42,9 +45,7 @@ const HeaderMenu = (props) => {
               </Link>
             </li>
           </ul>
-          <button onClick={() => 
-            setToken("")
-            }>Sign out</button>
+          <button onClick={() => setToken("")}>Sign out</button>
         </div>
       );
     } else if (decodedToken.rol === "user") {
@@ -60,7 +61,10 @@ const HeaderMenu = (props) => {
 
             <li>
               {" "}
-              <Link to={`/experience/${userId}/booking`} style={{ fontWeight: "bold" }}>
+              <Link
+                to={`/experience/${userId}/booking`}
+                style={{ fontWeight: "bold" }}
+              >
                 Mis reservas
               </Link>
             </li>

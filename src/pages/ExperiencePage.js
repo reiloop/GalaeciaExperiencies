@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Experience from "../components/Experience";
 import HeaderMenu from "../components/HeaderMenu";
 import Imagenes from "../components/Imagenes";
@@ -49,7 +49,13 @@ const ExperiencesPage = () => {
       return (
         <div className="experiencePage">
           <HeaderMenu></HeaderMenu>
-
+          <Booking
+            id={data.id}
+            precio={data.precio}
+            email={data.email}
+            fecha={date}
+            plazasLibres={data.plazas_disponibles}
+          ></Booking>
           <Experience
             key={data.id}
             id={data.id}
@@ -69,13 +75,12 @@ const ExperiencesPage = () => {
           </ul>
           <Comments id={data.id}></Comments>
           <AddComment id={data.id}></AddComment>
-          <Booking
-            id={data.id}
-            precio={data.precio}
-            email={data.email}
-            fecha={date}
-            plazasLibres={data.plazas_disponibles}
-          ></Booking>
+          <footer>
+            <Link className="link" to="/" style={{ fontWeight: "300" }}>
+              Volver a página de inicio
+            </Link>
+            <p>(C) ESTÉBAN ESTÉVEZ & JOSÉ M. REIMÓNDEZ (2021)</p>
+          </footer>
         </div>
       );
     } else if (decodedToken.rol === "admin") {
@@ -109,7 +114,12 @@ const ExperiencesPage = () => {
       return (
         <div className="experiencePage">
           <HeaderMenu></HeaderMenu>
-
+          <Booking
+            id={data.id}
+            precio={data.precio}
+            fecha={date}
+            plazasLibres={data.plazas_disponibles}
+          ></Booking>
           <Experience
             key={data.id}
             id={data.id}
@@ -129,12 +139,12 @@ const ExperiencesPage = () => {
           </ul>
           <Comments id={data.id}></Comments>
           <AddComment id={data.id}></AddComment>
-          <Booking
-            id={data.id}
-            precio={data.precio}
-            fecha={date}
-            plazasLibres={data.plazas_disponibles}
-          ></Booking>
+          <footer>
+            <Link className="link" to="/" style={{ fontWeight: "300" }}>
+              Volver a página de inicio
+            </Link>
+            <p>(C) ESTÉBAN ESTÉVEZ & JOSÉ M. REIMÓNDEZ (2021)</p>
+          </footer>
         </div>
       );
     }

@@ -27,11 +27,15 @@ function Activation() {
   }, [url]);
 
   if (items.error) {
-    return <div>Error: {items.error}</div>;
+    return <div className="activa">Error: {items.error}</div>;
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    return <ul>{items.message}</ul>;
+    return (
+      <div className="activa">
+        <ul>{items.message}</ul>{" "}
+      </div>
+    );
   }
 }
 

@@ -16,14 +16,15 @@ const RegisterPage = (props) => {
           <RegisterForm />
           <p>
             ¿Ya tienes cuenta?
-            <Link to="/login" style={{ fontWeight: "bold" }}>
+            <Link className="link" to="/login" style={{ fontWeight: "bold" }}>
               Haz login
             </Link>
           </p>
           <footer>
-            <Link to="/" style={{ fontWeight: "300" }}>
+            <Link className="link" to="/" style={{ fontWeight: "300" }}>
               Volver a página de inicio
             </Link>
+            <p>(C) ESTÉBAN ESTÉVEZ & JOSÉ M. REIMÓNDEZ (2021)</p>
           </footer>
         </div>
       ) : (

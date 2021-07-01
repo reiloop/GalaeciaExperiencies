@@ -26,7 +26,7 @@ const EraseForm = (props) => {
   };
 
   return (
-    <form onSubmit={eraseExperience}>
+    <form className="eraseExp" onSubmit={eraseExperience}>
       <label htmlFor="id">¿Quieres eliminar esta actividad?</label>
       <input type="submit" value="Eliminar" />
     </form>

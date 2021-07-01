@@ -1,6 +1,6 @@
 import UserProfileBody from "../components/UserProfileBody";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { TokenContext } from "../components/TokenContextProvider";
 import decodeTokenData from "../utils/decodedTokenData";
 import HeaderMenu from "../components/HeaderMenu";
@@ -58,6 +58,12 @@ const UserProfilePage = (props) => {
           ></UserProfileBody>
           <EditUser id={userId}></EditUser>
           <UploadUserPhoto id={userId}></UploadUserPhoto>
+          <footer>
+            <Link className="link" to="/" style={{ fontWeight: "300" }}>
+              Volver a página de inicio
+            </Link>
+            <p>(C) ESTÉBAN ESTÉVEZ & JOSÉ M. REIMÓNDEZ (2021)</p>
+          </footer>
         </div>
       );
     } else {

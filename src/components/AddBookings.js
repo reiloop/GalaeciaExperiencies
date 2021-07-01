@@ -12,16 +12,15 @@ const AddBookings = (props) => {
   const [allBookings] = useAllBookings();
   const data = bookings.data;
   const allData = allBookings.data;
-  console.log(allData)
+  console.log(allData);
   if (decodedToken.rol === "admin") {
     if (allData !== undefined) {
       if (allData.length > 1) {
         const arrayAllBookings = allData.map((item) => (
           <div className="reservas">
             <p>
-              El usuario {item.nombre_usuario} ha reservado la{" "}
-              <a href={`/experience/${item.id}`}>actividad</a>{" "}
-              {item.nombre_actividad} 
+              El usuario {item.nombre_usuario} ha reservado la actividad
+              <a href={`/experience/${item.id}`}> {item.nombre_actividad}</a>
             </p>
             <p>Fecha de la reserva: {item.fecha_uso.slice(0, 10)}</p>
           </div>
@@ -31,9 +30,10 @@ const AddBookings = (props) => {
         return (
           <div className="reservas">
             <p>
-              El usuario {allData[0].nombre_usuario} ha reservado la{" "}
-              <a href={`/experience/${allData[0].id}`}>actividad</a>{" "}
-              {allData[0].nombre_actividad}
+              El usuario {allData[0].nombre_usuario} ha reservado la actividad
+              <a href={`/experience/${allData[0].id}`}>
+                {allData[0].nombre_actividad}
+              </a>
             </p>
             <p>Fecha de la reserva: {allData[0].fecha_uso.slice(0, 10)}</p>
           </div>
@@ -52,10 +52,10 @@ const AddBookings = (props) => {
         const arrayBookings = data.map((item) => (
           <div className="reservas">
             <p>
-              Has reservado la <a href={`/experience/${item.id}`}>actividad</a>{" "}
-              {item.nombre}
+              Has reservado la actividad
+              <a href={`/experience/${item.id}`}> {item.nombre}</a>
             </p>
-            <p>Fecha de la reserva: {item.fecha_uso.slice(0, 10)}</p>
+            <p>Fecha de la actividad: {item.fecha_uso.slice(0, 10)}</p>
           </div>
         ));
         return <ul className="listaReservas">{arrayBookings}</ul>;
@@ -63,11 +63,10 @@ const AddBookings = (props) => {
         return (
           <div className="reservas">
             <p>
-              Has reservado la
-              <a href={`/experience/${data[0].id}`}>actividad</a>
-              {data[0].nombre}
+              Has reservado la actividad
+              <a href={`/experience/${data[0].id}`}> {data[0].nombre}</a>
             </p>
-            <p>Fecha de la reserva: {data[0].fecha_uso.slice(0, 10)}</p>
+            <p>Fecha de la actividad: {data[0].fecha_uso.slice(0, 10)}</p>
           </div>
         );
       } else {
