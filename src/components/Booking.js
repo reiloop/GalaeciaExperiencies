@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TokenContext } from "./TokenContextProvider";
 
 const Booking = (props) => {
   const { id, precio, fecha, plazasLibres, email } = props;
   const [token] = useContext(TokenContext);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const bookExperience = async (e) => {
     e.preventDefault();
@@ -38,9 +40,9 @@ const Booking = (props) => {
       console.log(body);
     };
     const body = await res.json();
-    console.log(body);
+    setMessage(body.message);
     if (body.error) {
-      return <p>{body.error}</p>;
+      setError(body.error);
     } else {
       restarPlazaLibre();
     }
@@ -50,6 +52,8 @@ const Booking = (props) => {
       <form onSubmit={bookExperience}>
         <input type="submit" value="RESERVAR" />
       </form>
+      {message && <p style={{ color: "green" }}>{message}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
     </div>
   );
 };
