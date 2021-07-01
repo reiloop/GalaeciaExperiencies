@@ -21,7 +21,7 @@ const AddBookings = (props) => {
             <p>
               El usuario {item.nombre_usuario} ha reservado la{" "}
               <a href={`/experience/${item.id}`}>actividad</a>{" "}
-              {item.nombre_actividad}
+              {item.nombre_actividad} 
             </p>
             <p>Fecha de la reserva: {item.fecha_uso.slice(0, 10)}</p>
           </div>
@@ -29,7 +29,7 @@ const AddBookings = (props) => {
         return <ul className="listaReservas">{arrayAllBookings}</ul>;
       } else if (allData.length === 1) {
         return (
-          <div>
+          <div className="reservas">
             <p>
               El usuario {allData[0].nombre_usuario} ha reservado la{" "}
               <a href={`/experience/${allData[0].id}`}>actividad</a>{" "}

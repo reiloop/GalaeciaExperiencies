@@ -160,6 +160,57 @@ h2 {
   align-items: center;
   justify-content: center;
 }
+/*----------------------------------------------------------------*/
+.cssAdminPage {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(106, 209, 212, 0.383);
+  min-height: 75vh;
+}
+
+.cssAdminPage > h1, h2{
+  color: rgb(0, 0, 0);
+  display: flex;
+  align-content: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.divCreate {
+  display: flex;
+  align-content: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgb(236, 166, 54);
+  height: 40vh;
+  width: 30vh;
+
+}
+
+.formularioCreate {
+  background-color: rgb(236, 166, 54);
+  height: 40vh;
+  width: 30vh;
+  
+}
+
+.reservas{
+  display: grid;
+  align-content: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: cadetblue;
+  max-width: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listaReservas{
+  
+  background-color: rgb(155, 153, 26);
+}
+
+/*----------------------------------------------------------------*/
 
 @media (max-width: 800px) {
   a {

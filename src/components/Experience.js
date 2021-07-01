@@ -36,7 +36,7 @@ const Experience = (props) => {
       <p>
         Plazas libres: {libres}/{totales}
       </p>
-      <Imagenes photo={photo}></Imagenes>
+      <Imagenes photo={photo} categoria={categoria}></Imagenes>
       <p>Experiencia: {id}</p>
     </div>
   );

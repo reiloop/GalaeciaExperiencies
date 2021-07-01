@@ -12,7 +12,7 @@ const AdminPage = (props) => {
     const decodedToken = decodeTokenData(token);
     if (decodedToken.rol === "admin") {
       return (
-        <div>
+        <div className="cssAdminPage">
           <HeaderMenu></HeaderMenu>
           <h2 style={{ fontWeight: "600" }}>Crear una experiencia</h2>
           <CreateForm></CreateForm>

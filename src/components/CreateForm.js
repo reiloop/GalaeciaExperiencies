@@ -42,8 +42,8 @@ const CreateForm = (props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={createExperience}>
+    <div className="divCreate">
+      <form  className="formularioCreate" onSubmit={createExperience}>
         <label htmlFor="nombre">Nombre:</label>
         <input
           type="text"
