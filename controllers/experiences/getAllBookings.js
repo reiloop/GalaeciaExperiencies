@@ -11,7 +11,7 @@ async function getAllBookings(req, res, next) {
     // Ejecuto la consulta
     const [result] = await connection.query(
       `
-      SELECT fecha_uso,  A.nombre AS "nombre_actividad", U.nombre AS "nombre_usuario"
+      SELECT A.id, fecha_uso,  A.nombre AS "nombre_actividad", U.nombre AS "nombre_usuario"
       FROM reservas
       LEFT JOIN users U ON reservas.id_user = U.id
       LEFT JOIN actividades A ON reservas.id_actividad = A.id
