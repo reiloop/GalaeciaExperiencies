@@ -121,16 +121,18 @@ async function main() {
             nombre,
             password, 
             rol,
+            foto,
             activado,
             lastUpdate,
             lastAuthUpdate 
         )
         VALUES(
             UTC_TIMESTAMP,
-            "esteban_stvez@hotmail.com",
+            "admin@admin.com",
             "administrador",
             "${password}",
             "admin",
+            "avatar",
             true,
             UTC_TIMESTAMP,
             UTC_TIMESTAMP
