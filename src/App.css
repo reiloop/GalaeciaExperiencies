@@ -303,7 +303,7 @@ div.userBody {
 }
 
 div.experience {
-  max-width: 900px;
+  /*max-width: 900px;*/
   margin: auto;
   margin-top: 0.5rem;
   margin-left: 0.5rem;
@@ -349,11 +349,12 @@ div.experience h1 {
   justify-content: center;
   color: aliceblue;
   background-color: rgba(86, 161, 246, 0.89);
-  max-width: 400px;
+  /*max-width: 400px;*/
   border-radius: 20px;
   margin: 0 auto;
   margin-left: 1rem;
   margin-right: 1rem;
+  margin-top: 1rem;
   padding: 1rem;
 }
 .comentarios h2 {
